@@ -1,0 +1,10 @@
+.masthead {
+	display: flex;
+}
+
+.navBar ul {
+	list-style: none;
+	padding-left: unset;
+	display: flex;
+	justify-content: space-around;
+}

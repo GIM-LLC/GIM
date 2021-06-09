@@ -1,13 +1,14 @@
 import React from 'react';
+import style from './Header.css';
 
 const HeaderNav = () => {
   return (
-    <nav>
+    <nav className={style.navBar}>
       <ul>
-        <li>stuff</li>
-        <li>stuff</li>
-        <li>stuff</li>
-        <li>stuff</li>
+        <li><button>stuff</button></li>
+        <li><button>stuff</button></li>
+        <li><button>stuff</button></li>
+        <li><button>stuff</button></li>
       </ul>
     </nav>
   );

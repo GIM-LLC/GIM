@@ -4,10 +4,10 @@ const FooterNav = () => {
   return (
     <nav>
       <ul>
-        <li>stuff</li>
-        <li>stuff</li>
-        <li>stuff</li>
-        <li>stuff</li>
+	  	<li><button>stuff</button></li>
+        <li><button>stuff</button></li>
+        <li><button>stuff</button></li>
+        <li><button>stuff</button></li>
       </ul>
     </nav>
   );
