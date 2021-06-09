@@ -6,14 +6,12 @@ import HomePage from '../pages/HomePage';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
 const CursorWrapper = () => {
   const socket = useContext(SocketContext);
   //CURSORS
   //current client cursor movement handling
-  
+
   const handleClientCursor = (e) => {
-    
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -31,7 +29,7 @@ const CursorWrapper = () => {
   const handleCursorMove = (data) => {
     //if this is a new user add a cursor for them
     // eslint-disable-next-line no-prototype-builtins
-    if(!users.hasOwnProperty(data.id)) {
+    if (!users.hasOwnProperty(data.id)) {
       const cursorWrapper = document.getElementById('cursorWrapper');
       const cursorDiv = document.createElement('img');
       cursors[data.id] = cursorWrapper.appendChild(cursorDiv);
@@ -45,7 +43,6 @@ const CursorWrapper = () => {
     //update users cursor position whether they are new or not
     cursors[data.id].style.left = data.x + '%';
     cursors[data.id].style.top = data.y + '%';
-    console.log(data.x, data.y);
     users[data.id] = data;
   };
 
@@ -66,7 +63,11 @@ const CursorWrapper = () => {
   }, [socket]);
 
   return (
-    <div className={style.cursorWrapper} onMouseMove={e => handleClientCursor(e)} id="cursorWrapper">
+    <div
+      className={style.cursorWrapper}
+      onMouseMove={(e) => handleClientCursor(e)}
+      id="cursorWrapper"
+    >
       <Header />
       <HomePage />
       <Footer />

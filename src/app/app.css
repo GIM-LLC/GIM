@@ -1,28 +1,25 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 100%;
+html,
+body,
+div,
+div {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
-
-body > #root > div {
-	height: 100vh;
-}
-  
 
 body {
-	background-color: bisque;
+  background-color: bisque;
 }
 
 header {
-	background-color: slateblue
+  background-color: slateblue;
 }
 
 footer {
-	background-color: palegreen;
-	
+  background-color: palegreen;
 }
