@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SocketContext } from '../context/SocketProvider';
 import style from './Cursor.css';
 import HomePage from '../pages/HomePage';
@@ -30,6 +30,7 @@ const CursorWrapper = () => {
 
   const handleCursorMove = (data) => {
     //if this is a new user add a cursor for them
+    // eslint-disable-next-line no-prototype-builtins
     if(!users.hasOwnProperty(data.id)) {
       const cursorWrapper = document.getElementById('cursorWrapper');
       const cursorDiv = document.createElement('img');
