@@ -30,11 +30,11 @@ const FooterNav = () => {
           <p className={style.headers}>contact us</p>
           <div className={style.contactUsDiv}>
             <div className={style.iconDiv}>
-              <img className={style.iconImage} src={'../../public/assets/Twitter.png'} alt='twitter-icon' />
-              <img className={style.iconImage} src={'../../public/assets/ig.png'} alt='twitter-icon' />
-              <img className={style.iconImage} src={'../../public/assets/Github_icon.png'} alt='twitter-icon' />
-              <img className={style.iconImage} src={'../../public/assets/linkedin-icon-2.png'} alt='twitter-icon' />
-              <img className={[style.iconImageGhost, style.pulse].join(' ')} src={'../../public/assets/ghostie.png'} alt='twitter-icon' />
+              <img className={style.iconImage} src={'/assets/Twitter.png'} alt='twitter-icon' />
+              <img className={style.iconImage} src={'/assets/ig.png'} alt='instagram-icon' />
+              <img className={style.iconImage} src={'/assets/Github_icon.png'} alt='Github_icon' />
+              <img className={style.iconImage} src={'/assets/linkedin-icon-2.png'} alt='linkedin-icon' />
+              <img className={[style.iconImageGhost, style.pulse].join(' ')} src={'/assets/ghostie.png'} alt='ghost-icon' />
 
             </div>
             <div className={style.addressDiv}>
