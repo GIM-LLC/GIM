@@ -1,10 +1,46 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    '. Logo .'
+    '. Logo .'
+    'Nav Nav Nav';
+  grid-area: 1 / 1 / 2 / 5;
+  background-color: #c6bcae;
+}
+
 .masthead {
-	display: flex;
+  	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Cinzel', serif;
+	color: #3a3a3a;
+  grid-area: Logo;
+}
+
+.navBar {
+  grid-area: Nav;
 }
 
 .navBar ul {
-	list-style: none;
-	padding-left: unset;
-	display: flex;
-	justify-content: space-around;
+  list-style: none;
+  padding-left: unset;
+  display: flex;
+  justify-content: space-around;
+}
+
+h1 {
+	font-size: 3.5rem;
+	line-height: 2.5rem;
+	padding-top: 2rem;
+	padding-bottom: 0rem;
+	margin: 0;
+}
+
+h3 {
+	padding: 0;
+	margin: 0;
 }
