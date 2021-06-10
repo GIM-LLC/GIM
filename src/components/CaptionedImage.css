@@ -38,6 +38,7 @@
 }
 
 .text{
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,6 +48,8 @@
   background-color: white;
   overflow-y: scroll;
   scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .text::-webkit-scrollbar {
@@ -56,6 +59,8 @@
 .text p {
   color: #3a3a3a;
   font-size: 1em;
+  padding: 3%;
+  word-wrap: break-word;
   position: absolute;
   padding: 3%;
 }
@@ -64,4 +69,8 @@
   color:#3a3a3a;
   background-color: #f97c00;
   padding: 1%;
+}
+
+.text button {
+  margin: 5%;
 }
