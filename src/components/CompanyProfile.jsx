@@ -3,10 +3,10 @@ import style from './CompanyProfile.css';
 
 const CompanyProfile = () => {
   return (
-    <>
+    <section className={style.companyProfile}>
       <section className={style.story}>
         <figure>
-          <img src="http://placekitten.com/100/100" alt="gim image" />
+          <img src="http://placekitten.com/200/200" alt="gim image" />
         </figure>
         <article>
           <h3>The GIM Story</h3>
@@ -43,7 +43,7 @@ const CompanyProfile = () => {
           </p>
         </article>
       </section>
-    </>
+    </section>
   );
 };
 
