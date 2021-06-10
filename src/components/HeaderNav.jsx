@@ -37,6 +37,7 @@ const HeaderNav = () => {
     setSearchBttnState(newButtonState);
   };
 
+  //NEED TO ADD INPUT CHANGE LISTENER TO BACK END
   useEffect(() => {
     socket.on('search input typing', handleSocketInputChange);
     socket.on('click', handleButtonChange);
