@@ -1,10 +1,29 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    '. Logo .'
+    '. Logo .'
+    'Nav Nav Nav';
+  grid-area: 1 / 1 / 2 / 5;
+  background-color: slateblue;
+}
+
 .masthead {
-	display: flex;
+  display: flex;
+  grid-area: Logo;
+}
+
+.navBar {
+  grid-area: Nav;
 }
 
 .navBar ul {
-	list-style: none;
-	padding-left: unset;
-	display: flex;
-	justify-content: space-around;
+  list-style: none;
+  padding-left: unset;
+  display: flex;
+  justify-content: space-around;
 }

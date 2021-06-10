@@ -4,7 +4,7 @@ import style from './Header.css';
 
 const Header = () => {
   return (
-    <header>
+    <header className={style.header}>
       <span className={style.masthead}>
         <img src="http://placekitten.com/100/100" alt="logo and/or kitten" />
         <h1>General Industrial Manufacturing</h1>
