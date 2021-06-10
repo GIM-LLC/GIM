@@ -35,7 +35,6 @@ const FooterNav = () => {
               <img className={style.iconImage} src={'/assets/Github_icon.png'} alt='Github_icon' />
               <img className={style.iconImage} src={'/assets/linkedin-icon-2.png'} alt='linkedin-icon' />
               <img className={[style.iconImageGhost, style.pulse].join(' ')} src={'/assets/ghostie.png'} alt='ghost-icon' />
-
             </div>
             <div className={style.addressDiv}>
               <p className={style.addressesHeader}>Corporate Offices</p>
