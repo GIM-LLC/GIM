@@ -2,6 +2,7 @@
 import React from 'react';
 import style from './HomePage.css';
 import CaptionedImage from '../components/CaptionedImage';
+import ChatBox from '../components/ChatBox';
 
 const HomePage = () => {
   return (
@@ -21,6 +22,7 @@ const HomePage = () => {
         <CaptionedImage />
         <CaptionedImage />
 	  </section>
+      <ChatBox />
     </main>
   );
 };
