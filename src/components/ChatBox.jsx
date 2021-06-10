@@ -7,6 +7,7 @@ const ChatBox = () => {
 
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
+  const [collapsed, setCollapsed] = useState(true);
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -27,30 +28,37 @@ const ChatBox = () => {
   }, [socket]);
 
   return (
-    <div className={style.chatBox}>
-
-      <ul aria-label="message list" className={style.messageList}>
-        {messages.map((message, index) => (
-          <li key={message + '-' + index}>
-            {message}
-          </li>
-        ))}
-      </ul>
-      
-      <form
-        aria-label="message submission form"
-        className={style.messageSubmit}
-        onSubmit={handleFormSubmit}
-      >
-        <input
-          aria-label="message input"
-          value={inputMessage}
-          onChange={e => setInputMessage(e.target.value)}
-        />
-        <button aria-label="message submit">Send</button>
-      </form>
-
+    <div>
+      {collapsed
+        ? <div className={style.chatIcon} onClick={() => setCollapsed(false)}>Need help?</div>
+        : <div className={style.chatBox}>
+          <span className={style.closeSpan} onClick={() => setCollapsed(true)}>X</span>
+          <ul aria-label="message list" className={style.messageList}>
+            {messages.map((message, index) => (
+              <li key={message + '-' + index}>
+                {message}
+              </li>
+            ))}
+          </ul>
+        
+          <form
+            aria-label="message submission form"
+            className={style.messageSubmit}
+            onSubmit={handleFormSubmit}
+          >
+            <input
+              aria-label="message input"
+              value={inputMessage}
+              onChange={e => setInputMessage(e.target.value)}
+            />
+            <button aria-label="message submit">Send</button>
+          </form>
+  
+        </div>
+      }
     </div>
+    
+    
   );
 };
 
