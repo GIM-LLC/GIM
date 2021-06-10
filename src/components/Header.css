@@ -5,8 +5,8 @@
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    '. Logo .'
-    '. Logo .'
+    'Logo Logo Logo'
+    'Logo Logo Logo'
     'Nav Nav Nav';
   grid-area: 1 / 1 / 2 / 5;
   background-color: #c6bcae;
@@ -21,17 +21,6 @@
   grid-area: Logo;
 }
 
-.navBar {
-  grid-area: Nav;
-}
-
-.navBar ul {
-  list-style: none;
-  padding-left: unset;
-  display: flex;
-  justify-content: space-around;
-}
-
 h1 {
   font-size: 3.5rem;
   line-height: 2.5rem;
@@ -41,6 +30,54 @@ h1 {
 }
 
 h3 {
-  padding: 0;
-  margin: 0;
+	padding-top: 0;
+	padding-bottom: 1rem;
+	margin: 0;
+}
+
+.navBar{
+	grid-area: Nav;
+	background-color: white;
+	color: #3f8a72;
+	grid-area: Nav;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-family: 'Fira Sans Extra Condensed', sans-serif;
+	font-weight: 400;
+}
+
+input{
+	border: solid .25rem #f97c00;
+	margin: .5rem;
+	padding: .3rem;
+}
+
+input:focus{
+	outline: solid 1px #3a3a3a;
+}
+
+input{
+	width: 10rem;
+	border: solid .25rem #f97c00;
+	margin: .5rem;
+	padding: .3rem;
+}
+
+button{
+	width: 5rem;
+	font-family: 'Fira Sans Extra Condensed', sans-serif;
+	font-weight: 700;
+	color: #3a3a3a;
+	background-color: #f97c00;
+	border: none; 
+	padding: .55rem;
+}
+
+button:hover{
+	background-color: #ff9f3e;
+}
+
+button:active{
+	background-color: #f97c00;
 }
