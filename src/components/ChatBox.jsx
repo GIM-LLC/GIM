@@ -5,7 +5,12 @@ import style from './ChatBox.css';
 const ChatBox = () => {
   const socket = useContext(SocketContext);
 
+  // consider making messages into objects that hold onto the sender's ID so we can differentiate between self-sent messages and other user-sent ones, since the socket is sending the players message back to them
   const [messages, setMessages] = useState([]);
+
+  // tracking whether there are messages from other users that the client player has not read
+  const [unreadMessages, setUnreadMessages] = useState(0);
+
   const [inputMessage, setInputMessage] = useState('');
   const [collapsed, setCollapsed] = useState(true);
 
@@ -17,6 +22,12 @@ const ChatBox = () => {
 
   const handleIncomingMessage = message => {
     setMessages(prev => [...prev, message]);
+    if(collapsed) setUnreadMessages(unreadMessages => unreadMessages + 1);
+  };
+
+  const handleExpandClick = () => {
+    setCollapsed(false);
+    setUnreadMessages(0);
   };
 
   useEffect(() => {
@@ -30,7 +41,20 @@ const ChatBox = () => {
   return (
     <div>
       {collapsed
-        ? <div className={style.chatIcon} onClick={() => setCollapsed(false)}>Need help?</div>
+        ? <div
+          className={style.chatIcon}
+          onClick=  {handleExpandClick}
+        >
+          {unreadMessages > 0 && 
+          <span className={style.badge}>
+            {unreadMessages}
+          </span>}
+          
+          <span>
+              Need help?
+          </span>
+            
+        </div>
         : <div className={style.chatBox}>
           <span className={style.closeSpan} onClick={() => setCollapsed(true)}>X</span>
           <ul aria-label="message list" className={style.messageList}>
