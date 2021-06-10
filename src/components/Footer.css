@@ -3,6 +3,7 @@
   padding-left: unset;
   display: flex;
   justify-content: space-around;
+
 }
 
 .footerListItem {
@@ -74,3 +75,50 @@
 .addresses {
   margin: 1%;
 }
+
+.iconImageGhost {
+  width: 1.55rem;
+  box-shadow: 0px 0px 1px 1px #d20b0be4;
+
+}
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #0bd212e4;
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
+}
+
+.iconDiv {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1%;
+  row-gap: 2%;
+  width: 30%;
+  height: 60%;
+  padding: 1%;
+}
+
+.addressDiv {
+  width: 90%;
+  column-gap: 70%;
+}
+
+.addressesHeader {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 1rem;
+
+}
+
+.addresses {
+  margin: 1%;
+}
+

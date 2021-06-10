@@ -1,3 +1,19 @@
 .mission {
   grid-area: 5 / 1 / 6 / 5;
+  background-color: #eae4dc;
+}
+
+.missionHeader {
+  font-size: 1.99rem;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  color: #3f8a72;
+  margin-bottom: 1%;
+  margin-left: 15%;
+}
+
+.missionBody {
+  font-size: 1rem;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  margin-left: 15%;
+  margin-right: 15%;
 }
