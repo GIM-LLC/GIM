@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import io from 'socket.io-client';
 
-const url = 'https://gim-llc.herokuapp.com/';
+const url = 'http://localhost:7890';
 
 export const socket = io(url, {
   cors: true
