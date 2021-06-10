@@ -54,16 +54,18 @@ input{
 }
 
 input:focus{
-	border: solid 1rem #3a3a3a;
+	outline: solid 1px #3a3a3a;
 }
 
 input{
+	width: 10rem;
 	border: solid .25rem #f97c00;
 	margin: .5rem;
 	padding: .3rem;
 }
 
 button{
+	width: 5rem;
 	font-family: 'Fira Sans Extra Condensed', sans-serif;
 	font-weight: 700;
 	color: #3a3a3a;
@@ -74,4 +76,8 @@ button{
 
 button:hover{
 	background-color: #ff9f3e;
+}
+
+button:active{
+	background-color: #f97c00;
 }
