@@ -29,13 +29,19 @@ const HeaderNav = () => {
           </button>
         </li>
         <li>
-          <button onClick={handleClick}>stuff</button>
+          <button onClick={handleClick}>
+            {buttonState ? 'stuff' : "n'Things"}
+          </button>
         </li>
         <li>
-          <button onClick={handleClick}>stuff</button>
+          <button onClick={handleClick}>
+            {buttonState ? 'stuff' : "n'Things"}
+          </button>
         </li>
         <li>
-          <button onClick={handleClick}>stuff</button>
+          <button onClick={handleClick}>
+            {buttonState ? 'stuff' : "n'Things"}
+          </button>
         </li>
       </ul>
     </nav>
