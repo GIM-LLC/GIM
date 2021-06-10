@@ -5,6 +5,7 @@ import { SocketContext } from '../context/SocketProvider';
 
 
 const Header = () => {
+
   const socket = useContext(SocketContext);
 
   const [headerClicks, setHeaderClicks] = useState(0);
@@ -32,7 +33,7 @@ const Header = () => {
   }
 
   return (
-    <header>
+    <header className={style.header}>
       <span className={style.masthead}>
         <h1 onClick={upHeaderClickCount}>
           {headerText}

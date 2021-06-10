@@ -22,28 +22,15 @@ const HeaderNav = () => {
 
   return (
     <nav className={style.navBar}>
-      <ul>
-        <li>
-          <button onClick={handleClick}>
-            {buttonState ? 'stuff' : "n'Things"}
-          </button>
-        </li>
-        <li>
-          <button onClick={handleClick}>
-            {buttonState ? 'stuff' : "n'Things"}
-          </button>
-        </li>
-        <li>
-          <button onClick={handleClick}>
-            {buttonState ? 'stuff' : "n'Things"}
-          </button>
-        </li>
-        <li>
-          <button onClick={handleClick}>
-            {buttonState ? 'stuff' : "n'Things"}
-          </button>
-        </li>
-      </ul>
+      <p>link 1</p>
+      <p>link 2</p>
+      <p>link 3</p>
+      <p>link 4</p>
+      <p>link 5</p>
+      <section>
+        <input type='text' placeholder='let me out!' />
+        <button>search</button>
+      </section>
     </nav>
   );
 };
