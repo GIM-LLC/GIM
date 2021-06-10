@@ -13,15 +13,6 @@
   grid-area: 4 / 1 / 5 / 5;
 }
 
-.gallery img {
-  border: solid 2px salmon;
-  width: 100%;
-}
-
-.gallery div {
-  border: solid 2px yellowgreen;
-}
-
 .mission {
   grid-area: 5 / 1 / 6 / 5;
 }

@@ -1,0 +1,67 @@
+.container {
+  background-color: #c6bcae;
+  position: relative;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.captionedImage {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.captionedImage img {
+  width: 80%;
+  height: auto;
+  margin: 0; 
+  padding: 0;
+}
+
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left : 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  background-color: #c6bcae;
+  height: 0;
+  transition: .5s ease;
+  margin-bottom: 5%;
+}
+
+.container:hover .imageOverlay {
+  height: 80%;
+}
+
+.text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.text::-webkit-scrollbar {
+  display: none;
+}
+
+.text p {
+  color: #3a3a3a;
+  font-size: 1em;
+  position: absolute;
+  padding: 3%;
+}
+
+.text h3 {
+  color:#3a3a3a;
+  background-color: #f97c00;
+  padding: 1%;
+}
