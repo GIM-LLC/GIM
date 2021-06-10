@@ -13,20 +13,20 @@
 }
 
 .masthead {
-  	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-family: 'Cinzel', serif;
-	color: #3a3a3a;
-  	grid-area: Logo;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Cinzel', serif;
+  color: #3a3a3a;
+  grid-area: Logo;
 }
 
 h1 {
-	font-size: 3.5rem;
-	line-height: 2.5rem;
-	padding-top: 2rem;
-	padding-bottom: 0rem;
-	margin: 0;
+  font-size: 3.5rem;
+  line-height: 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 0rem;
+  margin: 0;
 }
 
 h3 {
