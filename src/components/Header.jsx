@@ -22,11 +22,11 @@ const Header = () => {
     );
   }, [socket]);
 
-  let headerText = 'GIM';
+  let headerText = 'G.I.M.';
   if (headerClicks === 1) {
-    headerText = 'Ghost  IM';
+    headerText = 'Ghost  I.M.';
   } else if (headerClicks === 2) {
-    headerText = 'Ghost  In  The  M';
+    headerText = 'Ghost  In  The  M.';
   } else if (headerClicks >= 3) {
     headerText = 'Ghost  In  The  Machine';
   }
