@@ -1,27 +1,26 @@
 .homePage {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-area: 2 / 1 / 6 / 5;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas: 'ImageCard1 ImageCard2 ImageCard3';
-  grid-area: 4 / 1 / 5 / 5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  grid-area: 2 / 1 / 3 / 4;
 }
 
 .gallery img {
   border: solid 2px salmon;
-  width: 100%;
+}
+
+.gallery figure {
+  max-width: fit-content;
 }
 
 .gallery div {
   border: solid 2px yellowgreen;
-}
-
-.mission {
-  grid-area: 5 / 1 / 6 / 5;
 }

@@ -18,7 +18,7 @@
 .footer {
   grid-area: 6 / 1 / 7 / 5;
   width: 100%;
-  background-color: #fff;
+  background-color: white;
 }
 
 .contactUsDiv {

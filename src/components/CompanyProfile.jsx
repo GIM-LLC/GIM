@@ -4,39 +4,39 @@ import style from './CompanyProfile.css';
 const CompanyProfile = () => {
   return (
     <section className={style.companyProfile}>
-      <section className={style.story}>
+      <article className={style.story}>
         <figure>
           <img src="http://placekitten.com/200/200" alt="gim image" />
         </figure>
         <article>
-          <h3>The GIM Story</h3>
+          <h2>The GIM Story</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quo non
-            quasi delectus minus culpa assumenda, ipsum soluta ipsa neque
-            laboriosam temporibus beatae autem vel hic dicta, earum distinctio
-            repellendus?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+            illo dolores doloremque vitae delectus aut. Officia sunt in labore,
+            rem saepe ullam aut tempore vitae exercitationem ea dolor cupiditate
+            error? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </p>
         </article>
-      </section>
+      </article>
 
       <section className={style.news}>
         <h3>Company News</h3>
         <article>
-          <h3>A Cool Article - 06/04/21</h3>
+          <h6>A Cool Article - 06/04/21</h6>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum
             dolorem quasi laborum?
           </p>
         </article>
         <article>
-          <h3>Another Cool Article - 06/06/21</h3>
+          <h6>Another Cool Article - 06/06/21</h6>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum
             dolorem quasi laborum?
           </p>
         </article>
         <article>
-          <h3>A Boring Article - 06/09/21</h3>
+          <h6>A Boring Article - 06/09/21</h6>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum
             dolorem quasi laborum?
