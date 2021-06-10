@@ -61,6 +61,8 @@
   font-size: 1em;
   padding: 3%;
   word-wrap: break-word;
+  position: absolute;
+  padding: 3%;
 }
 
 .text h3 {
