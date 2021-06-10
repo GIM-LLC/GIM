@@ -9,11 +9,15 @@
     '. Logo .'
     'Nav Nav Nav';
   grid-area: 1 / 1 / 2 / 5;
-  background-color: slateblue;
+  background-color: #c6bcae;
 }
 
 .masthead {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Cinzel', serif;
+  color: #3a3a3a;
   grid-area: Logo;
 }
 
@@ -26,4 +30,17 @@
   padding-left: unset;
   display: flex;
   justify-content: space-around;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 0rem;
+  margin: 0;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
 }

@@ -22,21 +22,21 @@ const CompanyProfile = () => {
       <section className={style.news}>
         <h3>Company News</h3>
         <article>
-          <h4>A Cool Article - 06/04/21</h4>
+          <h3>A Cool Article - 06/04/21</h3>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum
             dolorem quasi laborum?
           </p>
         </article>
         <article>
-          <h4>Another Cool Article - 06/06/21</h4>
+          <h3>Another Cool Article - 06/06/21</h3>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum
             dolorem quasi laborum?
           </p>
         </article>
         <article>
-          <h4>A Boring Article - 06/09/21</h4>
+          <h3>A Boring Article - 06/09/21</h3>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum
             dolorem quasi laborum?

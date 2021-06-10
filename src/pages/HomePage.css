@@ -21,3 +21,7 @@
 .gallery div {
   border: solid 2px yellowgreen;
 }
+
+.mission {
+  grid-area: 5 / 1 / 6 / 5;
+}
