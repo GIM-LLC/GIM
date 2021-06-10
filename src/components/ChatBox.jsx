@@ -41,6 +41,7 @@ const ChatBox = () => {
   return (
     <div>
       {collapsed
+
         ? <div
           className={style.chatIcon}
           onClick=  {handleExpandClick}
@@ -49,12 +50,13 @@ const ChatBox = () => {
           <span className={style.badge}>
             {unreadMessages}
           </span>}
-          
+
           <span>
               Need help?
           </span>
             
         </div>
+
         : <div className={style.chatBox}>
           <span className={style.closeSpan} onClick={() => setCollapsed(true)}>X</span>
           <ul aria-label="message list" className={style.messageList}>
