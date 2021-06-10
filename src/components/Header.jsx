@@ -35,7 +35,7 @@ const Header = () => {
   }
 
   return (
-    <header>
+    <header className={style.header}>
       <span className={style.masthead}>
         <h1 onClick={upHeaderClickCount}>
           {headerText}
