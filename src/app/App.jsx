@@ -8,6 +8,5 @@ export default function App() {
     <SocketContext.Provider value={socket}>
       <CursorWrapper />
     </SocketContext.Provider>
-  
   );
 }
