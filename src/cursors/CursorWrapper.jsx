@@ -34,7 +34,7 @@ const CursorWrapper = () => {
       const cursorDiv = document.createElement('img');
       cursors[data.id] = cursorWrapper.appendChild(cursorDiv);
       cursors[data.id].style.position = 'absolute';
-      cursors[data.id].src = '/assets/cursor.png';
+      cursors[data.id].src = '/assets/orange-cursor.png';
       cursors[data.id].alt = 'pointer';
       cursors[data.id].style.width = '10px';
       cursors[data.id].id = data.id;
