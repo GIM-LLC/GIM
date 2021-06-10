@@ -1,0 +1,21 @@
+.story {
+  display: flex;
+  flex-direction: row;
+  grid-area: 2 / 1 / 4 / 3;
+}
+
+.story > article {
+  display: flex;
+  flex-direction: column;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 5%;
+  grid-area: 2 / 3 / 4 / 5;
+}
+
+.news > article {
+}

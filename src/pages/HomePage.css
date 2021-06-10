@@ -3,14 +3,6 @@
   grid-area: 2 / 1 / 6 / 5;
 }
 
-.story {
-  grid-area: 2 / 1 / 4 / 3;
-}
-
-.news {
-  grid-area: 2 / 3 / 4 / 5;
-}
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -28,8 +20,4 @@
 
 .gallery div {
   border: solid 2px yellowgreen;
-}
-
-.mission {
-  grid-area: 5 / 1 / 6 / 5;
 }
