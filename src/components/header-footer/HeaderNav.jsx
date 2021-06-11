@@ -26,7 +26,7 @@ const HeaderNav = () => {
   const [searchBttnState, setSearchBttnState] = useState(true);
 
   const handleSearchClick = () => {
-    socket.emit('click', !searchBttnState);
+    socket.emit('searchSubmit', !searchBttnState);
     setSearchBttnState((bttnState) => !bttnState);
     setSearchInput('');
     //what do we do when someone enters a search phrase?
@@ -34,13 +34,15 @@ const HeaderNav = () => {
 
   //incoming click from socket
   const handleButtonChange = (newButtonState) => {
+    setSearchDisable(false);
     setSearchBttnState(newButtonState);
+    setSearchInput('');
   };
 
   //NEED TO ADD INPUT CHANGE LISTENER TO BACK END
   useEffect(() => {
     socket.on('search input typing', handleSocketInputChange);
-    socket.on('click', handleButtonChange);
+    socket.on('socket serach click', handleButtonChange);
   }, [socket, searchInput]);
 
   const about = (e) => {
