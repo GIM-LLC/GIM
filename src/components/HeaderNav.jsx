@@ -8,7 +8,7 @@ const HeaderNav = () => {
 
   //input field 
   const [searchDisable, setSearchDisable] = useState(false);
-  const [searchInput, setSearchInput] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
 
   const handleInputChange = (e) => {
     socket.emit('search input', e.target.value);
