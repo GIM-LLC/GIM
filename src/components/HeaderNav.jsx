@@ -43,33 +43,38 @@ const HeaderNav = () => {
     socket.on('click', handleButtonChange);
   }, [socket, searchInput]);
 
+  const about = (e) => {
+    //on scroll we can pass the main link name and then emit that to the socket
+    console.log('scrolled over about: ' + e.target.textContent);
+  };
+
   return (
     <nav className={style.navBar}>
-      <p className={style.navLink}>about</p>
+      <p className={style.navLink} onMouseEnter={(e) => about(e)}>about</p>
       <div className={[style.dropList, style.sublist1].join(' ')}>
         <p className={style.subLink}>our why</p>
         <p className={style.subLink}>our history</p>
         <p className={style.subLink}>our team</p>
       </div>
-      <p className={style.navLink}>locations</p>
+      <p className={style.navLink} onMouseEnter={(e) => about(e)}>locations</p>
       <div className={[style.dropList, style.sublist2].join(' ')}>
         <p className={style.subLink}>northeast</p>
         <p className={style.subLink}>midwest</p>
         <p className={style.subLink}>coming soon</p>
       </div>
-      <p className={style.navLink}>press</p>
+      <p className={style.navLink} onMouseEnter={(e) => about(e)}>press</p>
       <div className={[style.dropList, style.sublist3].join(' ')}>
         <p className={style.subLink}>resources</p>
         <p className={style.subLink}>press sheet</p>
         <p className={style.subLink}>FAQs</p>
       </div>
-      <p className={style.navLink}>join us</p>
+      <p className={style.navLink} onMouseEnter={(e) => about(e)}>join us</p>
       <div className={[style.dropList, style.sublist4].join(' ')}>
         <p className={style.subLink}>openings</p>
         <p className={style.specialSubLink}>{`DON'T`}</p>
         <p className={style.subLink}>benefits</p>
       </div>
-      <p className={style.navLink}>investors</p>
+      <p className={style.navLink} onMouseEnter={(e) => about(e)}>investors</p>
       <div className={[style.dropList, style.sublist5].join(' ')}>
         <p className={style.subLink}>financials</p>
         <p className={style.subLink}>stock info</p>
