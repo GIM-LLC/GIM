@@ -19,6 +19,7 @@
 	z-index: 1;
 	background-color: rgba(128, 128, 128, .75);
 	height: min-content;
+	width: min-content;
 	max-width: 50%;
 	padding: 2%;
 	position: absolute;
@@ -47,8 +48,13 @@
 .messageList li {
 	background-color: lightgray;
 	width: 100%;
-	border-bottom: solid 2px hotpink;
+	border-bottom: solid 2px #3f8a72;
 	margin-bottom: .5rem;
+	padding: .5rem;
+}
+
+.selfMessage {
+	text-align: right;
 }
 
 .messageSubmit {

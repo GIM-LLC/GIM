@@ -16,8 +16,18 @@ const ChatBox = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    if(inputMessage) socket.emit('client message', inputMessage);
-    setInputMessage('');
+
+    if(inputMessage) {
+      
+      const messageObj = {
+        sender: socket.id,
+        text: inputMessage
+      };
+
+      socket.emit('client message', messageObj);
+      setMessages(prev => [...prev, messageObj]);
+      setInputMessage('');
+    }
   };
 
   const handleIncomingMessage = message => {
@@ -57,14 +67,25 @@ const ChatBox = () => {
             
         </div>
 
-        : <div className={style.chatBox}>
+        : <div
+          className={style.chatBox}
+          onBlur={() => setCollapsed(true)}
+        >
           <span className={style.closeSpan} onClick={() => setCollapsed(true)}>X</span>
           <ul aria-label="message list" className={style.messageList}>
-            {messages.map((message, index) => (
-              <li key={message + '-' + index}>
-                {message}
-              </li>
-            ))}
+            {messages.map((message, index) => {
+              return message.sender === socket.id
+                ? <li
+                  key={message + '-' + index}
+                  className={style.selfMessage}>
+                  {message.text}
+                </li>
+                : <li
+                  key={message + '-' + index}>
+                  <p className={style.sender}>{message.sender}:</p>
+                  <p>{message.text}</p>
+                </li>;
+            })}
           </ul>
         
           <form
