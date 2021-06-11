@@ -1,0 +1,86 @@
+.header {
+  grid-area: header;
+  /* grid-area: 1 / 1 / 2 / 13; */
+  /* height: min-content; */
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'Logo Logo Logo'
+    'Logo Logo Logo'
+    'Nav Nav Nav';
+  grid-area: 1 / 1 / 2 / 5;
+  background-color: #c6bcae; */
+}
+
+.masthead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Cinzel', serif;
+  color: #3a3a3a;
+  grid-area: Logo;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 0rem;
+  margin: 0;
+}
+
+h3 {
+  padding-top: 0;
+  padding-bottom: 1rem;
+  margin: 0;
+}
+
+.navBar {
+  grid-area: Nav;
+  background-color: white;
+  color: #3f8a72;
+  grid-area: Nav;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 400;
+}
+
+input {
+  border: solid 0.25rem #f97c00;
+  margin: 0.5rem;
+  padding: 0.3rem;
+}
+
+input:focus {
+  outline: solid 1px #3a3a3a;
+}
+
+input {
+  width: 10rem;
+  border: solid 0.25rem #f97c00;
+  margin: 0.5rem;
+  padding: 0.3rem;
+}
+
+button {
+  width: 5rem;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 700;
+  color: #3a3a3a;
+  background-color: #f97c00;
+  border: none;
+  padding: 0.55rem;
+}
+
+button:hover {
+  background-color: #ff9f3e;
+}
+
+button:active {
+  background-color: #f97c00;
+}

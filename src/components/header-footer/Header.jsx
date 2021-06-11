@@ -1,11 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import HeaderNav from './HeaderNav';
 import style from './Header.css';
-import { SocketContext } from '../context/SocketProvider';
-
+import { SocketContext } from '../../context/SocketProvider';
 
 const Header = () => {
-
   const socket = useContext(SocketContext);
 
   const [headerClicks, setHeaderClicks] = useState(0);
@@ -14,13 +12,13 @@ const Header = () => {
   const upHeaderClickCount = () => {
     socket.emit('headerTextClick', headerClicks + 1);
     if (headerClicks === 3) setHeaderClicks(0);
-    else setHeaderClicks(prev => prev + 1);
+    else setHeaderClicks((prev) => prev + 1);
   };
 
   useEffect(() => {
-    socket.on('socketHeaderTextClick',
-      (newCount) => { setHeaderClicks(newCount); }
-    );
+    socket.on('socketHeaderTextClick', (newCount) => {
+      setHeaderClicks(newCount);
+    });
   }, [socket]);
 
   let headerText = 'G.I.M.';
@@ -35,9 +33,7 @@ const Header = () => {
   return (
     <header className={style.header}>
       <span className={style.masthead}>
-        <h1 onClick={upHeaderClickCount}>
-          {headerText}
-        </h1>
+        <h1 onClick={upHeaderClickCount}>{headerText}</h1>
         <h3>-LLC.-</h3>
       </span>
       <HeaderNav />
