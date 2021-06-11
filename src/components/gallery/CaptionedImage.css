@@ -12,6 +12,12 @@
   justify-content: center;
 }
 
+.captionedImage img {
+  width: 80%;
+  margin: 0;
+  padding: 0;
+}
+
 .imageOverlay {
   position: absolute;
   bottom: 0;
