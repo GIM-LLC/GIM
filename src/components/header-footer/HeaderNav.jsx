@@ -1,108 +1,104 @@
 /* eslint-disable quotes */
 import React, { useContext, useEffect, useState } from 'react';
-import style from './Header.css';
+import styles from './Header.css';
 import { SocketContext } from '../../context/SocketProvider';
+import SearchForm from './SearchForm';
 
 const HeaderNav = () => {
   const socket = useContext(SocketContext);
 
-  //input field
-  const [searchDisable, setSearchDisable] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
+  const [hover, setHover] = useState({});
 
-  const handleInputChange = (e) => {
-    socket.emit('search input', e.target.value);
-    setSearchInput(e.target.value);
-    //we will need to do more with these once we decide what they trigger
+  const handleLinkHover = (e) => {
+    const linkName = e.target.textContent;
+    setHover(prev => { return { ...prev, [linkName]: false }; });
+    socket.emit('link hover', hover);
+    console.log('enter: ' + linkName + ' about: ' + hover.about + ' locations: ' + hover.locations);
   };
 
-  //another user is typing in search box
-  const handleSocketInputChange = (newInput) => {
-    setSearchDisable(true);
-    setSearchInput(newInput);
+  const handleLinkOff = (e) => {
+    const linkName = e.target.textContent;
+    setHover(prev => { return { ...prev, [linkName]: true }; });
+    socket.emit('link hover', hover);
+    console.log('left: ' + linkName + ' about: ' + hover.about + ' locations: ' + hover.locations);
   };
 
-  //search button do we need to track this at all?
-  const [searchBttnState, setSearchBttnState] = useState(true);
-
-  const handleSearchClick = () => {
-    socket.emit('searchSubmit', !searchBttnState);
-    setSearchBttnState((bttnState) => !bttnState);
-    setSearchInput('');
-    //what do we do when someone enters a search phrase?
+  const handleSocketLinkHover = (newHoverData) => {
+    setHover(newHoverData);
   };
 
-  //incoming click from socket
-  const handleButtonChange = (newButtonState) => {
-    setSearchDisable(false);
-    setSearchBttnState(newButtonState);
-    setSearchInput('');
-  };
-
-  //NEED TO ADD INPUT CHANGE LISTENER TO BACK END
   useEffect(() => {
-    socket.on('search input typing', handleSocketInputChange);
-    socket.on('socket serach click', handleButtonChange);
-  }, [socket, searchInput]);
+    socket.on('socket link hover', handleSocketLinkHover);
+  }, [socket, hover]);
 
-  const about = (e) => {
-    //on scroll we can pass the main link name and then emit that to the socket
-    console.log('scrolled over about: ' + e.target.textContent);
-  };
 
   return (
-    <nav className={style.navBar}>
-      <p className={style.navLink} onMouseEnter={(e) => about(e)}>
+    <nav className={styles.navBar}>
+      <p
+        className={styles.navLink}
+        onMouseEnter={(e) => handleLinkHover(e)}
+        onMouseOut={(e) => handleLinkOff(e)}
+        style={hover.about ? { color: '#f97c00' } : { color: '#3f8a72' }}
+      >
         about
       </p>
-      <div className={[style.dropList, style.sublist1].join(' ')}>
-        <p className={style.subLink}>our why</p>
-        <p className={style.subLink}>our history</p>
-        <p className={style.subLink}>our team</p>
+      <div className={[styles.dropList, styles.sublist1].join(' ')}>
+        <p className={styles.subLink}>our why</p>
+        <p className={styles.subLink}>our history</p>
+        <p className={styles.subLink}>our team</p>
       </div>
-      <p className={style.navLink} onMouseEnter={(e) => about(e)}>
+      <p
+        className={styles.navLink}
+        onMouseEnter={(e) => handleLinkHover(e)}
+        onMouseOut={(e) => handleLinkOff(e)}
+        style={hover.locations ? { color: '#f97c00' } : { color: '#3f8a72' }}
+      >
         locations
       </p>
-      <div className={[style.dropList, style.sublist2].join(' ')}>
-        <p className={style.subLink}>northeast</p>
-        <p className={style.subLink}>midwest</p>
-        <p className={style.subLink}>coming soon</p>
+      <div className={[styles.dropList, styles.sublist2].join(' ')}>
+        <p className={styles.subLink}>northeast</p>
+        <p className={styles.subLink}>midwest</p>
+        <p className={styles.subLink}>coming soon</p>
       </div>
-      <p className={style.navLink} onMouseEnter={(e) => about(e)}>
+      <p
+        className={styles.navLink}
+        onMouseEnter={(e) => handleLinkHover(e)}
+        onMouseOut={(e) => handleLinkOff(e)}
+        style={hover.press ? { color: '#f97c00' } : { color: '#3f8a72' }}
+      >
         press
       </p>
-      <div className={[style.dropList, style.sublist3].join(' ')}>
-        <p className={style.subLink}>resources</p>
-        <p className={style.subLink}>press sheet</p>
-        <p className={style.subLink}>FAQs</p>
+      <div className={[styles.dropList, styles.sublist3].join(' ')}>
+        <p className={styles.subLink}>resources</p>
+        <p className={styles.subLink}>press sheet</p>
+        <p className={styles.subLink}>FAQs</p>
       </div>
-      <p className={style.navLink} onMouseEnter={(e) => about(e)}>
+      <p
+        className={styles.navLink}
+        onMouseEnter={(e) => handleLinkHover(e)}
+        onMouseOut={(e) => handleLinkOff(e)}
+        style={hover.join ? { color: '#f97c00' } : { color: '#3f8a72' }}
+      >
         join us
       </p>
-      <div className={[style.dropList, style.sublist4].join(' ')}>
-        <p className={style.subLink}>openings</p>
-        <p className={style.specialSubLink}>{`DON'T`}</p>
-        <p className={style.subLink}>benefits</p>
+      <div className={[styles.dropList, styles.sublist4].join(' ')}>
+        <p className={styles.subLink}>openings</p>
+        <p className={styles.specialSubLink}>{`DON'T`}</p>
+        <p className={styles.subLink}>benefits</p>
       </div>
-      <p className={style.navLink} onMouseEnter={(e) => about(e)}>
+      <p
+        className={styles.navLink}
+        onMouseEnter={(e) => handleLinkHover(e)}
+        onMouseOut={(e) => handleLinkOff(e)}
+        style={hover.investors ? { color: '#f97c00' } : { color: '#3f8a72' }}
+      >
         investors
       </p>
-      <div className={[style.dropList, style.sublist5].join(' ')}>
-        <p className={style.subLink}>financials</p>
-        <p className={style.subLink}>stock info</p>
+      <div className={[styles.dropList, styles.sublist5].join(' ')}>
+        <p className={styles.subLink}>financials</p>
+        <p className={styles.subLink}>stock info</p>
       </div>
-      <section>
-        <input
-          type="text"
-          placeholder="what do you need?"
-          onChange={handleInputChange}
-          disabled={searchDisable}
-          value={searchInput}
-        />
-        <button onClick={handleSearchClick}>
-          {searchBttnState ? 'search' : 'CLICKED!'}
-        </button>
-      </section>
+      <SearchForm />
     </nav>
   );
 };

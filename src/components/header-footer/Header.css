@@ -70,6 +70,7 @@ h3 {
 }
 
 input {
+  width: 10rem;
   border: solid 0.25rem #f97c00;
   margin: 0.5rem;
   padding: 0.3rem;
@@ -79,12 +80,10 @@ input:focus {
   outline: solid 1px #3a3a3a;
 }
 
-input {
-  width: 10rem;
-  border: solid 0.25rem #f97c00;
-  margin: 0.5rem;
-  padding: 0.3rem;
+input:disabled {
+  border: solid 0.25rem #c6bcae;
 }
+
 
 button {
   width: 5rem;
@@ -102,4 +101,8 @@ button:hover {
 
 button:active {
   background-color: #f97c00;
+}
+
+button:disabled {
+  background-color: #c6bcae;
 }
