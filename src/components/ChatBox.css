@@ -1,0 +1,64 @@
+.chatIcon {
+	z-index: 1;
+	position: fixed;
+	bottom: 2%;
+	right: 2%;
+	width: fit-content;
+	height: fit-content;
+	color: white;
+	background-color: rgba(128, 128, 128, .75);
+	padding: 2%;
+	cursor: pointer;
+}
+
+.badge {
+	margin-right: 1rem;
+}
+
+.chatBox {
+	z-index: 1;
+	background-color: rgba(128, 128, 128, .75);
+	height: min-content;
+	width: min-content;
+	max-width: 50%;
+	padding: 2%;
+	position: fixed;
+	bottom: 2%;
+	right: 2%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-end;;
+}
+
+.closeSpan {
+	cursor: pointer;
+	font-size: .9rem;
+	font-weight: bold;
+	color: white;
+}
+
+.messageList {
+	list-style: none;
+	padding-left: unset;
+	align-self: flex-start;
+	width: 100%;
+}
+
+.messageList li {
+	background-color: lightgray;
+	width: 100%;
+	border-bottom: solid 2px #3f8a72;
+	margin-bottom: .5rem;
+	padding: .5rem;
+}
+
+.selfMessage {
+	text-align: right;
+}
+
+.messageSubmit {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 70% 30%;
+}
