@@ -1,9 +1,13 @@
 import { createContext } from 'react';
 import io from 'socket.io-client';
 
-const url = 'https://3w3wg.sse.codesandbox.io/';
+// this URL is the sandbox
+const url = 'https://gim-llc.herokuapp.com';
 
-export const socket = io(url, {
+// whatever localhost strikes your fancy
+const localhost = 'http://localhost:8080';
+
+export const socket = io(localhost, {
   cors: true
 });
 

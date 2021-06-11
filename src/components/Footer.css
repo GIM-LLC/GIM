@@ -19,8 +19,6 @@
 .footer {
   grid-area: 6 / 1 / 7 / 5;
   width: 100%;
-<<<<<<< HEAD
-=======
   background-color: palegreen;
 }
 
@@ -32,7 +30,6 @@
 
 .iconImage {
   width: 1.55rem;
->>>>>>> ebd489f1276861855d6ba6f574ab85bdb6ed606f
 }
 
 .iconImageGhost {
