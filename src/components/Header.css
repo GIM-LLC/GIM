@@ -1,7 +1,7 @@
 .header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -40,10 +40,40 @@ h3 {
 	background-color: white;
 	color: #3f8a72;
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 	font-family: 'Fira Sans Extra Condensed', sans-serif;
 	font-weight: 400;
+}
+
+.navLink:hover{
+	color: #f97c00;
+}
+
+.dropList {
+	position: relative;
+	visibility: hidden;
+	background-color: #eae4dc;
+	height: auto;
+	width: auto;
+	margin: .25rem 1rem .25rem 1rem;
+}
+
+.navLink:hover + .dropList{
+	visibility: visible;
+}
+
+.subLink, .specialSubLink{
+	font-size: .9rem;
+	margin: .5rem;
+}
+
+.subLink:hover{
+	color: #f97c00;
+}
+
+.specialSubLink:hover{
+	color: #ffec5f;
 }
 
 input{
@@ -80,3 +110,4 @@ button:hover{
 button:active{
 	background-color: #f97c00;
 }
+ 
