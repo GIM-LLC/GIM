@@ -3,19 +3,18 @@
   position: relative;
   padding-top: 5%;
   padding-bottom: 5%;
+  grid-area: 'imageCard';
 }
 .captionedImage {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: auto;
   display: flex;
   justify-content: center;
 }
 
 .captionedImage img {
   width: 80%;
-  height: auto;
   margin: 0; 
   padding: 0;
 }
@@ -61,7 +60,6 @@
   font-size: 1em;
   padding: 3%;
   word-wrap: break-word;
-  position: absolute;
   padding: 3%;
 }
 
