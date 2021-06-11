@@ -2,6 +2,7 @@
 import React from 'react';
 import style from './HomePage.css';
 import CaptionedImage from '../components/CaptionedImage';
+import ChatBox from '../components/ChatBox';
 import CompanyProfile from '../components/CompanyProfile';
 import Mission from '../components/Mission';
 
@@ -26,6 +27,7 @@ const HomePage = () => {
       </section>
 
       <Mission />
+      <ChatBox />
     </main>
   );
 };
