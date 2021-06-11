@@ -1,25 +1,35 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  grid-area: footer;
+  width: 100%;
+  background-color: white;
+  padding-bottom: 1em;
+}
+
+.footer nav {
+  width: 100%;
+}
+
 .footer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0;
   list-style: none;
   padding-left: unset;
-  display: flex;
-  justify-content: space-around;
-
+  width: 100%;
 }
 
 .footerListItem {
   font-family: 'Fira Sans Extra Condensed', sans-serif;
-  font-size: small;
+  font-size: 0.65rem;
+  line-height: 0.6rem;
 }
 
 .headers {
   color: #f97c00;
-  font-size: large;
-}
-
-.footer {
-  grid-area: 6 / 1 / 7 / 5;
-  width: 100%;
-  background-color: white;
+  font-size: 0.8rem;
 }
 
 .contactUsDiv {
@@ -79,7 +89,6 @@
 .iconImageGhost {
   width: 1.55rem;
   box-shadow: 0px 0px 1px 1px #d20b0be4;
-
 }
 
 .pulse {
@@ -115,10 +124,8 @@
   margin-top: 1%;
   margin-bottom: 5%;
   font-size: 1rem;
-
 }
 
 .addresses {
   margin: 1%;
 }
-

@@ -1,10 +1,10 @@
 import { createContext } from 'react';
 import io from 'socket.io-client';
 
-const url = 'http://localhost:7890';
+const url = 'https://gim-server.herokuapp.com';
 
 export const socket = io(url, {
-  cors: true
+  cors: true,
 });
 
 export const SocketContext = createContext();

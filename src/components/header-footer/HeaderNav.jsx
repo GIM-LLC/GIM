@@ -1,14 +1,14 @@
 /* eslint-disable quotes */
 import React, { useContext, useEffect, useState } from 'react';
 import style from './Header.css';
-import { SocketContext } from '../context/SocketProvider';
+import { SocketContext } from '../../context/SocketProvider';
 
 const HeaderNav = () => {
   const socket = useContext(SocketContext);
 
-  //input field 
+  //input field
   const [searchDisable, setSearchDisable] = useState(false);
-  const [searchInput, setSearchInput] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
 
   const handleInputChange = (e) => {
     socket.emit('search input', e.target.value);
@@ -16,20 +16,20 @@ const HeaderNav = () => {
     //we will need to do more with these once we decide what they trigger
   };
 
-  //another user is typing in search box 
+  //another user is typing in search box
   const handleSocketInputChange = (newInput) => {
     setSearchDisable(true);
     setSearchInput(newInput);
   };
 
-  //search button do we need to track this at all? 
+  //search button do we need to track this at all?
   const [searchBttnState, setSearchBttnState] = useState(true);
 
   const handleSearchClick = () => {
     socket.emit('click', !searchBttnState);
     setSearchBttnState((bttnState) => !bttnState);
     setSearchInput('');
-    //what do we do when someone enters a search phrase? 
+    //what do we do when someone enters a search phrase?
   };
 
   //incoming click from socket
@@ -43,7 +43,6 @@ const HeaderNav = () => {
     socket.on('click', handleButtonChange);
   }, [socket, searchInput]);
 
-
   return (
     <nav className={style.navBar}>
       <p>link 1</p>
@@ -53,8 +52,8 @@ const HeaderNav = () => {
       <p>link 5</p>
       <section>
         <input
-          type='text'
-          placeholder='what do you need?'
+          type="text"
+          placeholder="what do you need?"
           onChange={handleInputChange}
           disabled={searchDisable}
           value={searchInput}

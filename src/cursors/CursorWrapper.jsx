@@ -3,8 +3,8 @@ import React, { useContext, useEffect } from 'react';
 import { SocketContext } from '../context/SocketProvider';
 import style from './Cursor.css';
 import HomePage from '../pages/HomePage';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/header-footer/Header';
+import Footer from '../components/header-footer/Footer';
 
 const CursorWrapper = () => {
   const socket = useContext(SocketContext);
@@ -29,7 +29,7 @@ const CursorWrapper = () => {
   const handleCursorMove = (data) => {
     //if this is a new user add a cursor for them
     // eslint-disable-next-line no-prototype-builtins
-    if(!users.hasOwnProperty(data.id)) {
+    if (!users.hasOwnProperty(data.id)) {
       const cursorWrapper = document.getElementById('cursorWrapper');
       const cursorDiv = document.createElement('img');
       cursors[data.id] = cursorWrapper.appendChild(cursorDiv);
