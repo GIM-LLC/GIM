@@ -1,23 +1,26 @@
 .companyProfile {
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: 'story story news';
-  grid-area: 1 / 1 / 2 / 4;
+  display: flex;
+  flex-direction: row;
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
 }
 
 .story {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 5%;
-  grid-area: 1 / 1 / 2 / 3;
+  width: 65%;
   background-color: #c6bcae;
+  margin-right: 2%;
 }
 
-.story > figure {
-  margin: 3%;
-  max-width: fit-content;
+.story figure {
+  width: 50%;
+  margin-top: 0;
+  margin-right: 0.5em;
+  margin-bottom: 0;
+  margin-left: 1em;
 }
 
 .story > article {
@@ -35,9 +38,8 @@
 .news {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 5%;
-  grid-area: 1 / 3 / 2 / 4;
+  justify-content: stretch;
+  width: 35%;
 }
 
 .news h3 {
