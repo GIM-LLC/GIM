@@ -4,7 +4,6 @@ import style from './Header.css';
 import { SocketContext } from '../context/SocketProvider';
 
 
-
 const Header = () => {
 
   const socket = useContext(SocketContext);
@@ -29,7 +28,6 @@ const Header = () => {
     headerText = 'Ghost  I.M.';
   } else if (headerClicks === 2) {
     headerText = 'Ghost  In  The  M.';
-
   } else if (headerClicks >= 3) {
     headerText = 'Ghost  In  The  Machine';
   }
