@@ -30,6 +30,7 @@ const ChatBox = () => {
 
       socket.emit('client message', messageObj);
       setMessages(prev => [...prev, messageObj]);
+
       setInputMessage('');
     }
   };
@@ -43,6 +44,14 @@ const ChatBox = () => {
     setCollapsed(false);
     setUnreadMessages(0);
   };
+
+  useEffect(() => {
+    if(messages.length && messages[messages.length - 1].sender === socket.id) {
+      const messageList = document.getElementById('messageList');
+
+      messageList.scrollTo(0, messageList.scrollHeight, { behavior: 'smooth' });
+    }
+  }, [messages]);
 
   useEffect(() => {
     socket.on('socket message', handleIncomingMessage);
@@ -88,7 +97,7 @@ const ChatBox = () => {
             <span className={style.closeSpan} onClick={() => setCollapsed(true)}>X</span>
           </div>
           
-          <ul aria-label="message list" className={style.messageList}>
+          <ul aria-label="message list" className={style.messageList} id="messageList">
             {messages.map((message, index) => {
               return message.sender === socket.id
                 ? <li
