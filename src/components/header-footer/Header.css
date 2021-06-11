@@ -1,18 +1,6 @@
 .header {
   grid-area: header;
-  /* grid-area: 1 / 1 / 2 / 13; */
-  /* height: min-content; */
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    'Logo Logo Logo'
-    'Logo Logo Logo'
-    'Nav Nav Nav';
-  grid-area: 1 / 1 / 2 / 5;
-  background-color: #c6bcae; */
+  background-color: #c6bcae;
 }
 
 .masthead {
@@ -21,7 +9,7 @@
   align-items: center;
   font-family: 'Cinzel', serif;
   color: #3a3a3a;
-  grid-area: Logo;
+  /* grid-area: Logo; */
 }
 
 h1 {
@@ -44,10 +32,41 @@ h3 {
   color: #3f8a72;
   grid-area: Nav;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-weight: 400;
+}
+
+.navLink:hover {
+  color: #f97c00;
+}
+
+.dropList {
+  position: relative;
+  visibility: hidden;
+  background-color: #eae4dc;
+  height: auto;
+  width: auto;
+  margin: 0.25rem 1rem 0.25rem 1rem;
+}
+
+.navLink:hover + .dropList {
+  visibility: visible;
+}
+
+.subLink,
+.specialSubLink {
+  font-size: 0.9rem;
+  margin: 0.5rem;
+}
+
+.subLink:hover {
+  color: #f97c00;
+}
+
+.specialSubLink:hover {
+  color: #ffec5f;
 }
 
 input {
