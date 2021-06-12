@@ -14,6 +14,10 @@ const ChatBox = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [collapsed, setCollapsed] = useState(true);
 
+  // const handleCurrentUsers = userArray => {
+  //   setOnlineUsers(userArray.map(user => ({ user })));
+  // };
+
   const handleNewUser = userObj => {
     setOnlineUsers(prev => [...prev, userObj]);
   };
@@ -59,17 +63,19 @@ const ChatBox = () => {
   }, [messages]);
 
   useEffect(() => {
+    // socket.on('current users', handleCurrentUsers);
     socket.on('socket message', handleIncomingMessage);
     socket.on('new user', handleNewUser);
     socket.on('removeCursor', removeUser);
     return () => {
+      // socket.off('current users', handleCurrentUsers);
       socket.off('socket message', handleIncomingMessage);
       socket.off('new user', handleNewUser);
       socket.off('removeCursor', removeUser);
     };
   }, [socket]);
 
-  console.log(onlineUsers);
+  // console.log(onlineUsers);
 
   return (
     <div>
