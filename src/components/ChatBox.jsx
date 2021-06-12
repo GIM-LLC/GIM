@@ -18,6 +18,12 @@ const ChatBox = () => {
     setOnlineUsers(prev => [...prev, userObj]);
   };
 
+  const removeUser = socketId => {
+    const usersCopy = onlineUsers;
+    delete usersCopy[socketId];
+    setOnlineUsers(usersCopy);
+  };
+
   const handleFormSubmit = e => {
     e.preventDefault();
 
@@ -55,11 +61,15 @@ const ChatBox = () => {
   useEffect(() => {
     socket.on('socket message', handleIncomingMessage);
     socket.on('new user', handleNewUser);
+    socket.on('removeCursor', removeUser);
     return () => {
       socket.off('socket message', handleIncomingMessage);
       socket.off('new user', handleNewUser);
+      socket.off('removeCursor', removeUser);
     };
   }, [socket]);
+
+  console.log(onlineUsers);
 
   return (
     <div>
