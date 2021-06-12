@@ -7,7 +7,7 @@
     'header header header'
     '. main .'
     'footer footer footer';
-  grid-template-columns: 8em 4fr 1fr;
+  grid-template-columns: 8em 4fr 8em;
   grid-template-rows: 10em 1fr 10em;
   row-gap: 1em;
 }

@@ -5,14 +5,18 @@ import style from './ChatBox.css';
 const ChatBox = () => {
   const socket = useContext(SocketContext);
 
-  // consider making messages into objects that hold onto the sender's ID so we can differentiate between self-sent messages and other user-sent ones, since the socket is sending the players message back to them
   const [messages, setMessages] = useState([]);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
   // tracking whether there are messages from other users that the client player has not read
   const [unreadMessages, setUnreadMessages] = useState(0);
 
   const [inputMessage, setInputMessage] = useState('');
   const [collapsed, setCollapsed] = useState(true);
+
+  const handleNewUser = socketId => {
+    setOnlineUsers(prev => [...prev, socketId]);
+  };
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -26,6 +30,7 @@ const ChatBox = () => {
 
       socket.emit('client message', messageObj);
       setMessages(prev => [...prev, messageObj]);
+
       setInputMessage('');
     }
   };
@@ -41,10 +46,21 @@ const ChatBox = () => {
   };
 
   useEffect(() => {
+    if(messages.length && messages[messages.length - 1].sender === socket.id) {
+      const messageList = document.getElementById('messageList');
+
+      messageList.scrollTo(0, messageList.scrollHeight, { behavior: 'smooth' });
+    }
+  }, [messages]);
+
+  useEffect(() => {
     socket.on('socket message', handleIncomingMessage);
+
+    socket.on('new user', handleNewUser);
 
     return () => {
       socket.off('socket message', handleIncomingMessage);
+      socket.off('new user', handleNewUser);
     };
   }, [socket]);
 
@@ -71,8 +87,17 @@ const ChatBox = () => {
           className={style.chatBox}
           onBlur={() => setCollapsed(true)}
         >
-          <span className={style.closeSpan} onClick={() => setCollapsed(true)}>X</span>
-          <ul aria-label="message list" className={style.messageList}>
+          <div className={style.topBar}>
+            <span className={style.online}>
+              {onlineUsers.length === 1
+                ? 'There is 1 other user online.'
+                : `There are ${onlineUsers.length} other users online.`
+              }
+            </span>
+            <span className={style.closeSpan} onClick={() => setCollapsed(true)}>X</span>
+          </div>
+          
+          <ul aria-label="message list" className={style.messageList} id="messageList">
             {messages.map((message, index) => {
               return message.sender === socket.id
                 ? <li
@@ -82,8 +107,9 @@ const ChatBox = () => {
                 </li>
                 : <li
                   key={message + '-' + index}>
-                  <p className={style.sender}>{message.sender}:</p>
-                  <p>{message.text}</p>
+                  <span className={style.sender}>{message.sender}:</span>
+                  <br />
+                  <span>{message.text}</span>
                 </li>;
             })}
           </ul>
