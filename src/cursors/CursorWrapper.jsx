@@ -4,6 +4,7 @@ import { SocketContext } from '../context/SocketProvider';
 import style from './Cursor.css';
 import HomePage from '../pages/HomePage';
 import Header from '../components/header-footer/Header';
+import ChatBox from '../components/ChatBox';
 import Footer from '../components/header-footer/Footer';
 
 const CursorWrapper = () => {
@@ -70,6 +71,7 @@ const CursorWrapper = () => {
     >
       <Header />
       <HomePage />
+      <ChatBox />
       <Footer />
     </div>
   );
