@@ -10,18 +10,20 @@ const Header = () => {
 
   const [headerClicks, setHeaderClicks] = useState(0);
 
-  //NEED TO ADD CLICK LISTENER and ROOM EMIT TO BACKEND
   const upHeaderClickCount = () => {
     socket.emit('headerTextClick', headerClicks + 1);
-    if (headerClicks === 3) {
+    setHeaderClicks((prev) => prev + 1);
+    if (headerClicks + 1 >= 4) {
       incrementPoints(1);
-      setHeaderClicks(headerClicks + 1);
-    } else setHeaderClicks((prev) => prev + 1);
+    }
   };
 
   useEffect(() => {
     socket.on('socketHeaderTextClick', (newCount) => {
       setHeaderClicks(newCount);
+      if (newCount === 4) {
+        incrementPoints(1);
+      }
     });
   }, [socket]);
 
