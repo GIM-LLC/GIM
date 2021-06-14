@@ -26,7 +26,7 @@
   width: 100%;
   background-color: #c6bcae;
   height: 0;
-  transition: 0.4s;
+  transition: 0.5s ease;
 }
 
 .container:hover .imageOverlay {
