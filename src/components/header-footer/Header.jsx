@@ -20,7 +20,6 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log(headerClicks);
     socket.on('socketHeaderTextClick', (newCount) => {
       setHeaderClicks(newCount);
     });
