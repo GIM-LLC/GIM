@@ -98,7 +98,6 @@ const ChatBox = () => {
 
         : <div
           className={style.chatBox}
-          onBlur={() => setCollapsed(true)}
         >
           <div className={style.topBar}>
             <span className={style.online}>
