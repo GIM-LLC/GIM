@@ -1,7 +1,7 @@
 .gallery {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background-color: #c6bcae;
   margin-bottom: 5%;
 }
