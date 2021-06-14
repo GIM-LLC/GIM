@@ -80,25 +80,23 @@ const ChatBox = () => {
   return (
     <div>
       {collapsed
-
         ? <div
           className={style.chatIcon}
-          onClick=  {handleExpandClick}
+          onClick={handleExpandClick}
         >
           {unreadMessages > 0 && 
           <span className={style.badge}>
-            {unreadMessages}
+            <i className="fas fa-exclamation-circle"></i>
           </span>}
 
           <span>
-              Need help?
+            <i className="far fa-comment-dots"></i>
           </span>
             
         </div>
 
         : <div
           className={style.chatBox}
-          onBlur={() => setCollapsed(true)}
         >
           <div className={style.topBar}>
             <span className={style.online}>
