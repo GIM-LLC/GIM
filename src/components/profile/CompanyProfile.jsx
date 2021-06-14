@@ -12,12 +12,9 @@ const CompanyProfile = () => {
 
   const handleStoryClick = () => {
     setShowGhostStory(prev => !prev);
-    
+    socket.emit('ghostStoryFlip');
     if(!ghostStoryCounted) {
-      socket.emit('ghostStoryClick', {
-        ghostStoryCounted: true,
-        points: 1
-      });
+      socket.emit('ghostStoryPoint', 1);
       incrementPoints(1);
       setGhostStoryCounted(true);
     }
