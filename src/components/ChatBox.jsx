@@ -14,8 +14,18 @@ const ChatBox = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [collapsed, setCollapsed] = useState(true);
 
-  const handleNewUser = socketId => {
-    setOnlineUsers(prev => [...prev, socketId]);
+  // const handleCurrentUsers = userArray => {
+  //   setOnlineUsers(userArray.map(user => ({ user })));
+  // };
+
+  const handleNewUser = userObj => {
+    setOnlineUsers(prev => [...prev, userObj]);
+  };
+
+  const removeUser = socketId => {
+    const usersCopy = onlineUsers;
+    delete usersCopy[socketId];
+    setOnlineUsers(usersCopy);
   };
 
   const handleFormSubmit = e => {
@@ -48,21 +58,24 @@ const ChatBox = () => {
   useEffect(() => {
     if(messages.length && messages[messages.length - 1].sender === socket.id) {
       const messageList = document.getElementById('messageList');
-
       messageList.scrollTo(0, messageList.scrollHeight, { behavior: 'smooth' });
     }
   }, [messages]);
 
   useEffect(() => {
+    // socket.on('current users', handleCurrentUsers);
     socket.on('socket message', handleIncomingMessage);
-
     socket.on('new user', handleNewUser);
-
+    socket.on('removeCursor', removeUser);
     return () => {
+      // socket.off('current users', handleCurrentUsers);
       socket.off('socket message', handleIncomingMessage);
       socket.off('new user', handleNewUser);
+      socket.off('removeCursor', removeUser);
     };
   }, [socket]);
+
+  // console.log(onlineUsers);
 
   return (
     <div>

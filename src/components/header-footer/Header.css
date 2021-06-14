@@ -44,7 +44,7 @@
 }
 
 .subNav {
-  display: none;
+  display: block;
   position: absolute;
   left: 0;
   padding: 0;
@@ -53,10 +53,6 @@
   width: max-content;
   background-color: #eae4dc;
   margin: 0.25rem 1rem 0.25rem 1rem;
-}
-
-.navLink a:hover + .subNav {
-  display: block;
 }
 
 .subLink,

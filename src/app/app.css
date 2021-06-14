@@ -43,6 +43,10 @@ input:focus {
   outline: solid 1px #3a3a3a;
 }
 
+input:disabled {
+  border: solid 0.25rem #c6bcae;
+}
+
 input {
   width: 10rem;
   border: solid 0.25rem #f97c00;
@@ -66,4 +70,8 @@ button:hover {
 
 button:active {
   background-color: #f97c00;
+}
+
+button:disabled {
+  background-color: #c6bcae;
 }
