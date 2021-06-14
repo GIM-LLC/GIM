@@ -80,10 +80,9 @@ const ChatBox = () => {
   return (
     <div>
       {collapsed
-
         ? <div
           className={style.chatIcon}
-          onClick=  {handleExpandClick}
+          onClick={handleExpandClick}
         >
           {unreadMessages > 0 && 
           <span className={style.badge}>
