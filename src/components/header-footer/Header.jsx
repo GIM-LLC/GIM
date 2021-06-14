@@ -13,12 +13,14 @@ const Header = () => {
   //NEED TO ADD CLICK LISTENER and ROOM EMIT TO BACKEND
   const upHeaderClickCount = () => {
     socket.emit('headerTextClick', headerClicks + 1);
-    if (headerClicks === 4) {
+    if (headerClicks === 3) {
       incrementPoints(1);
+      setHeaderClicks(headerClicks + 1);
     } else setHeaderClicks((prev) => prev + 1);
   };
 
   useEffect(() => {
+    console.log(headerClicks);
     socket.on('socketHeaderTextClick', (newCount) => {
       setHeaderClicks(newCount);
     });
