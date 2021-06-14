@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import style from './Footer.css';
+import { GameStateContext } from '../../context/GameStateProvider';
+
 
 const FooterNav = () => {
+  const { incrementPoints } = useContext(GameStateContext);
+
   const [titleOne, setTitleOne] = useState('our people');
   const [titleTwo, setTitleTwo] = useState('why GIM');
   const [titleThree, setTitleThree] = useState('our products');
   const [titleFour, setTitleFour] = useState('contact us');
 
+  const [totalFooterClicks, setTotalFooterClicks] = useState(0);
+  const incrementFooterPoints = () => setTotalFooterClicks((prev) => prev + 1);
+
+  useEffect(() => {
+    if(totalFooterClicks === 4) {
+      incrementPoints(1);
+    }
+  }, [totalFooterClicks]);
+
+  const titleOneChange = {};
+
   return (
     <nav>
       <ul>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers} onClick={() => setTitleOne('HELP')}>{titleOne}</p>
+          <p className={style.headers} >{titleOne}</p>
           <p>Meet the Suppliers</p>
           <p>The Journey</p>
           <p>Leadership</p>
