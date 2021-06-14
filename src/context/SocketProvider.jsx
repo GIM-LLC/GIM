@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 // const sandbox = 'https://gim-llc.herokuapp.com';
 
 // whatever localhost strikes your fancy
-// const localhost = 'http://localhost:8080';
+// const url = 'http://localhost:8080';
 
 // this is the real backend
 const url = 'https://gim-server.herokuapp.com';

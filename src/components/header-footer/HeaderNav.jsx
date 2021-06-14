@@ -2,139 +2,137 @@
 import React, { useContext, useEffect, useState } from 'react';
 import style from './Header.css';
 import { SocketContext } from '../../context/SocketProvider';
+import SearchForm from './SearchForm';
 
 const HeaderNav = () => {
   const socket = useContext(SocketContext);
+  const [hover, setHover] = useState({
+    about: false,
+    locations: false,
+    'join us': false,
+    press: false,
+    investors: false,
+  });
 
-  //input field
-  const [searchDisable, setSearchDisable] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
-
-  const handleInputChange = (e) => {
-    socket.emit('search input', e.target.value);
-    setSearchInput(e.target.value);
-    //we will need to do more with these once we decide what they trigger
+  const handleLinkHover = (e) => {
+    const linkName = e.target.textContent;
+    setHover(prev => ({ ...prev, [linkName]: true }));
+    socket.emit('link hover', { ...hover, [linkName]: true });
   };
 
-  //another user is typing in search box
-  const handleSocketInputChange = (newInput) => {
-    setSearchDisable(true);
-    setSearchInput(newInput);
+  const handleLinkOff = (e) => {
+    const linkName = e.target.textContent;
+    setHover(prev => { return { ...prev, [linkName]: false }; });
+    socket.emit('link hover', { ...hover, [linkName]: false });
   };
 
-  //search button do we need to track this at all?
-  const [searchBttnState, setSearchBttnState] = useState(true);
-
-  const handleSearchClick = () => {
-    socket.emit('searchSubmit', !searchBttnState);
-    setSearchBttnState((bttnState) => !bttnState);
-    setSearchInput('');
-    //what do we do when someone enters a search phrase?
+  const handleSocketLinkHover = (newHoverData) => {
+    setHover(newHoverData);
   };
 
-  //incoming click from socket
-  const handleButtonChange = (newButtonState) => {
-    setSearchDisable(false);
-    setSearchBttnState(newButtonState);
-    setSearchInput('');
-  };
-
-  //NEED TO ADD INPUT CHANGE LISTENER TO BACK END
   useEffect(() => {
-    socket.on('search input typing', handleSocketInputChange);
-    socket.on('socket serach click', handleButtonChange);
-  }, [socket, searchInput]);
+    socket.on('socket link hover', handleSocketLinkHover);
+  }, [socket]);
 
-  const about = (e) => {
-    //on scroll we can pass the main link name and then emit that to the socket
-    console.log('scrolled over about: ' + e.target.textContent);
-  };
 
   return (
     <nav className={style.navBar}>
       <ul>
-        <li className={style.navLink} onMouseEnter={(e) => about(e)}>
-          <a href="#">about</a>
-          <ul className={style.subNav}>
-            <li className={style.subLink}>
-              <a>our why</a>
-            </li>
-            <li className={style.subLink}>
-              <a>our history</a>
-            </li>
-            <li className={style.subLink}>
-              <a>our team</a>
-            </li>
-          </ul>
+        <li className={style.navLink}>
+          <a href="#"
+            onMouseEnter={(e) => handleLinkHover(e)}
+            onMouseOut={(e) => handleLinkOff(e)}
+            style={hover.about ? { color: '#f97c00' } : { color: '#3f8a72' }}
+          >about</a>
+          {hover.about &&
+            <ul className={style.subNav}>
+              <li className={style.subLink}>
+                <a>our why</a>
+              </li>
+              <li className={style.subLink}>
+                <a>our history</a>
+              </li>
+              <li className={style.subLink}>
+                <a>our team</a>
+              </li>
+            </ul>}
         </li>
 
-        <li className={style.navLink} onMouseEnter={(e) => about(e)}>
-          <a href="#">locations</a>
-          <ul className={style.subNav}>
-            <li className={style.subLink}>
-              <a href="#">northeast</a>
-            </li>
-            <li className={style.subLink}>
-              <a href="#">midwest</a>
-            </li>
-            <li className={style.subLink}>
-              <a href="#">coming soon</a>
-            </li>
-          </ul>
+        <li className={style.navLink}>
+          <a href="#"
+            onMouseEnter={(e) => handleLinkHover(e)}
+            onMouseOut={(e) => handleLinkOff(e)}
+            style={hover.locations ? { color: '#f97c00' } : { color: '#3f8a72' }}
+          >locations</a>
+          {hover.locations &&
+            <ul className={style.subNav}>
+              <li className={style.subLink}>
+                <a href="#">northeast</a>
+              </li>
+              <li className={style.subLink}>
+                <a href="#">midwest</a>
+              </li>
+              <li className={style.subLink}>
+                <a href="#">coming soon</a>
+              </li>
+            </ul>}
         </li>
 
-        <li className={style.navLink} onMouseEnter={(e) => about(e)}>
-          <a href="#">join us</a>
-          <ul className={style.subNav}>
-            <li className={style.subLink}>
-              <a href="#">openings</a>
-            </li>
-            <li className={style.subLink}>
-              <a href="#">benefits</a>
-            </li>
-          </ul>
+        <li className={style.navLink}>
+          <a href="#"
+            onMouseEnter={(e) => handleLinkHover(e)}
+            onMouseOut={(e) => handleLinkOff(e)}
+            style={hover['join us'] ? { color: '#f97c00' } : { color: '#3f8a72' }}
+          >join us</a>
+          {hover['join us'] &&
+            <ul className={style.subNav}>
+              <li className={style.subLink}>
+                <a href="#">openings</a>
+              </li>
+              <li className={style.subLink}>
+                <a href="#">benefits</a>
+              </li>
+            </ul>}
         </li>
 
-        <li className={style.navLink} onMouseEnter={(e) => about(e)}>
-          <a href="#">press</a>
-          <ul className={style.subNav}>
-            <li className={style.subLink}>
-              <a href="#">resources</a>
-            </li>
-            <li className={style.subLink}>
-              <a href="#">press sheet</a>
-            </li>
-            <li className={style.subLink}>
-              <a href="#">FAQs</a>
-            </li>
-          </ul>
+        <li className={style.navLink}>
+          <a href="#"
+            onMouseEnter={(e) => handleLinkHover(e)}
+            onMouseOut={(e) => handleLinkOff(e)}
+            style={hover.press ? { color: '#f97c00' } : { color: '#3f8a72' }}
+          >press</a>
+          {hover.press &&
+            <ul className={style.subNav}>
+              <li className={style.subLink}>
+                <a href="#">resources</a>
+              </li>
+              <li className={style.subLink}>
+                <a href="#">press sheet</a>
+              </li>
+              <li className={style.subLink}>
+                <a href="#">FAQs</a>
+              </li>
+            </ul>}
         </li>
 
-        <li className={style.navLink} onMouseEnter={(e) => about(e)}>
-          <a href="#">investors</a>
-          <ul className={style.subNav}>
-            <li className={style.subLink}>
-              <a href="#">financials</a>
-            </li>
-            <li className={style.subLink}>
-              <a href="#">stock info</a>
-            </li>
-          </ul>
+        <li className={style.navLink}>
+          <a href="#"
+            onMouseEnter={(e) => handleLinkHover(e)}
+            onMouseOut={(e) => handleLinkOff(e)}
+            style={hover.investors ? { color: '#f97c00' } : { color: '#3f8a72' }}
+          >investors</a>
+          {hover.investors &&
+            <ul className={style.subNav}>
+              <li className={style.subLink}>
+                <a href="#">financials</a>
+              </li>
+              <li className={style.subLink}>
+                <a href="#">stock info</a>
+              </li>
+            </ul>}
         </li>
       </ul>
-
-      <section>
-        <input
-          type="text"
-          placeholder="what do you need?"
-          onChange={handleInputChange}
-          disabled={searchDisable}
-          value={searchInput}
-        />
-        <button onClick={handleSearchClick}>
-          {searchBttnState ? 'search' : 'CLICKED!'}
-        </button>
-      </section>
+      <SearchForm />
     </nav>
   );
 };
