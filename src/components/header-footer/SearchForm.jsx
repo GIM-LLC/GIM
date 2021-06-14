@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { SocketContext } from '../../context/SocketProvider';
+import { GameStateContext } from '../../context/GameStateProvider';
 
 const SearchForm = () => {
   const socket = useContext(SocketContext);
+  const { incrementPoints } = useContext(GameStateContext);
 
   //input field
   const [searchDisable, setSearchDisable] = useState(false);
@@ -29,6 +31,7 @@ const SearchForm = () => {
     socket.emit('searchSubmit', !searchBttnState);
     setSearchBttnState((bttnState) => !bttnState);
     setSearchInput('');
+    incrementPoints(1);
     //what do we do when someone enters a search phrase?
   };
 
