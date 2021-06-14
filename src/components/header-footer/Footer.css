@@ -5,10 +5,13 @@
   width: 100%;
   background-color: white;
   padding-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer nav {
-  width: 100%;
+  width: 80%;
 }
 
 .footer ul {
