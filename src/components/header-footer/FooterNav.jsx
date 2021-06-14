@@ -1,33 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Footer.css';
 
 const FooterNav = () => {
+  const [titleOne, setTitleOne] = useState('our people');
+  const [titleTwo, setTitleTwo] = useState('why GIM');
+  const [titleThree, setTitleThree] = useState('our products');
+  const [titleFour, setTitleFour] = useState('contact us');
+
   return (
     <nav>
       <ul>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers}>our people</p>
+          <p className={style.headers} onClick={() => setTitleOne('HELP')}>{titleOne}</p>
           <p>Meet the Suppliers</p>
           <p>The Journey</p>
           <p>Leadership</p>
           <p>Experts in the field</p>
         </li>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers}>why GIM</p>
+          <p className={style.headers} onClick={() => setTitleTwo('FREE')}>{titleTwo}</p>
           <p>Transparency</p>
           <p>Commitment to Sustainability</p>
           <p>Contributions & Partnerships</p>
           <p>Global Health Impact</p>
         </li>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers}>our products</p>
+          <p className={style.headers} onClick={() => setTitleThree('MY')}>{titleThree}</p>
           <p>Raw Materials</p>
           <p>Installations</p>
           <p>Accesories</p>
           <p>Supplies and Consumables</p>
         </li>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers}>contact us</p>
+          <p className={style.headers} onClick={() => setTitleFour('SOUL')}>{titleFour}</p>
           <div className={style.contactUsDiv}>
             <div className={style.iconDiv}>
               <img className={style.iconImage} src={'/assets/Twitter.png'} alt='twitter-icon' />
