@@ -5,7 +5,6 @@ import style from './HomePage.css';
 import CompanyProfile from '../components/profile/CompanyProfile';
 import Mission from '../components/mission/Mission';
 import Gallery from '../components/gallery/Gallery';
-import ChatBox from '../components/ChatBox';
 
 const HomePage = () => {
   return (
@@ -13,7 +12,6 @@ const HomePage = () => {
       <CompanyProfile />
       <Gallery />
       <Mission />
-      <ChatBox />
     </main>
   );
 };

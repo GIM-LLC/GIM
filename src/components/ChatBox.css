@@ -1,19 +1,20 @@
 .chatIcon {
-	font-family: 'Fira Sans Extra Condensed', sans-serif;
+	font-size: 2rem;
 	z-index: 1;
 	position: fixed;
-	bottom: 2%;
-	right: 2%;
+	bottom: 1%;
+	right: 1%;
 	width: fit-content;
 	height: fit-content;
-	color: white;
-	background-color: #3f8a72;
-	padding: 2%;
+	color: #3f8a72;
+	padding: 1%;
 	cursor: pointer;
 }
 
 .badge {
-	margin-right: 1rem;
+	color: red;
+	font-size: 1rem;
+	vertical-align: super;
 }
 
 .topBar {
@@ -39,8 +40,8 @@
 	max-height: 70%;
 	padding: 2%;
 	position: fixed;
-	bottom: 2%;
-	right: 2%;
+	bottom: 1%;
+	right: 1%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
