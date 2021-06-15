@@ -1,18 +1,29 @@
 .homePage {
   grid-area: main;
   margin-bottom: 1em;
+}
+
+.fadeOut {
+  transition: opacity 3s ease-in-out;
+}
+
+.hidden {
+  z-index: -1000;
   position: relative;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  background-color: aqua;
 }
 
-.fadeOut[reveal='true'] {
-  animation: fadeOut 3s ease-in-out;
+.fadeIn {
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
 }
 
-@keyframes fadeout {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0.2;
-  }
+.revealed {
+  opacity: 1;
 }

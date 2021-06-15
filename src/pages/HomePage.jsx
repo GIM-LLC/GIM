@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useContext } from 'react';
+import React from 'react';
 import style from './HomePage.css';
 
 import CompanyProfile from '../components/profile/CompanyProfile';
@@ -9,17 +9,17 @@ import HiddenText from '../components/hiddenText/HiddenText';
 import useRevealText from '../components/hiddenText/useRevealText';
 
 const HomePage = () => {
-  const { textRevealed } = useRevealText();
+  const { startFadeOutStyle, endFadeInStyle, startTransition, endTransition } =
+    useRevealText();
 
-  const revealed = textRevealed.toString();
-  console.log(revealed);
   return (
     <main
       id="mainBody"
-      className={`${style.homePage} ${style.fadeOut}`}
-      reveal={revealed}
+      onAnimationStart={startTransition}
+      onAnimationEnd={endTransition}
+      className={`${style.homePage} ${style[startFadeOutStyle]} ${style[endFadeInStyle]}`}
     >
-      <HiddenText revealed={revealed} />
+      <HiddenText />
       <CompanyProfile />
       <Gallery />
       <Mission />
