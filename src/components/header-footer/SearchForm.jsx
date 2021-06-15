@@ -81,23 +81,19 @@ const SearchForm = () => {
         newButtonTxt: 'GO FASTER',
       });
     } else if (searchInput.toUpperCase() === 'DUCK') {
-      handleDuckEasterEgg();
+      setMyKeyword(true);
+      socket.emit('duck', true);
     }
   };
 
   // incoming EMIT from server DUCK
-  const handleDuckEasterEgg = () => {
-    setMyKeyword(true);
-    socket.emit('duck', true);
-
-    const revealDaniDuck = () => {
-      setKeyword(true);
-    };
-
-    useEffect(() => {
-      socket.on('duck input', revealDaniDuck);
-    }, [socket]);
+  const revealDaniDuck = () => {
+    setKeyword(true);
   };
+
+  useEffect(() => {
+    socket.on('duck input', revealDaniDuck);
+  }, [socket]);
 
   //incoming click from socket
   const handleSocketButtonClick = ({
