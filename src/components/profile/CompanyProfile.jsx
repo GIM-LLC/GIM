@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import style from './CompanyProfile.css';
 import { SocketContext } from '../../context/SocketProvider';
 import { GameStateContext } from '../../context/GameStateProvider';
@@ -10,16 +10,37 @@ const CompanyProfile = () => {
   const [showGhostStory, setShowGhostStory] = useState(false);
   const [ghostStoryCounted, setGhostStoryCounted] = useState(false);
 
+  const handleGhostStoryPoint = points => {
+    incrementPoints(points);
+    setGhostStoryCounted(true);
+  };
+
+  const handleGhostStoryFlip = () => {
+    setShowGhostStory(prev => !prev);
+  };
+
   const handleStoryClick = () => {
     setShowGhostStory(prev => !prev);
-    socket.emit('ghostStoryFlip');
     if(!ghostStoryCounted) {
-      socket.emit('ghostStoryPoint', 1);
       incrementPoints(1);
       setGhostStoryCounted(true);
     }
+    socket.emit('ghostStoryFlip');
+    socket.emit('ghostStoryPoint', 1);
   };
+
+  useEffect(() => {
+    socket.on('ghostStoryFlip', handleGhostStoryFlip);
+    socket.on('socketGhostStoryPoint', handleGhostStoryPoint);
+
+    return () => {
+      socket.off('ghostStoryFlip', handleGhostStoryFlip);
+      socket.off('socketGhostStoryPoint', handleGhostStoryPoint);
+    };
+  }, [socket]);
+
   console.log(points);
+  
   return (
     <section className={style.companyProfile}>
       
