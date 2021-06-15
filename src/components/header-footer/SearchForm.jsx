@@ -10,33 +10,28 @@ const SearchForm = () => {
   const [buttonText, setButtonText] = useState('SEARCH');
   const [prompt, setPrompt] = useState(1);
 
+  const [searchInputDisable, setSearchInputDisable] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+  const [searchBtnDisable, setSearchBtnDisable] = useState(false);
+
   const disableInputs = (trueORfalse) => {
-    setSearchDisable(trueORfalse);
+    setSearchInputDisable(trueORfalse);
     setSearchBtnDisable(trueORfalse);
   };
-
-  //input field
-  const [searchDisable, setSearchDisable] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
 
   const handleInputChange = (e) => {
     socket.emit('search input', e.target.value);
     setSearchInput(e.target.value);
-    //we will need to do more with these once we decide what they trigger
   };
 
-  //another user is typing in search box
+  //incoming input from socket
   const handleSocketInputChange = (newInput) => {
     disableInputs(true);
     setSearchInput(newInput);
   };
 
-  //search button do we need to track this at all?
-  const [searchBtnDisable, setSearchBtnDisable] = useState(false);
-
   const handleSearchClick = () => {
     setSearchInput('');
-    // on first answer typed into search box and click submit 
     if (prompt === 1) {
       incrementPoints(1);
       setPrompt(2);
@@ -62,20 +57,12 @@ const SearchForm = () => {
 
   //incoming click from socket
   const handleSocketButtonClick = ({ newPrompt, points, newPlaceholderTxt, newButtonTxt }) => {
-    //re-enable input and button
     disableInputs(false);
-    //update new prompt #
     setPrompt(newPrompt);
-    //up points 
-    console.log('points coming in from emit: ', points);
     incrementPoints(points);
-    //set new input placeholder text 
     setPlaceHolderText(newPlaceholderTxt);
-    //set new button text 
     setButtonText(newButtonTxt);
-    //clear input field 
     setSearchInput('');
-    //disable search bttn and input if all answers correct 
     if (newPrompt >= 4) {
       disableInputs(true);
     }
@@ -85,7 +72,6 @@ const SearchForm = () => {
     socket.on('search input typing', handleSocketInputChange);
     socket.on('socket search click', handleSocketButtonClick);
     return () => {
-      // socket.off('current users', handleCurrentUsers);
       socket.on('search input typing', handleSocketInputChange);
       socket.on('socket search click', handleSocketButtonClick);
     };
@@ -97,7 +83,7 @@ const SearchForm = () => {
         type="text"
         placeholder={placeHolderText}
         onChange={handleInputChange}
-        disabled={searchDisable}
+        disabled={searchInputDisable}
         value={searchInput}
         className={prompt === 2 || prompt === 3 ? [style.inputBlink, style.pulse].join(' ') : ''}
       />
