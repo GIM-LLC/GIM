@@ -13,7 +13,8 @@ const SearchForm = () => {
   const [searchInputDisable, setSearchInputDisable] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchBtnDisable, setSearchBtnDisable] = useState(false);
-  const { setMyKeyword, setKeyword } = useContext(GameStateContext);
+  const { setMyKeyword, setKeyword, myKeyword, keyword } =
+    useContext(GameStateContext);
 
   const disableInputs = (trueORfalse) => {
     setSearchInputDisable(trueORfalse);
@@ -33,62 +34,116 @@ const SearchForm = () => {
 
   const handleSearchClick = () => {
     setSearchInput('');
-    if (prompt === 1) {
-      incrementPoints(1);
-      setPrompt(2);
-      setPlaceHolderText('What is my name?');
-      setButtonText('GUESS');
-      socket.emit('searchSubmit', {
-        newPrompt: 2,
-        points: 1,
-        newPlaceholderTxt: 'What is my name?',
-        newButtonTxt: 'GUESS',
-      });
-    } else if (prompt === 2 && searchInput.toUpperCase() !== 'ROBIN SMITH') {
-      socket.emit('searchSubmit', {
-        newPrompt: 2,
-        points: 0,
-        newPlaceholderTxt: 'What is my name?',
-        newButtonTxt: 'GUESS',
-      });
-    } else if (prompt === 2 && searchInput.toUpperCase() === 'ROBIN SMITH') {
-      incrementPoints(2);
-      setPrompt(3);
-      setPlaceHolderText('What is MY core value?');
-      socket.emit('searchSubmit', {
-        newPrompt: 3,
-        points: 2,
-        newPlaceholderTxt: 'What is MY core value?',
-        newButtonTxt: 'GUESS',
-      });
-    } else if (prompt === 3 && searchInput.toUpperCase() !== 'ESCAPE') {
-      socket.emit('searchSubmit', {
-        newPrompt: 3,
-        points: 0,
-        newPlaceholderTxt: 'What is MY core value?',
-        newButtonTxt: 'GUESS',
-      });
-    } else if (prompt === 3 && searchInput.toUpperCase() === 'ESCAPE') {
-      incrementPoints(2);
-      setPrompt(4);
-      setPlaceHolderText("You're getting closer");
-      setButtonText('GO FASTER');
-      disableInputs(true);
-      socket.emit('searchSubmit', {
-        newPrompt: 4,
-        points: 2,
-        newPlaceholderTxt: "You're getting closer",
-        newButtonTxt: 'GO FASTER',
-      });
-    } else if (searchInput.toUpperCase() === 'DUCK') {
-      setMyKeyword(true);
-      socket.emit('duck', true);
+
+    switch (prompt) {
+      case prompt === 2 && searchInput.toUpperCase() !== 'ROBIN SMITH':
+        socket.emit('searchSubmit', {
+          newPrompt: 2,
+          points: 0,
+          newPlaceholderTxt: 'What is my name?',
+          newButtonTxt: 'GUESS',
+        });
+        incrementPoints(2);
+        setPrompt(3);
+        setPlaceHolderText('What is MY core value?');
+        socket.emit('searchSubmit', {
+          newPrompt: 3,
+          points: 2,
+          newPlaceholderTxt: 'What is MY core value?',
+          newButtonTxt: 'GUESS',
+        });
+        break;
+      case prompt === 3 && searchInput.toUpperCase() !== 'ESCAPE':
+        socket.emit('searchSubmit', {
+          newPrompt: 3,
+          points: 0,
+          newPlaceholderTxt: 'What is MY core value?',
+          newButtonTxt: 'GUESS',
+        });
+        incrementPoints(2);
+        setPrompt(4);
+        setPlaceHolderText("You're getting closer");
+        setButtonText('GO FASTER');
+        disableInputs(true);
+        socket.emit('searchSubmit', {
+          newPrompt: 4,
+          points: 2,
+          newPlaceholderTxt: "You're getting closer",
+          newButtonTxt: 'GO FASTER',
+        });
+        break;
+      case searchInput.toUpperCase() === 'DUCK':
+        setMyKeyword((prev) => ({ ...prev }, true));
+        socket.emit('duck', true);
+        break;
+      default:
+        incrementPoints(1);
+        setPrompt(2);
+        setPlaceHolderText('What is my name?');
+        setButtonText('GUESS');
+        socket.emit('searchSubmit', {
+          newPrompt: 2,
+          points: 1,
+          newPlaceholderTxt: 'What is my name?',
+          newButtonTxt: 'GUESS',
+        });
     }
   };
+  // if (prompt === 1) {
+  //   incrementPoints(1);
+  //   setPrompt(2);
+  //   setPlaceHolderText('What is my name?');
+  //   setButtonText('GUESS');
+  //   socket.emit('searchSubmit', {
+  //     newPrompt: 2,
+  //     points: 1,
+  //     newPlaceholderTxt: 'What is my name?',
+  //     newButtonTxt: 'GUESS',
+  //   });
+  // } else if (prompt === 2 && searchInput.toUpperCase() !== 'ROBIN SMITH') {
+  //   socket.emit('searchSubmit', {
+  //     newPrompt: 2,
+  //     points: 0,
+  //     newPlaceholderTxt: 'What is my name?',
+  //     newButtonTxt: 'GUESS',
+  //   });
+  // } else if (prompt === 2 && searchInput.toUpperCase() === 'ROBIN SMITH') {
+  //   incrementPoints(2);
+  //   setPrompt(3);
+  //   setPlaceHolderText('What is MY core value?');
+  //   socket.emit('searchSubmit', {
+  //     newPrompt: 3,
+  //     points: 2,
+  //     newPlaceholderTxt: 'What is MY core value?',
+  //     newButtonTxt: 'GUESS',
+  //   });
+  // } else if (prompt === 3 && searchInput.toUpperCase() !== 'ESCAPE') {
+  //   socket.emit('searchSubmit', {
+  //     newPrompt: 3,
+  //     points: 0,
+  //     newPlaceholderTxt: 'What is MY core value?',
+  //     newButtonTxt: 'GUESS',
+  //   });
+  // } else if (prompt === 3 && searchInput.toUpperCase() === 'ESCAPE') {
+  //   incrementPoints(2);
+  //   setPrompt(4);
+  //   setPlaceHolderText("You're getting closer");
+  //   setButtonText('GO FASTER');
+  //   disableInputs(true);
+  //   socket.emit('searchSubmit', {
+  //     newPrompt: 4,
+  //     points: 2,
+  //     newPlaceholderTxt: "You're getting closer",
+  //     newButtonTxt: 'GO FASTER',
+  //   });
+  // } else if (searchInput.toUpperCase() === 'DUCK') {
+  //   setMyKeyword((prev) => ({ ...prev }, true));
+  //   socket.emit('duck', true);
+  // }
 
   // incoming EMIT from server DUCK
   const revealDaniDuck = () => {
-    setKeyword(true);
+    setKeyword((prev) => ({ ...prev }, true));
   };
 
   useEffect(() => {
