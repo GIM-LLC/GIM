@@ -43,7 +43,15 @@ const useGhostPopup = () => {
 
   }, [points]);
 
-  return { popup, slideIndex };
+  const getNextSlide = () => {
+    setSlideIndex(prev => prev + 1);
+  };
+
+  const justATest = () => {
+    setPopup(pointFive);
+  };
+
+  return { popup, slideIndex, getNextSlide, justATest };
 };
 
 export default useGhostPopup;

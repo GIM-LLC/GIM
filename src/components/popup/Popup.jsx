@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import style from './Popup.css';
 import useGhostPopup from '../../hooks/useGhostPopup';
 function Popup(props) {
-  const { popup, slideIndex } = useGhostPopup();
+  const { popup, slideIndex, getNextSlide, justATest } = useGhostPopup();
   
   const {
     largeText,
@@ -15,18 +15,34 @@ function Popup(props) {
   return (props.trigger) ? (
     <div className={style.popup}>
       <div className={style.popupInner}>
-        <p>{largeText[slideIndex]}</p>
-        <p className={style.smallPopupText}>{smallText[slideIndex]}</p>
+        <p>
+          {largeText[slideIndex]}
+        </p>
+
+        <p className={style.smallPopupText}>
+          {smallText[slideIndex]}
+        </p>
+
         <input 
           type='email'
           name='email'
           placeholder={inputPlaceholder[slideIndex]}
         />
-        <button className={style.popupCloseButton} onClick={() => props.setTrigger(false)}>x</button>
-        <button className={style.popupSubmitButton} onClick={() => props.setTrigger(false)}>{buttonText[slideIndex]}</button>
+
+        <button
+          className={style.popupCloseButton} onClick={() => props.setTrigger(false)}>
+            x
+        </button>
+        
+        <button 
+          className={style.popupSubmitButton} 
+          onClick={() => props.setTrigger(false)}>
+          {buttonText[slideIndex]}
+        </button>
         
       </div>
-      <button>TEST</button>
+      <button onClick={justATest}>TEST</button>
+      <button onClick={getNextSlide}>next</button>
     </div>
   ) : '';
 }
