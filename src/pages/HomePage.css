@@ -1,4 +1,5 @@
 .homePage {
   grid-area: main;
   margin-bottom: 1em;
+  transition: opacity 0.5sec ease;
 }

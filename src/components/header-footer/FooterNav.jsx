@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GameStateContext } from '../../context/GameStateProvider';
 import style from './Footer.css';
 
 const FooterNav = () => {
+  const { handleRevealClick } = useContext(GameStateContext);
   return (
     <nav>
       <ul>
@@ -14,7 +16,7 @@ const FooterNav = () => {
         </li>
         <li className={style.footerListItem}>
           <p className={style.headers}>why GIM</p>
-          <p className={style.transparency}>Transparency</p>
+          <p onClick={handleRevealClick}>Transparency</p>
           <p>Commitment to Sustainability</p>
           <p>Contributions & Partnerships</p>
           <p>Global Health Impact</p>

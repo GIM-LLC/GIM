@@ -10,6 +10,12 @@ export const GameStateProvider = ({ children }) => {
   //track amount of times player has failed a timeout
   const [failedTimeouts, setFailedTimeouts] = useState(0);
   const [points, setPoints] = useState(0);
+  const [bodyRevealed, setBodyRevealed] = useState(false);
+
+  const handleRevealClick = () => {
+    setBodyRevealed(true);
+  };
+
   const incrementPoints = (points) => setPoints((prev) => prev + points);
   // when the 90 second timer is failed, increment failed timouts and start new timer
   const handleTimeout = () => {
@@ -30,6 +36,8 @@ export const GameStateProvider = ({ children }) => {
     failedTimeouts,
     points,
     incrementPoints,
+    bodyRevealed,
+    handleRevealClick,
   };
 
   return (
