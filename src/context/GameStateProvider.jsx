@@ -16,6 +16,10 @@ export const GameStateProvider = ({ children }) => {
     setFailedTimeouts((prev) => prev + 1);
     currentTimeout = setTimeout(handleTimeout, TIMEOUT_LENGTH);
   };
+
+  const [keyword, setKeyword] = useState(false);
+  const [myKeyword, setMyKeyword] = useState(false);
+
   //check for a change in points -> then start a new timer, clear old timer if it exists
   useEffect(() => {
     if (points >= 1) {
@@ -30,6 +34,10 @@ export const GameStateProvider = ({ children }) => {
     failedTimeouts,
     points,
     incrementPoints,
+    keyword,
+    myKeyword,
+    setMyKeyword,
+    setKeyword,
   };
 
   return (

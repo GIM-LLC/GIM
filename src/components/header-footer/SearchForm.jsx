@@ -13,6 +13,7 @@ const SearchForm = () => {
   const [searchInputDisable, setSearchInputDisable] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchBtnDisable, setSearchBtnDisable] = useState(false);
+  const { setMyKeyword, setKeyword } = useContext(GameStateContext);
 
   const disableInputs = (trueORfalse) => {
     setSearchInputDisable(trueORfalse);
@@ -37,30 +38,74 @@ const SearchForm = () => {
       setPrompt(2);
       setPlaceHolderText('What is my name?');
       setButtonText('GUESS');
-      socket.emit('searchSubmit', { newPrompt: 2, points: 1, newPlaceholderTxt: 'What is my name?', newButtonTxt: 'GUESS' });
+      socket.emit('searchSubmit', {
+        newPrompt: 2,
+        points: 1,
+        newPlaceholderTxt: 'What is my name?',
+        newButtonTxt: 'GUESS',
+      });
     } else if (prompt === 2 && searchInput.toUpperCase() !== 'ROBIN SMITH') {
-      socket.emit('searchSubmit', { newPrompt: 2, points: 0, newPlaceholderTxt: 'What is my name?', newButtonTxt: 'GUESS' });
+      socket.emit('searchSubmit', {
+        newPrompt: 2,
+        points: 0,
+        newPlaceholderTxt: 'What is my name?',
+        newButtonTxt: 'GUESS',
+      });
     } else if (prompt === 2 && searchInput.toUpperCase() === 'ROBIN SMITH') {
       incrementPoints(2);
       setPrompt(3);
       setPlaceHolderText('What is MY core value?');
-      socket.emit('searchSubmit', { newPrompt: 3, points: 2, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
+      socket.emit('searchSubmit', {
+        newPrompt: 3,
+        points: 2,
+        newPlaceholderTxt: 'What is MY core value?',
+        newButtonTxt: 'GUESS',
+      });
     } else if (prompt === 3 && searchInput.toUpperCase() !== 'ESCAPE') {
-      socket.emit('searchSubmit', { newPrompt: 3, points: 0, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
+      socket.emit('searchSubmit', {
+        newPrompt: 3,
+        points: 0,
+        newPlaceholderTxt: 'What is MY core value?',
+        newButtonTxt: 'GUESS',
+      });
     } else if (prompt === 3 && searchInput.toUpperCase() === 'ESCAPE') {
       incrementPoints(2);
       setPrompt(4);
-      setPlaceHolderText('You\'re getting closer');
+      setPlaceHolderText("You're getting closer");
       setButtonText('GO FASTER');
       disableInputs(true);
-      socket.emit('searchSubmit', { newPrompt: 4, points: 2, newPlaceholderTxt: 'You\'re getting closer', newButtonTxt: 'GO FASTER' });
+      socket.emit('searchSubmit', {
+        newPrompt: 4,
+        points: 2,
+        newPlaceholderTxt: "You're getting closer",
+        newButtonTxt: 'GO FASTER',
+      });
     } else if (searchInput.toUpperCase() === 'DUCK') {
-      socket.emit('duck', true);
+      handleDuckEasterEgg();
     }
   };
 
+  // incoming EMIT from server DUCK
+  const handleDuckEasterEgg = () => {
+    setMyKeyword(true);
+    socket.emit('duck', true);
+
+    const revealDaniDuck = () => {
+      setKeyword(true);
+    };
+
+    useEffect(() => {
+      socket.on('duck input', revealDaniDuck);
+    }, [socket]);
+  };
+
   //incoming click from socket
-  const handleSocketButtonClick = ({ newPrompt, points, newPlaceholderTxt, newButtonTxt }) => {
+  const handleSocketButtonClick = ({
+    newPrompt,
+    points,
+    newPlaceholderTxt,
+    newButtonTxt,
+  }) => {
     disableInputs(false);
     setPrompt(newPrompt);
     incrementPoints(points);
@@ -89,11 +134,13 @@ const SearchForm = () => {
         onChange={handleInputChange}
         disabled={searchInputDisable}
         value={searchInput}
-        className={prompt === 2 || prompt === 3 ? [style.inputBlink, style.pulse].join(' ') : ''}
+        className={
+          prompt === 2 || prompt === 3
+            ? [style.inputBlink, style.pulse].join(' ')
+            : ''
+        }
       />
-      <button
-        onClick={handleSearchClick}
-        disabled={searchBtnDisable}>
+      <button onClick={handleSearchClick} disabled={searchBtnDisable}>
         {buttonText}
       </button>
     </section>

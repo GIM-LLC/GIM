@@ -4,12 +4,10 @@ import style from './Header.css';
 import { SocketContext } from '../../context/SocketProvider';
 import { GameStateContext } from '../../context/GameStateProvider';
 import Duck from './Duck';
-import useDaniDuck from '../../hooks/useDaniDuck';
 
 const Header = () => {
   const socket = useContext(SocketContext);
   const { incrementPoints } = useContext(GameStateContext);
-  const { keyword } = useDaniDuck();
 
   const [headerClicks, setHeaderClicks] = useState(0);
 
@@ -60,7 +58,7 @@ const Header = () => {
         </h1>
         <h3>-LLC.-</h3>
       </span>
-      <HeaderNav keyword={keyword} />
+      <HeaderNav />
       <Duck />
     </header>
   );
