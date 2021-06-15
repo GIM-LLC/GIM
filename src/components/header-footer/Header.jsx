@@ -3,10 +3,13 @@ import HeaderNav from './HeaderNav';
 import style from './Header.css';
 import { SocketContext } from '../../context/SocketProvider';
 import { GameStateContext } from '../../context/GameStateProvider';
+import Duck from './Duck';
+import useDaniDuck from '../../hooks/useDaniDuck';
 
 const Header = () => {
   const socket = useContext(SocketContext);
   const { incrementPoints } = useContext(GameStateContext);
+  const { keyword } = useDaniDuck();
 
   const [headerClicks, setHeaderClicks] = useState(0);
 
@@ -26,7 +29,6 @@ const Header = () => {
       }
     });
   }, [socket]);
-
 
   let headerText = 'G.I.M.';
   let hdrDisable = false;
@@ -48,11 +50,18 @@ const Header = () => {
           className={style.gim}
           onClick={upHeaderClickCount}
           disabled={hdrDisable}
-          style={hdrDisable ? { transform: 'rotate(5deg) translate(30px, 10px)' } : { color: '#3a3a3a' }}
-        >{headerText}</h1>
+          style={
+            hdrDisable
+              ? { transform: 'rotate(5deg) translate(30px, 10px)' }
+              : { color: '#3a3a3a' }
+          }
+        >
+          {headerText}
+        </h1>
         <h3>-LLC.-</h3>
       </span>
-      <HeaderNav />
+      <HeaderNav keyword={keyword} />
+      <Duck />
     </header>
   );
 };
