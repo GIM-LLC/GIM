@@ -32,10 +32,22 @@ const popupContent = {
   },
 
   pointTen: {
-    largeText: [''],
-    smallText: [''],
-    inputPlaceholder: [''],
-    buttonText: ['']
+    largeText: [
+      'I don\'t know where I am -',
+      'I can\'t be dead, that just -'
+    ],
+    smallText: [
+      'but whatever you\'re doing, it\'s helping. You can get me out, can\'t you?',
+      'I mean, I\'m here, right?'
+    ],
+    inputPlaceholder: [
+      'oh, um...',
+      'uh...'
+    ],
+    buttonText: [
+      <i key="0" className="fas fa-angle-double-right"></i>,
+      <i key="0" className="fas fa-angle-double-right"></i>
+    ]
   },
 
   pointFifteen: {
