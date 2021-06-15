@@ -7,7 +7,6 @@ const CompanyProfile = () => {
 
   return (
     <section className={style.companyProfile}>
-
       <article className={style.story}>
         <figure>
           <img src="http://placekitten.com/200/200" alt="gim image" />
