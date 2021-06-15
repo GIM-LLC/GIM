@@ -18,6 +18,7 @@ const useGhostPopup = () => {
     pointFifteen: false
   });
   const [popup, setPopup] = useState(original);
+  const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
     // when points change, check to see if value meets the required thresholds
@@ -42,7 +43,7 @@ const useGhostPopup = () => {
 
   }, [points]);
 
-  return popup;
+  return { popup, slideIndex };
 };
 
 export default useGhostPopup;

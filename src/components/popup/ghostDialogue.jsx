@@ -9,12 +9,12 @@ const closePopup = () => {
 
 const popupContent = {
   original: {
-    largeText: 'Join our newsletter to receive the latest updates and promotions.',
-    smallText: 'First time customers get 10% off the first order now!',
-    inputPlaceHolder: 'example@email.com',
-    buttonText: 'Subscribe',
-    buttonFunction: '',
-    canClose: true
+    largeText: ['Join our newsletter to receive the latest updates and promotions.'],
+    smallText: ['First time customers get 10% off the first order now!'],
+    inputPlaceholder: ['example@email.com'],
+    buttonText: ['Subscribe'],
+    buttonFunction: [''],
+    canClose: [true]
   },
 
   pointFive: {
