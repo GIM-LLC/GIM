@@ -18,8 +18,8 @@ export const GameStateProvider = ({ children }) => {
   };
   //check for a change in points -> then start a new timer, clear old timer if it exists
   useEffect(() => {
-    if (points >= 1) {
-      if (currentTimeout !== undefined) {
+    if(points >= 1) {
+      if(currentTimeout !== undefined) {
         clearTimeout(currentTimeout);
       }
       currentTimeout = setTimeout(handleTimeout, TIMEOUT_LENGTH);

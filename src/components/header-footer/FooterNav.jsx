@@ -1,73 +1,41 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 import useGhostSocialIcons from '../../hooks/useGhostSocialIcons';
-import { SocketContext } from '../../context/SocketProvider';
-import { GameStateContext } from '../../context/GameStateProvider';
+import useFooterTitles from '../../hooks/useFooterTitles';
+import useTransparent from '../../hooks/useTransparent';
 import style from './Footer.css';
 
 const FooterNav = () => {
-  const socket = useContext(SocketContext);
-  const { incrementPoints } = useContext(GameStateContext);
+  const { handleTitleClick, footerTitleGhostState } = useFooterTitles();
+  const { showMessage, transparentClicked } = useTransparent();
   const { iconGhostState, handleIconClick } = useGhostSocialIcons();
-  const [transparentClicked, setTransparentClicked] = useState(false);
-  const [transparentPts, setTransparentPts] = useState(false);
-
-  const blinkMessage = () => {
-    setTransparentClicked(true);
-    setTimeout(() => setTransparentClicked(false), 3000);
-  };
-
-  const showMessage = () => {
-    blinkMessage();
-    socket.emit('transparent click');
-
-    if (!transparentPts) {
-      incrementPoints(2);
-      setTransparentPts(true);
-      socket.emit('transparent points');
-    }
-  };
-
-  const handleSocketTransparentChange = () => {
-    blinkMessage();
-  };
-
-  const handleSocketTransparentPoints = () => {
-    incrementPoints(2);
-    setTransparentPts(true);
-  };
-
-  useEffect(() => {
-    socket.on('socket transparent click', handleSocketTransparentChange);
-    socket.on('socket transparent points', handleSocketTransparentPoints);
-  }, [socket]);
 
   return (
     <>
-      <nav >
+      <nav>
         <ul>
           <li className={style.footerListItem}>
-            <p className={style.headers}>our people</p>
+            <p className={style.headers} onClick={footerTitleGhostState.titleOne === 'HELP' ? () => null : () => handleTitleClick('titleOne')}>{footerTitleGhostState.titleOne}</p>
             <p>Meet the Suppliers</p>
             <p>The Journey</p>
             <p>Leadership</p>
             <p>Experts in the field</p>
           </li>
           <li className={style.footerListItem}>
-            <p className={style.headers}>why GIM</p>
+            <p className={style.headers} onClick={footerTitleGhostState.titleTwo === 'FREE' ? () => null : () => handleTitleClick('titleTwo')}>{footerTitleGhostState.titleTwo}</p>
             <p onClick={showMessage} className={style.pointer}>Transparency</p>
             <p>Commitment to Sustainability</p>
             <p>Contributions & Partnerships</p>
             <p>Global Health Impact</p>
           </li>
           <li className={style.footerListItem}>
-            <p className={style.headers}>our products</p>
+            <p className={style.headers} onClick={footerTitleGhostState.titleThree === 'MY' ? () => null : () => handleTitleClick('titleThree')}>{footerTitleGhostState.titleThree}</p>
             <p>Raw Materials</p>
             <p>Installations</p>
             <p>Accesories</p>
             <p>Supplies and Consumables</p>
           </li>
           <li className={style.footerListItem}>
-            <p className={style.headers}>contact us</p>
+            <p className={style.headers} onClick={footerTitleGhostState.titleFour === 'SOUL' ? () => null : () => handleTitleClick('titleFour')}>{footerTitleGhostState.titleFour}</p>
             <div className={style.contactUsDiv}>
               <div className={style.iconDiv}>
                 <img
