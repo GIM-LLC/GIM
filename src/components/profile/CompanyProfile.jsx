@@ -11,7 +11,7 @@ const CompanyProfile = () => {
         <article>
           <h2>The GIM Story</h2>
           <p>
-          General Industrial Manufacturing Company is a three-generation, family owned and operated, precision machining supplier. GIM has earned a reputation from our customers as a source supplier of high quality, low cost precision parts with on-time deliveries. We are a top quality team of employees who work well together.
+            General Industrial Manufacturing Company is a three-generation, family owned and operated, precision machining supplier. GIM has earned a reputation from our customers as a source supplier of high quality, low cost precision parts with on-time deliveries. We are a top quality team of employees who work well together.
           </p>
         </article>
       </article>
@@ -33,7 +33,7 @@ const CompanyProfile = () => {
         <article>
           <h6>Employee Memorial Fundraiser - 04/01/21</h6>
           <p>
-            With the unexpected passing of one of our long time employees, HR has organized a fundraiser to help the family of our late team member.
+            With the unexpected passing of one of our long time employees, <span className={style.name}>Robin Smith</span>, HR has organized a fundraiser to help the family of our late team member.
           </p>
         </article>
       </section>
