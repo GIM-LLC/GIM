@@ -33,6 +33,11 @@
 .headers {
   color: #f97c00;
   font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.headersTwo {
+  pointer-events: none; 
 }
 
 .contactUsDiv {
