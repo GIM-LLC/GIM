@@ -7,7 +7,6 @@ const CompanyProfile = () => {
 
   return (
     <section className={style.companyProfile}>
-      
       <article className={style.story}>
         <figure>
           <img src="http://placekitten.com/200/200" alt="gim image" />
@@ -22,7 +21,7 @@ const CompanyProfile = () => {
           : <article onClick={handleStoryClick}>
             <h2>The GIM Story</h2>
             <p>
-            General Industrial Manufacturing Company is a three-generation, family-owned and operated, precision machining supplier. GIM has earned a reputation as a supplier of high quality, low cost precision parts with on-time deliveries. We are a top quality team of employees who work well together.
+              General Industrial Manufacturing Company is a three-generation, family-owned and operated, precision machining supplier. GIM has earned a reputation as a supplier of high quality, low cost precision parts with on-time deliveries. We are a top quality team of employees who work well together.
             </p>
           </article>
         }
