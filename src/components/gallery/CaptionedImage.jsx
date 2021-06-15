@@ -10,13 +10,25 @@ const CaptionedImage = ({
   mouseHoverOnHandler,
   mouseHoverOffHandler,
   hover,
-  allTrue
+  allTrue,
+  glowChangeHandler,
+  glowingObjectState
 }) => {
+  const defaultClassName =
+    name === 'life'
+      ? `${style.container} ${style.objectPulse}`
+      : style.container;
+
   return (
     <div
-      className={style.container}
+      className={
+        name === 'life' && glowingObjectState
+          ? `${defaultClassName} ${style.glowObjectChallengeEffect}`
+          : defaultClassName
+      }
       onMouseEnter={() => mouseHoverOnHandler(name)}
       onMouseLeave={() => mouseHoverOffHandler(name)}
+      onClick={!glowingObjectState ? () => glowChangeHandler('galleryImg') : () => null}
     >
       <figure className={style.captionedImage}>
         <img src={imageSource} alt="cage" />
