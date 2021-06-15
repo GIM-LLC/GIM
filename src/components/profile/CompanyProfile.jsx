@@ -1,45 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 import style from './CompanyProfile.css';
-import { SocketContext } from '../../context/SocketProvider';
-import { GameStateContext } from '../../context/GameStateProvider';
+import useGhostStory from '../../hooks/useGhostStory';
 
 const CompanyProfile = () => {
-  const socket = useContext(SocketContext);
-  const { points, incrementPoints } = useContext(GameStateContext);
-
-  const [showGhostStory, setShowGhostStory] = useState(false);
-  const [ghostStoryCounted, setGhostStoryCounted] = useState(false);
-
-  const handleGhostStoryPoint = points => {
-    incrementPoints(points);
-    setGhostStoryCounted(true);
-  };
-
-  const handleGhostStoryFlip = () => {
-    setShowGhostStory(prev => !prev);
-  };
-
-  const handleStoryClick = () => {
-    setShowGhostStory(prev => !prev);
-    if(!ghostStoryCounted) {
-      handleGhostStoryPoint(1);
-      socket.emit('ghostStoryPoint', 1);
-    }
-    socket.emit('ghostStoryFlip');
-    
-  };
-
-  useEffect(() => {
-    socket.on('ghostStoryFlip', handleGhostStoryFlip);
-    socket.on('socketGhostStoryPoint', handleGhostStoryPoint);
-
-    return () => {
-      socket.off('ghostStoryFlip', handleGhostStoryFlip);
-      socket.off('socketGhostStoryPoint', handleGhostStoryPoint);
-    };
-  }, [socket]);
-  
-  console.log(points);
+  const { showGhostStory, handleStoryClick } = useGhostStory();
 
   return (
     <section className={style.companyProfile}>
