@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 // const url = 'http://localhost:8080';
 
 // this is the real backend
-const url = 'https://gim-server.herokuapp.com';
+const url = 'http://localhost:8080/';
 
 export const socket = io(url, {
   cors: true,

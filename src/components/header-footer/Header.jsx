@@ -13,7 +13,7 @@ const Header = () => {
   //NEED TO ADD CLICK LISTENER and ROOM EMIT TO BACKEND
   const upHeaderClickCount = () => {
     socket.emit('headerTextClick', headerClicks + 1);
-    if (headerClicks === 4) {
+    if(headerClicks === 4) {
       incrementPoints(1);
     } else setHeaderClicks((prev) => prev + 1);
   };
@@ -27,13 +27,13 @@ const Header = () => {
 
   let headerText = 'G.I.M.';
   let hdrDisable = false;
-  if (headerClicks === 1) {
+  if(headerClicks === 1) {
     headerText = 'Ghost  I.M.';
-  } else if (headerClicks === 2) {
+  } else if(headerClicks === 2) {
     headerText = 'Ghost  In  M.';
-  } else if (headerClicks === 3) {
+  } else if(headerClicks === 3) {
     headerText = 'Ghost  In  The  M.';
-  } else if (headerClicks >= 4) {
+  } else if(headerClicks >= 4) {
     headerText = 'Ghost  In  The  Machine';
     hdrDisable = true;
   }

@@ -1,9 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import style from './Footer.css';
 import { GameStateContext } from '../../context/GameStateProvider';
+import { socket } from '../../context/SocketProvider';
+// import { SocketContext } from '../../context/SocketProvider';
+
 
 
 const FooterNav = () => {
+  // const socket = useContext(SocketContext);
   const { incrementPoints } = useContext(GameStateContext);
 
   const [titleOne, setTitleOne] = useState('our people');
@@ -14,7 +18,13 @@ const FooterNav = () => {
   const [totalFooterClicks, setTotalFooterClicks] = useState(0);
   const incrementFooterPoints = () => setTotalFooterClicks((prev) => prev + 1);
 
+
   useEffect(() => {
+    // socket.on('socketFooterTitleClick', (newCount) => {
+    //   incrementFooterPoints(newCount);
+    // });
+    // socket.emit('footerTitleClick', totalFooterClicks + 1);
+
     if(totalFooterClicks === 4) {
       incrementPoints(2, console.log('increment points activated'));
     }
