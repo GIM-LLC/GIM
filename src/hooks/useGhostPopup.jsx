@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { GameStateContext } from '../context/GameStateProvider';
 import popupContent from '../components/popup/ghostDialogue';
-import { array } from 'prop-types';
 
 const useGhostPopup = () => {
   const {

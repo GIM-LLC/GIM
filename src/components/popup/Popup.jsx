@@ -18,11 +18,6 @@ function Popup(props) {
     buttonText
   } = popup;
 
-  // check array.length, only the last one closes it, everything else uses getNextSlide
-
-  console.log('SLIDE INDEX', slideIndex);
-  console.log('CAN CLOSE', canClose);
-  
   return (props.trigger) ? (
     <div className={style.popup}>
       <div className={style.popupInner}>
@@ -42,13 +37,18 @@ function Popup(props) {
 
         <button
           className={style.popupCloseButton}
-          onClick={() => canClose ? props.setTrigger(false) : {}}>
+          onClick={() => 
+            canClose ? props.setTrigger(false) 
+              : {}}>
             x
         </button>
         
         <button 
           className={style.popupSubmitButton} 
-          onClick={() => canClose ? props.setTrigger(false) : getNextSlide()}>
+          onClick={() => 
+            canClose 
+              ? props.setTrigger(false) 
+              : getNextSlide()}>
           {buttonText[slideIndex]}
         </button>
         
@@ -59,10 +59,9 @@ function Popup(props) {
   ) : '';
 }
 
-
 Popup.propTypes = {
-  trigger: PropTypes.any.isRequired,
-  setTrigger: PropTypes.any.isRequired,
+  trigger: PropTypes.bool.isRequired,
+  setTrigger: PropTypes.func.isRequired,
 };
   
 export default Popup;
