@@ -81,7 +81,7 @@ const CompanyProfile = () => {
         <article>
           <h6>Employee Memorial Fundraiser - 04/01/21</h6>
           <p>
-            With the unexpected passing of one of our long time employees, HR has organized a fundraiser to help the family of our late team member.
+            With the unexpected passing of one of our long time employees, <span className={style.name}>Robin Smith</span>, HR has organized a fundraiser to help the family of our late team member.
           </p>
         </article>
       </section>

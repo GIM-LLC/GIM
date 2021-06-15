@@ -52,6 +52,7 @@
   margin: 1%;
   padding: 1%;
   background-color: #f97c00;
+  color: #3a3a3a;
   font-size: .9rem;
 
 }
@@ -60,5 +61,9 @@
   margin: 0;
   padding: 2%;
   font-size: .8rem;
+}
 
+.name{
+  font-weight: 400;
+  font-style: italic;
 }
