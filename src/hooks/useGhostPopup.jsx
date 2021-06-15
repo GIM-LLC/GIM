@@ -54,7 +54,7 @@ const useGhostPopup = () => {
   }, [popup, slideIndex]);
 
   const justATest = () => {
-    setPopup(pointFive);
+    setPopup(pointFifteen);
   };
 
   return { 

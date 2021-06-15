@@ -33,8 +33,8 @@ const popupContent = {
 
   pointTen: {
     largeText: [
-      'I don\'t know where I am -',
-      'I can\'t be dead, that just -'
+      'I don\'t know where I am',
+      'I can\'t be dead though. It doesn\'t make sense.'
     ],
     smallText: [
       'but whatever you\'re doing, it\'s helping. You can get me out, can\'t you?',
@@ -51,10 +51,26 @@ const popupContent = {
   },
 
   pointFifteen: {
-    largeText: [''],
-    smallText: [''],
-    inputPlaceholder: [''],
-    buttonText: ['']
+    largeText: [
+      '...',
+      'Thank you.',
+      'I don\'t know what\'s next,'
+    ],
+    smallText: [
+      'So that\'s it then.',
+      '',
+      'but I think I can leave.'
+    ],
+    inputPlaceholder: [
+      'I guess so.',
+      'it was nothing...',
+      'safe travels, friend.'
+    ],
+    buttonText: [
+      <i key="0" className="fas fa-angle-double-right"></i>,
+      <i key="0" className="fas fa-angle-double-right"></i>,
+      <i key="0" className="fas fa-angle-double-right"></i>
+    ]
   }
 };
 
