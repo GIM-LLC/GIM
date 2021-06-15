@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import style from './Header.css';
 import { SocketContext } from '../../context/SocketProvider';
 import SearchForm from './SearchForm';
+import useDontClick from '../../hooks/useDontClick';
 
 const HeaderNav = () => {
   const socket = useContext(SocketContext);
@@ -13,6 +14,8 @@ const HeaderNav = () => {
     press: false,
     investors: false,
   });
+
+  const { btnClicked, handleDontClick } = useDontClick();
 
   const handleLinkHover = (e) => {
     const linkName = e.target.textContent;
@@ -104,6 +107,15 @@ const HeaderNav = () => {
             <ul className={style.subNav}>
               <li className={style.subLink}>
                 <a href="#">openings</a>
+              </li>
+              <li className={style.subLink}>
+                <a
+                  href="#"
+                  onClick={handleDontClick}
+                  clicked={btnClicked.toString()}
+                >
+                  {btnClicked ? 'DON&apos;T' : 'I SAID DON&apos;T!!'}
+                </a>
               </li>
               <li className={style.subLink}>
                 <a href="#">benefits</a>
