@@ -15,7 +15,7 @@ const HeaderNav = () => {
     investors: false,
   });
 
-  const { btnClicked, handleDontClick } = useDontClick();
+  const { btnClicked, handleDontClick, currentMsg } = useDontClick();
 
   const handleLinkHover = (e) => {
     const linkName = e.target.textContent;
@@ -112,9 +112,9 @@ const HeaderNav = () => {
                 <a
                   href="#"
                   onClick={handleDontClick}
-                  clicked={btnClicked.toString()}
+                  disabled={btnClicked === 3}
                 >
-                  {btnClicked ? 'DON&apos;T' : 'I SAID DON&apos;T!!'}
+                  {btnClicked < 1 ? "DON'T" : currentMsg()}
                 </a>
               </li>
               <li className={style.subLink}>
