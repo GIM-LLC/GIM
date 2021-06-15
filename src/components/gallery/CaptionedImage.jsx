@@ -3,6 +3,7 @@ import style from './CaptionedImage.css';
 const CaptionedImage = ({
   title,
   text,
+  imageSource,
   clickHandler,
   name,
   currentButtonText,
@@ -18,7 +19,7 @@ const CaptionedImage = ({
       onMouseLeave={() => mouseHoverOffHandler(name)}
     >
       <figure className={style.captionedImage}>
-        <img src="https://www.placecage.com/g/200/200" alt="cage" />
+        <img src={imageSource} alt="cage" />
       </figure>
       <div
         className={

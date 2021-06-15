@@ -57,13 +57,6 @@ const useFooterTitles = () => {
 
   };
 
-
-
-
-  //   const handleSocketFooterTitleChange = (titleData) => {
-  //     setIconGhostState((prev) => ({ ...prev, ...titleData }));
-  //   };
-
   useEffect(() => {
     if(totalFooterClicks === 4) {
       incrementPoints(2);
