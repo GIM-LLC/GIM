@@ -1,22 +1,20 @@
-import { SocketContext } from '../../context/SocketProvider';
+// import { SocketContext } from '../../context/SocketProvider';
 import { GameStateContext } from '../../context/GameStateProvider';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 const useRevealText = () => {
-  const socket = useContext(SocketContext);
-  const { incrementPoints, bodyRevealed } = useContext(GameStateContext);
+  //   const socket = useContext(SocketContext);
+  const { incrementPoints, textRevealed } = useContext(GameStateContext);
 
-  // grab body id to allow style manipulation
-  const body = document.getElementById('body');
+  const hiddenText = document.querySelector('hidden');
 
-  // Check if global bodyRevealed state is true
-  if (bodyRevealed) {
-    // if true, transition body to transparent and reveal hidden element behind
-    // after transition emit socket to increase player points by 2
-  }
-  // if not, do nothing
+  const revealText = () => {
+    if (textRevealed === true) {
+      hiddenText.style = 'fadeIn';
+    }
+  };
 
-  return {};
+  return { textRevealed, revealText };
 };
 
 export default useRevealText;

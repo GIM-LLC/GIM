@@ -1,5 +1,18 @@
 .homePage {
   grid-area: main;
   margin-bottom: 1em;
-  transition: opacity 0.5sec ease;
+  position: relative;
+}
+
+.fadeOut[reveal='true'] {
+  animation: fadeOut 3s ease-in-out;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.2;
+  }
 }

@@ -10,10 +10,11 @@ export const GameStateProvider = ({ children }) => {
   //track amount of times player has failed a timeout
   const [failedTimeouts, setFailedTimeouts] = useState(0);
   const [points, setPoints] = useState(0);
-  const [bodyRevealed, setBodyRevealed] = useState(false);
+  const [textRevealed, setTextRevealed] = useState(false);
 
+  // When user clicks on 'Transparency' in the footer, this function is triggered to reveal hidden text beneath the Text element
   const handleRevealClick = () => {
-    setBodyRevealed(true);
+    setTextRevealed(true);
   };
 
   const incrementPoints = (points) => setPoints((prev) => prev + points);
@@ -36,7 +37,7 @@ export const GameStateProvider = ({ children }) => {
     failedTimeouts,
     points,
     incrementPoints,
-    bodyRevealed,
+    textRevealed,
     handleRevealClick,
   };
 

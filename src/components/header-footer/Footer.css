@@ -132,3 +132,7 @@
 .addresses {
   margin: 1%;
 }
+
+.clickClue {
+  cursor: pointer;
+}

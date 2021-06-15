@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { GameStateContext } from '../../context/GameStateProvider';
+import useGhostSocialIcons from '../../hooks/useGhostSocialIcons';
 import style from './Footer.css';
 
 const FooterNav = () => {
   const { handleRevealClick } = useContext(GameStateContext);
+  const { iconGhostState, handleIconClick } = useGhostSocialIcons();
+
   return (
     <nav>
       <ul>
@@ -16,7 +19,9 @@ const FooterNav = () => {
         </li>
         <li className={style.footerListItem}>
           <p className={style.headers}>why GIM</p>
-          <p onClick={handleRevealClick}>Transparency</p>
+          <p onClick={handleRevealClick} className={style.clickClue}>
+            Transparency
+          </p>
           <p>Commitment to Sustainability</p>
           <p>Contributions & Partnerships</p>
           <p>Global Health Impact</p>
@@ -33,23 +38,59 @@ const FooterNav = () => {
           <div className={style.contactUsDiv}>
             <div className={style.iconDiv}>
               <img
-                className={style.iconImage}
-                src={'/assets/Twitter.png'}
+                onClick={(e) => handleIconClick(e)}
+                className={
+                  iconGhostState.twitter
+                    ? [style.iconImageGhost, style.pulse].join(' ')
+                    : style.iconImage
+                }
+                src={
+                  !iconGhostState.twitter
+                    ? '/assets/Twitter.png'
+                    : '/assets/ghostie.png'
+                }
                 alt="twitter-icon"
               />
               <img
-                className={style.iconImage}
-                src={'/assets/ig.png'}
+                onClick={(e) => handleIconClick(e)}
+                className={
+                  iconGhostState.instagram
+                    ? [style.iconImageGhost, style.pulse].join(' ')
+                    : style.iconImage
+                }
+                src={
+                  !iconGhostState.instagram
+                    ? '/assets/ig.png'
+                    : '/assets/ghostie.png'
+                }
                 alt="instagram-icon"
               />
               <img
-                className={style.iconImage}
-                src={'/assets/Github_icon.png'}
-                alt="Github_icon"
+                onClick={(e) => handleIconClick(e)}
+                className={
+                  iconGhostState.github
+                    ? [style.iconImageGhost, style.pulse].join(' ')
+                    : style.iconImage
+                }
+                src={
+                  !iconGhostState.github
+                    ? '/assets/Github_icon.png'
+                    : '/assets/ghostie.png'
+                }
+                alt="github-icon"
               />
               <img
-                className={style.iconImage}
-                src={'/assets/linkedin-icon-2.png'}
+                onClick={(e) => handleIconClick(e)}
+                className={
+                  iconGhostState.linkedin
+                    ? [style.iconImageGhost, style.pulse].join(' ')
+                    : style.iconImage
+                }
+                src={
+                  !iconGhostState.linkedin
+                    ? '/assets/linkedin-icon-2.png'
+                    : '/assets/ghostie.png'
+                }
                 alt="linkedin-icon"
               />
               <img

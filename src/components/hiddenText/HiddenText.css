@@ -1,22 +1,49 @@
-.hiddenElement {
-  display: none;
+.hidden {
+  z-index: -1000;
   position: relative;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  background-color: aqua;
+}
+
+.reveal {
+  z-index: 1000;
+  opacity: 1;
+  animation: fadeIn 3s ease-in-out;
 }
 
 .hiddenText1 {
   position: absolute;
-  opacity: 50%;
-  font-size: larger;
+  top: 10%;
+  left: 25%;
+  opacity: 1;
+  font-size: 3rem;
 }
 
-.hiddenText1 {
+.hiddenText2 {
   position: absolute;
-  opacity: 50%;
-  font-size: larger;
+  top: 10%;
+  left: 85%;
+  opacity: 1;
+  font-size: 4rem;
 }
 
-.hiddenText1 {
+.hiddenText3 {
   position: absolute;
-  opacity: 50%;
-  font-size: larger;
+  top: 75%;
+  left: 30%;
+  opacity: 1;
+  font-size: 4rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
 }
