@@ -8,11 +8,11 @@ const closePopup = () => {
 };
 
 const popupContent = {
-  default: {
+  original: {
     largeText: 'Join our newsletter to receive the latest updates and promotions.',
     smallText: 'First time customers get 10% off the first order now!',
-    inputPlaceHolder: '',
-    buttonText: '',
+    inputPlaceHolder: 'example@email.com',
+    buttonText: 'Subscribe',
     buttonFunction: '',
     canClose: true
   },
