@@ -26,10 +26,10 @@
   width: 100%;
   background-color: #c6bcae;
   height: 0;
-  transition: 0.5s ease;
+  transition: height 0.5s ease;
 }
 
-.container:hover .imageOverlay {
+.hovered{
   height: 100%;
 }
 
@@ -70,4 +70,17 @@
 .text button {
   margin: 2%;
   padding: 1%;
+}
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #0bd212e4;
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
 }
