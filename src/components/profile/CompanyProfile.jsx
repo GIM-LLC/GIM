@@ -22,11 +22,11 @@ const CompanyProfile = () => {
   const handleStoryClick = () => {
     setShowGhostStory(prev => !prev);
     if(!ghostStoryCounted) {
-      incrementPoints(1);
-      setGhostStoryCounted(true);
+      handleGhostStoryPoint(1);
+      socket.emit('ghostStoryPoint', 1);
     }
     socket.emit('ghostStoryFlip');
-    socket.emit('ghostStoryPoint', 1);
+    
   };
 
   useEffect(() => {
@@ -38,9 +38,9 @@ const CompanyProfile = () => {
       socket.off('socketGhostStoryPoint', handleGhostStoryPoint);
     };
   }, [socket]);
-
-  console.log(points);
   
+  console.log(points);
+
   return (
     <section className={style.companyProfile}>
       
