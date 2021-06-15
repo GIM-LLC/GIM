@@ -1,9 +1,9 @@
 import { useState, useContext, useEffect } from 'react';
-// import { SocketContext } from '../context/SocketProvider';
+import { SocketContext } from '../context/SocketProvider';
 import { GameStateContext } from '../context/GameStateProvider';
 
 const useFooterTitles = () => {
-  // const socket = useContext(SocketContext);
+  const socket = useContext(SocketContext);
   const { incrementPoints } = useContext(GameStateContext);
 
   //   const [titleOne, setTitleOne] = useState('our people');
@@ -25,29 +25,50 @@ const useFooterTitles = () => {
     titleFour: 'SOUL',
   };
 
+
+  const [totalFooterClicks, setTotalFooterClicks] = useState(0);
+  const incrementFooterPoints = () => setTotalFooterClicks((prev) => prev + 1);
+
+  const handleSocketTitleChange = (titleData) => {
+    setFooterTitleGhostState((prev) => ({
+      ...prev, ...titleData
+    }));
+    incrementFooterPoints();
+  };
+
+  useEffect(() => {
+    socket.on('socketFooterTitleClick', handleSocketTitleChange);
+    return () => {
+      socket.off('socketFooterTitleClick', handleSocketTitleChange);
+    };
+  }, [socket]);
+
   const handleTitleClick = (titleNumber) => {
     setFooterTitleGhostState ((prev) => {
       const prevTitles = { ...prev };
-      prevTitles[titleNumber] = newText[titleNumber];
-      return { ...prevTitles };
+      if(prevTitles[titleNumber] !== newText[titleNumber]) {
+        prevTitles[titleNumber] = newText[titleNumber];
+        socket.emit('footerTitleClick', prevTitles);
+        return prevTitles;
+      }
+      return prev;
     });
+    incrementFooterPoints();
+
   };
 
-  //   const [totalFooterClicks, setTotalFooterClicks] = useState(0);
-  //   const incrementFooterPoints = () => setTotalFooterClicks((prev) => prev + 1);
+
+
 
   //   const handleSocketFooterTitleChange = (titleData) => {
   //     setIconGhostState((prev) => ({ ...prev, ...titleData }));
   //   };
 
-  //   useEffect(() => {
-  //     // socket.on('socketFooterTitleClick', handleSocketFooterTitleChange);
-  //     // socket.emit('footerTitleClick', totalFooterClicks + 1);
-    
-  //     if(totalFooterClicks === 4) {
-  //       incrementPoints(2);
-  //     }
-  //   }, [socket]);
+  useEffect(() => {
+    if(totalFooterClicks === 4) {
+      incrementPoints(2);
+    }
+  }, [totalFooterClicks]);
 
   return { handleTitleClick, footerTitleGhostState };
 };

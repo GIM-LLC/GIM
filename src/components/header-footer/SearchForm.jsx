@@ -32,29 +32,29 @@ const SearchForm = () => {
 
   const handleSearchClick = () => {
     setSearchInput('');
-    if (prompt === 1) {
+    if(prompt === 1) {
       incrementPoints(1);
       setPrompt(2);
       setPlaceHolderText('What is my name?');
       setButtonText('GUESS');
       socket.emit('searchSubmit', { newPrompt: 2, points: 1, newPlaceholderTxt: 'What is my name?', newButtonTxt: 'GUESS' });
-    } else if (prompt === 2 && searchInput.toUpperCase() !== 'ROBIN SMITH') {
+    } else if(prompt === 2 && searchInput.toUpperCase() !== 'ROBIN SMITH') {
       socket.emit('searchSubmit', { newPrompt: 2, points: 0, newPlaceholderTxt: 'What is my name?', newButtonTxt: 'GUESS' });
-    } else if (prompt === 2 && searchInput.toUpperCase() === 'ROBIN SMITH') {
+    } else if(prompt === 2 && searchInput.toUpperCase() === 'ROBIN SMITH') {
       incrementPoints(2);
       setPrompt(3);
       setPlaceHolderText('What is MY core value?');
       socket.emit('searchSubmit', { newPrompt: 3, points: 2, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
-    } else if (prompt === 3 && searchInput.toUpperCase() !== 'ESCAPE') {
+    } else if(prompt === 3 && searchInput.toUpperCase() !== 'ESCAPE') {
       socket.emit('searchSubmit', { newPrompt: 3, points: 0, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
-    } else if (prompt === 3 && searchInput.toUpperCase() === 'ESCAPE') {
+    } else if(prompt === 3 && searchInput.toUpperCase() === 'ESCAPE') {
       incrementPoints(2);
       setPrompt(4);
       setPlaceHolderText('You\'re getting closer');
       setButtonText('GO FASTER');
       disableInputs(true);
       socket.emit('searchSubmit', { newPrompt: 4, points: 2, newPlaceholderTxt: 'You\'re getting closer', newButtonTxt: 'GO FASTER' });
-    } else if (searchInput.toUpperCase() === 'DUCK') {
+    } else if(searchInput.toUpperCase() === 'DUCK') {
       socket.emit('duck', true);
     }
   };
@@ -67,7 +67,7 @@ const SearchForm = () => {
     setPlaceHolderText(newPlaceholderTxt);
     setButtonText(newButtonTxt);
     setSearchInput('');
-    if (newPrompt >= 4) {
+    if(newPrompt >= 4) {
       disableInputs(true);
     }
   };

@@ -12,28 +12,28 @@ const FooterNav = () => {
     <nav>
       <ul>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers} onClick={() => handleTitleClick('titleOne')} >{footerTitleGhostState.titleOne}</p>
+          <p className={style.headers} onClick={ footerTitleGhostState.titleOne === 'HELP' ? () => null : () => handleTitleClick('titleOne') }>{footerTitleGhostState.titleOne}</p>
           <p>Meet the Suppliers</p>
           <p>The Journey</p>
           <p>Leadership</p>
           <p>Experts in the field</p>
         </li>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers} onClick={() => handleTitleClick('titleTwo')}>{footerTitleGhostState.titleTwo}</p>
+          <p className={style.headers} onClick={ footerTitleGhostState.titleTwo === 'FREE' ? () => null : () => handleTitleClick('titleTwo') }>{footerTitleGhostState.titleTwo}</p>
           <p>Transparency</p>
           <p>Commitment to Sustainability</p>
           <p>Contributions & Partnerships</p>
           <p>Global Health Impact</p>
         </li>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers} onClick={() => handleTitleClick('titleThree')}>{footerTitleGhostState.titleThree}</p>
+          <p className={style.headers} onClick={ footerTitleGhostState.titleThree === 'MY' ? () => null : () => handleTitleClick('titleThree') }>{footerTitleGhostState.titleThree}</p>
           <p>Raw Materials</p>
           <p>Installations</p>
           <p>Accesories</p>
           <p>Supplies and Consumables</p>
         </li>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers} onClick={() => handleTitleClick('titleFour')}>{footerTitleGhostState.titleFour}</p>
+          <p className={style.headers} onClick={ footerTitleGhostState.titleFour === 'SOUL' ? () => null : () => handleTitleClick('titleFour')}>{footerTitleGhostState.titleFour}</p>
           <div className={style.contactUsDiv}>
             <div className={style.iconDiv}>
               <img
