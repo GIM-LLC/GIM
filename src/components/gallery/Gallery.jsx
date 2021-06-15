@@ -3,11 +3,20 @@ import useGalleryImageButtons from '../../hooks/useGalleryImageButtons';
 import CaptionedImage from './CaptionedImage';
 import style from './Gallery.css';
 
-const Gallery = () => {
-  const { imageHoverState, buttonState, allTrue, handleButtonClick, handleMouseOn, handleMouseOff } = useGalleryImageButtons();
+const Gallery = ({ glowingObjectState, glowChangeHandler }) => {
+  const {
+    imageHoverState,
+    buttonState,
+    allTrue,
+    handleButtonClick,
+    handleMouseOn,
+    handleMouseOff,
+  } = useGalleryImageButtons();
   return (
     <section className={style.gallery}>
       <CaptionedImage
+        glowingObjectState={null}
+        glowChangeHandler={() => null}
         name="stockholder"
         hover={imageHoverState.stockholder}
         clickHandler={handleButtonClick}
@@ -19,6 +28,8 @@ const Gallery = () => {
         text="Stockholders Dividens are paid quarterly on the 5th business day of June, August, October, and November at end of day. Stockholders may have their funds deposited via check and direct deposit."
       />
       <CaptionedImage
+        glowingObjectState={null}
+        glowChangeHandler={() => null}
         name="employment"
         hover={imageHoverState.employment}
         clickHandler={handleButtonClick}
@@ -30,6 +41,8 @@ const Gallery = () => {
         text="Supporting you as you make the next step in your career towards state of the art manufacturing technology. Dozens of open roles at your fingertips to help shape the future of industrialized manufacturing. For contracting inquiries please contact via email."
       />
       <CaptionedImage
+        glowingObjectState={glowingObjectState['galleryImg']}
+        glowChangeHandler={glowChangeHandler}
         name="life"
         hover={imageHoverState.life}
         clickHandler={handleButtonClick}

@@ -67,3 +67,22 @@
   font-weight: 400;
   font-style: italic;
 }
+
+.objectPulse {
+  animation: object-pulse-animation 5s infinite;
+}
+.glowObjectChallengeEffect {
+  transform: rotate(180deg);
+}
+
+.companyProfile figure, .news article {
+  transition: transform .25s ease;
+}
+@keyframes object-pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #00860738;
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(0, 0, 0, 0);
+  }
+}
