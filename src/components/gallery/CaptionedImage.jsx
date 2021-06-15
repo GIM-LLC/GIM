@@ -3,6 +3,7 @@ import style from './CaptionedImage.css';
 const CaptionedImage = ({
   title,
   text,
+  imageSource,
   clickHandler,
   name,
   currentButtonText,
@@ -30,7 +31,7 @@ const CaptionedImage = ({
       onClick={!glowingObjectState ? () => glowChangeHandler('galleryImg') : () => null}
     >
       <figure className={style.captionedImage}>
-        <img src="https://www.placecage.com/g/200/200" alt="cage" />
+        <img src={imageSource} alt="cage" />
       </figure>
       <div
         className={
