@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { GameStateContext } from '../context/GameStateProvider';
 import popupContent from '../components/popup/ghostDialogue';
+import { array } from 'prop-types';
 
 const useGhostPopup = () => {
   const {
@@ -11,14 +12,14 @@ const useGhostPopup = () => {
   } = popupContent;
 
   const { points } = useContext(GameStateContext);
-  
+  const [popup, setPopup] = useState(original);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [canClose, setCanClose] = useState(true);
   const [eventsTriggered, setEventsTriggered] = useState({
     pointFive: false,
     pointTen: false,
     pointFifteen: false
   });
-  const [popup, setPopup] = useState(original);
-  const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
     // when points change, check to see if value meets the required thresholds
@@ -47,11 +48,22 @@ const useGhostPopup = () => {
     setSlideIndex(prev => prev + 1);
   };
 
+  useEffect(() => {
+    slideIndex >= (popup.largeText.length - 1)
+      ? setCanClose(true)
+      : setCanClose(false);
+  }, [popup, slideIndex]);
+
   const justATest = () => {
     setPopup(pointFive);
   };
 
-  return { popup, slideIndex, getNextSlide, justATest };
+  return { 
+    popup, 
+    slideIndex, 
+    canClose,
+    getNextSlide, 
+    justATest };
 };
 
 export default useGhostPopup;
