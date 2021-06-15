@@ -3,6 +3,8 @@
 // if they do not solve within the timer, increment the failed timeouts and start a new timer
 
 import React, { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 const TIMEOUT_LENGTH = 16000;
 let currentTimeout;
 
@@ -37,6 +39,10 @@ export const GameStateProvider = ({ children }) => {
       {children}
     </GameStateContext.Provider>
   );
+};
+
+GameStateProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 export const GameStateContext = createContext();
