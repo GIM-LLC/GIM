@@ -5,13 +5,23 @@ import style from './Gallery.css';
 import { useContext } from 'react';
 import { GameStateContext } from '../../context/GameStateProvider';
 
-const Gallery = () => {
+const Gallery = ({ glowingObjectState, glowChangeHandler }) => {
+  const {
+    imageHoverState,
+    buttonState,
+    allTrue,
+    handleButtonClick,
+    handleMouseOn,
+    handleMouseOff,
+  } = useGalleryImageButtons();
+  
   const { points, failedTimeouts } = useContext(GameStateContext);
 
-  const { imageHoverState, buttonState, allTrue, handleButtonClick, handleMouseOn, handleMouseOff } = useGalleryImageButtons();
   return (
     <section className={style.gallery}>
       <CaptionedImage
+        glowingObjectState={null}
+        glowChangeHandler={() => null}
         name="stockholder"
         hover={imageHoverState.stockholder}
         clickHandler={handleButtonClick}
@@ -24,6 +34,8 @@ const Gallery = () => {
         imageSource={ points >= 6 ? '/assets/networking3.jpg' : (points >= 4 ? '/assets/networking2.jpg' : '/assets/networking1.jpg') }
       />
       <CaptionedImage
+        glowingObjectState={null}
+        glowChangeHandler={() => null}
         name="employment"
         hover={imageHoverState.employment}
         clickHandler={handleButtonClick}
@@ -36,6 +48,8 @@ const Gallery = () => {
         imageSource={ points >= 5 ? '/assets/helpdesk3.jpg' : (failedTimeouts >= 1 ? '/assets/helpdesk2.jpg' : '/assets/helpdesk1.jpg') }
       />
       <CaptionedImage
+        glowingObjectState={glowingObjectState['galleryImg']}
+        glowChangeHandler={glowChangeHandler}
         name="life"
         hover={imageHoverState.life}
         clickHandler={handleButtonClick}
