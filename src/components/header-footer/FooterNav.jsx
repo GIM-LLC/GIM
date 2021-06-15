@@ -1,41 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
+import useGhostSocialIcons from '../../hooks/useGhostSocialIcons';
+import useFooterTitles from '../../hooks/useFooterTitles';
 import style from './Footer.css';
-import { GameStateContext } from '../../context/GameStateProvider';
-import { socket } from '../../context/SocketProvider';
-// import { SocketContext } from '../../context/SocketProvider';
-
-
 
 const FooterNav = () => {
-  // const socket = useContext(SocketContext);
-  const { incrementPoints } = useContext(GameStateContext);
-
-  const [titleOne, setTitleOne] = useState('our people');
-  const [titleTwo, setTitleTwo] = useState('why GIM');
-  const [titleThree, setTitleThree] = useState('our products');
-  const [titleFour, setTitleFour] = useState('contact us');
-
-  const [totalFooterClicks, setTotalFooterClicks] = useState(0);
-  const incrementFooterPoints = () => setTotalFooterClicks((prev) => prev + 1);
-
-
-  useEffect(() => {
-    // socket.on('socketFooterTitleClick', (newCount) => {
-    //   incrementFooterPoints(newCount);
-    // });
-    // socket.emit('footerTitleClick', totalFooterClicks + 1);
-
-    if(totalFooterClicks === 4) {
-      incrementPoints(2, console.log('increment points activated'));
-    }
-  }, [totalFooterClicks]);
+  const { iconGhostState, handleIconClick } = useGhostSocialIcons();
+  const [footerTitleGhostState, setFooterTitleGhostState] = useFooterTitles();
 
 
   return (
     <nav>
       <ul>
 	  	  <li className={style.footerListItem}>
-          <p className={style.headers} onClick={() => { setTitleOne('HELP'); incrementFooterPoints();}}>{titleOne}</p>
+          <p className={style.headers} onClick={(e) => { setFooterTitleGhostState(e); footerTitleGhostState.titleOne('HELP'); incrementFooterPoints();}}>{footerTitleGhostState.titleOne}</p>
           <p>Meet the Suppliers</p>
           <p>The Journey</p>
           <p>Leadership</p>
@@ -59,11 +36,67 @@ const FooterNav = () => {
           <p className={style.headers} onClick={() => { setTitleFour('SOUL'); incrementFooterPoints();}}>{titleFour}</p>
           <div className={style.contactUsDiv}>
             <div className={style.iconDiv}>
-              <img className={style.iconImage} src={'/assets/Twitter.png'} alt='twitter-icon' />
-              <img className={style.iconImage} src={'/assets/ig.png'} alt='instagram-icon' />
-              <img className={style.iconImage} src={'/assets/Github_icon.png'} alt='Github_icon' />
-              <img className={style.iconImage} src={'/assets/linkedin-icon-2.png'} alt='linkedin-icon' />
-              <img className={[style.iconImageGhost, style.pulse].join(' ')} src={'/assets/ghostie.png'} alt='ghost-icon' />
+              <img
+                onClick={(e) => handleIconClick(e)}
+                className={
+                  iconGhostState.twitter
+                    ? [style.iconImageGhost, style.pulse].join(' ')
+                    : style.iconImage
+                }
+                src={
+                  !iconGhostState.twitter
+                    ? '/assets/Twitter.png'
+                    : '/assets/ghostie.png'
+                }
+                alt="twitter-icon"
+              />
+              <img
+                onClick={(e) => handleIconClick(e)}
+                className={
+                  iconGhostState.instagram
+                    ? [style.iconImageGhost, style.pulse].join(' ')
+                    : style.iconImage
+                }
+                src={
+                  !iconGhostState.instagram
+                    ? '/assets/ig.png'
+                    : '/assets/ghostie.png'
+                }
+                alt="instagram-icon"
+              />
+              <img
+                onClick={(e) => handleIconClick(e)}
+                className={
+                  iconGhostState.github
+                    ? [style.iconImageGhost, style.pulse].join(' ')
+                    : style.iconImage
+                }
+                src={
+                  !iconGhostState.github
+                    ? '/assets/Github_icon.png'
+                    : '/assets/ghostie.png'
+                }
+                alt="github-icon"
+              />
+              <img
+                onClick={(e) => handleIconClick(e)}
+                className={
+                  iconGhostState.linkedin
+                    ? [style.iconImageGhost, style.pulse].join(' ')
+                    : style.iconImage
+                }
+                src={
+                  !iconGhostState.linkedin
+                    ? '/assets/linkedin-icon-2.png'
+                    : '/assets/ghostie.png'
+                }
+                alt="linkedin-icon"
+              />
+              <img
+                className={[style.iconImageGhost, style.pulse].join(' ')}
+                src={'/assets/ghostie.png'}
+                alt="ghost-icon"
+              />
             </div>
             <div className={style.addressDiv}>
               <p className={style.addressesHeader}>Corporate Offices</p>
@@ -72,9 +105,7 @@ const FooterNav = () => {
               <p className={style.addresses}>Middleton, Nebraska, 68833</p>
             </div>
           </div>
- 
         </li>
-
       </ul>
     </nav>
   );
