@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './Popup.css';
-
 function Popup(props) {
+  
   return (props.trigger) ? (
     <div className={style.popup}>
       <div className={style.popupInner}>
@@ -15,8 +15,9 @@ function Popup(props) {
         />
         <button className={style.popupCloseButton} onClick={() => props.setTrigger(false)}>x</button>
         <button className={style.popupSubmitButton} onClick={() => props.setTrigger(false)}>Subscribe</button>
+        
       </div>
-            
+      <button>TEST</button>
     </div>
   ) : '';
 }

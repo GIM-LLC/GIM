@@ -1,3 +1,4 @@
+import React from 'react';
 const nextSlide = () => {
   // advance the array index for all the dialogue properties
 };
@@ -6,18 +7,26 @@ const closePopup = () => {
   // close the popup
 };
 
-const ghostDialogue = {
+const popupContent = {
+  default: {
+    largeText: 'Join our newsletter to receive the latest updates and promotions.',
+    smallText: 'First time customers get 10% off the first order now!',
+    inputPlaceHolder: '',
+    buttonText: '',
+    buttonFunction: '',
+    canClose: true
+  },
 
   pointFive: {
 
     largeText: [
       'Hello?', 
       'I can almost remember...', 
-      'I\'m... trapped.'
+      'I think I\'m trapped.'
     ],
 
     smallText: [
-      'Whatever you\'re doing, keep doing it.',
+      'I don\'t know what you\'re doing, but keep doing it.',
       'but something\'s... wrong...', 
       'What happened to me?'
     ],
@@ -25,12 +34,12 @@ const ghostDialogue = {
     inputPlaceholder: [
       '...', 
       '...', 
-      '...you died.'
+      '... you died.'
     ],
 
     buttonText: [
-      '>', 
-      '>', 
+      <i key="0" className="fas fa-angle-double-right"></i>, 
+      <i key="1" className="fas fa-angle-double-right"></i>, 
       'I\'m sorry...'
     ],
 
@@ -63,4 +72,4 @@ const ghostDialogue = {
 
 };
 
-export default ghostDialogue;
+export default popupContent;
