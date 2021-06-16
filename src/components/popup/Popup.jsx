@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import style from './Popup.css';
+import usePopupTrigger from '../../hooks/usePopupTrigger';
 import useGhostPopup from '../../hooks/useGhostPopup';
-function Popup(props) {
+
+function Popup({ popupActive, setPopupActive }) {
+  // const { popupActive, setPopupActive } = usePopupTrigger();
+
   const { 
     popup, 
     slideIndex, 
@@ -18,7 +21,9 @@ function Popup(props) {
     buttonText
   } = popup;
 
-  return (props.trigger) ? (
+  console.log(popupActive);
+
+  return popupActive ? (
     <div className={style.popup}>
       <div className={style.popupInner}>
         <p>
@@ -38,7 +43,7 @@ function Popup(props) {
         <button
           className={style.popupCloseButton}
           onClick={() => 
-            canClose ? props.setTrigger(false) 
+            canClose ? setPopupActive(false) 
               : {}}>
             x
         </button>
@@ -47,7 +52,7 @@ function Popup(props) {
           className={style.popupSubmitButton} 
           onClick={() => 
             canClose 
-              ? props.setTrigger(false) 
+              ? setPopupActive(false) 
               : getNextSlide()}>
           {buttonText[slideIndex]}
         </button>
@@ -59,9 +64,4 @@ function Popup(props) {
   ) : '';
 }
 
-Popup.propTypes = {
-  trigger: PropTypes.bool.isRequired,
-  setTrigger: PropTypes.func.isRequired,
-};
-  
 export default Popup;

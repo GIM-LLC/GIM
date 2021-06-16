@@ -1,8 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { GameStateContext } from '../context/GameStateProvider';
+import usePopupTrigger from './usePopupTrigger';
 import popupContent from '../components/popup/ghostDialogue';
 
 const useGhostPopup = () => {
+  const { setPopupActive } = usePopupTrigger();
+
   const {
     pointFive, 
     pointTen, 
@@ -25,16 +28,19 @@ const useGhostPopup = () => {
 
     if(!eventsTriggered.pointFive && points >= 5 && points < 10) {
       setPopup(pointFive);
+      setPopupActive(true);
       setEventsTriggered(prev => ({ ...prev, pointFive: true }));
     }
 
     else if(!eventsTriggered.pointTen && points >= 10 && points < 15) {
       setPopup(pointTen);
+      setPopupActive(true);
       setEventsTriggered(prev => ({ ...prev, pointTen: true }));
     }
 
     else if(!eventsTriggered.pointFifteen && points >= 15) {
       setPopup(pointFifteen);
+      setPopupActive(true);
       setEventsTriggered(prev => ({ ...prev, pointFifteen: true }));
     }
 
