@@ -18,21 +18,21 @@ const useDontClick = () => {
   };
 
   const handleDontMsg = (btnClicked) => {
-    if (btnClicked === 1) {
+    if (btnClicked === 0) {
+      return btnMessages[0];
+    } else if (btnClicked === 1) {
       return btnMessages[1];
     } else if (btnClicked === 2) {
       return btnMessages[2];
-    } else if (btnClicked === 3) {
-      return btnMessages[3];
     } else {
-      return btnMessages[0];
+      return btnMessages[3];
     }
   };
 
-  const handleDontClick = () => {
+  const handleDontClick = (btnClicked) => {
     updateClickPoints();
-    handleDontMsg;
-    socket.emit('ClientDontClick');
+    handleDontMsg(btnClicked);
+    socket.emit('ClientDontClick', btnClicked);
   };
 
   useEffect(() => {
