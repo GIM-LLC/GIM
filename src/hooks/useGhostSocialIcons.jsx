@@ -27,13 +27,11 @@ const useGhostSocialIcons = () => {
     if(Object.values(iconGhostState).every((value) => value)) {
 
       incrementPoints(1);
-      const audio = document.querySelector('#ghost');
+      const audio = document.querySelector('#ghost-icon');
       audio.volume = 0.3;
       audio.play();
     }
     
-  
-   
   }, [iconGhostState]);
 
   const handleIconClick = (e) => {
