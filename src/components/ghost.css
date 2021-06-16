@@ -6,7 +6,7 @@
 	transform: rotate(20deg);
 	background-color: none;
 	transition-property: left, bottom, width;
-  	transition-duration: 1s;
+  	transition-duration: 2s;
   	transition-timing-function: linear;
 }
 
@@ -33,4 +33,10 @@
 	bottom: 275px;
 	width: 13%;
 	cursor: auto;
+}
+
+.positionFive{
+	left: 100%;
+	bottom: 100%;
+	width: 35%;
 }
