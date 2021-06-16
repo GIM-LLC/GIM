@@ -1,11 +1,7 @@
-import { useState, useEffect, useContext } from 'react';
-import { GameStateContext } from '../context/GameStateProvider';
-import usePopupTrigger from './usePopupTrigger';
+import { useState, useEffect } from 'react';
 import popupContent from '../components/popup/ghostDialogue';
 
-const useGhostPopup = () => {
-  const { setPopupActive } = usePopupTrigger();
-
+const useGhostPopup = (setPopupActive) => {
   const {
     pointFive, 
     pointTen, 
@@ -13,7 +9,6 @@ const useGhostPopup = () => {
     original 
   } = popupContent;
 
-  const { points } = useContext(GameStateContext);
   const [popup, setPopup] = useState(original);
   const [slideIndex, setSlideIndex] = useState(0);
   const [canClose, setCanClose] = useState(true);
@@ -23,22 +18,26 @@ const useGhostPopup = () => {
     pointFifteen: false
   });
 
-  useEffect(() => {
+  const handlePointsUpdate = points => {
     // when points change, check to see if value meets the required thresholds
 
     if(!eventsTriggered.pointFive && points >= 5 && points < 10) {
+      setSlideIndex(0);
       setPopup(pointFive);
       setPopupActive(true);
       setEventsTriggered(prev => ({ ...prev, pointFive: true }));
+  
     }
 
     else if(!eventsTriggered.pointTen && points >= 10 && points < 15) {
+      setSlideIndex(0);
       setPopup(pointTen);
       setPopupActive(true);
       setEventsTriggered(prev => ({ ...prev, pointTen: true }));
     }
 
     else if(!eventsTriggered.pointFifteen && points >= 15) {
+      setSlideIndex(0);
       setPopup(pointFifteen);
       setPopupActive(true);
       setEventsTriggered(prev => ({ ...prev, pointFifteen: true }));
@@ -47,7 +46,7 @@ const useGhostPopup = () => {
     // at all other point values, turn off ghost event
     else setPopup(original);
 
-  }, [points]);
+  };
 
   const getNextSlide = () => {
     setSlideIndex(prev => prev + 1);
@@ -67,7 +66,8 @@ const useGhostPopup = () => {
     popup, 
     slideIndex, 
     canClose,
-    getNextSlide, 
+    getNextSlide,
+    handlePointsUpdate,
     justATest };
 };
 

@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import style from './Popup.css';
-import usePopupTrigger from '../../hooks/usePopupTrigger';
 import useGhostPopup from '../../hooks/useGhostPopup';
+import { GameStateContext } from '../../context/GameStateProvider';
 
 function Popup({ popupActive, setPopupActive }) {
-  // const { popupActive, setPopupActive } = usePopupTrigger();
+  const { points } = useContext(GameStateContext);
 
   const { 
     popup, 
     slideIndex, 
     getNextSlide,
     canClose,
+    handlePointsUpdate,
     justATest 
-  } = useGhostPopup();
+  } = useGhostPopup(setPopupActive);
   
   const {
     largeText,
@@ -21,7 +22,9 @@ function Popup({ popupActive, setPopupActive }) {
     buttonText
   } = popup;
 
-  console.log(popupActive);
+  useEffect(() => {
+    handlePointsUpdate(points);
+  }, [points]);
 
   return popupActive ? (
     <div className={style.popup}>

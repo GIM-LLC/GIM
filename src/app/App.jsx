@@ -1,13 +1,12 @@
 import React from 'react';
 import './app.css';
 import { SocketContext, socket } from '../context/SocketProvider';
-import { GameStateContext, GameStateProvider } from '../context/GameStateProvider';
+import { GameStateProvider } from '../context/GameStateProvider';
 import CursorWrapper from '../cursors/CursorWrapper';
 import Popup from '../components/popup/Popup';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function App() {
-  // const { points } = useContext(GameStateContext);
   const [popupActive, setPopupActive] = useState(false);
   
   useEffect(() => {
