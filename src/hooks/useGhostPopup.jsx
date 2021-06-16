@@ -18,34 +18,31 @@ const useGhostPopup = (setPopupActive) => {
     pointFifteen: false
   });
 
+  const triggerPopup = (currentPopup, popupString) => {
+    setSlideIndex(0);
+    setPopup(currentPopup);
+    setPopupActive(true);
+    
+    setEventsTriggered(prev => ({ ...prev, [popupString]: true }));
+  };
+
   const handlePointsUpdate = points => {
     // when points change, check to see if value meets the required thresholds
 
     if(!eventsTriggered.pointFive && points >= 5 && points < 10) {
-      setSlideIndex(0);
-      setPopup(pointFive);
-      setPopupActive(true);
-      setEventsTriggered(prev => ({ ...prev, pointFive: true }));
-  
+      triggerPopup(pointFive, 'pointFive');
     }
 
     else if(!eventsTriggered.pointTen && points >= 10 && points < 15) {
-      setSlideIndex(0);
-      setPopup(pointTen);
-      setPopupActive(true);
-      setEventsTriggered(prev => ({ ...prev, pointTen: true }));
+      triggerPopup(pointTen, 'pointTen');
     }
 
     else if(!eventsTriggered.pointFifteen && points >= 15) {
-      setSlideIndex(0);
-      setPopup(pointFifteen);
-      setPopupActive(true);
-      setEventsTriggered(prev => ({ ...prev, pointFifteen: true }));
+      triggerPopup(pointFifteen, 'pointFifteen');
     }
 
     // at all other point values, turn off ghost event
     else setPopup(original);
-
   };
 
   const getNextSlide = () => {
@@ -58,17 +55,13 @@ const useGhostPopup = (setPopupActive) => {
       : setCanClose(false);
   }, [popup, slideIndex]);
 
-  const justATest = () => {
-    setPopup(pointFifteen);
-  };
-
   return { 
     popup, 
     slideIndex, 
     canClose,
     getNextSlide,
     handlePointsUpdate,
-    justATest };
+  };
 };
 
 export default useGhostPopup;
