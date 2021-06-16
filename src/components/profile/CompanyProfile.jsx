@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './CompanyProfile.css';
 import useGhostStory from '../../hooks/useGhostStory';
+import { GameStateContext } from '../../context/GameStateProvider';
 
 const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
   const { showGhostStory, handleStoryClick } = useGhostStory();
+  const { points, failedTimeouts } = useContext(GameStateContext);
   return (
     <section className={style.companyProfile}>
       <article className={style.story}>
-        <figure 
-          onClick={!glowingObjectState['gimStoryImg'] ? () => glowChangeHandler('gimStoryImg') : () => null}
-          className={glowingObjectState['gimStoryImg'] ? `${style.glowObjectChallengeEffect} ${style.objectPulse}` : style.objectPulse}
-        >
-          <img src="http://placekitten.com/200/200" alt="gim image" />
+        <figure>
+          <img onClick={!glowingObjectState['gimStoryImg'] ? () => glowChangeHandler('gimStoryImg') : () => null}
+            className={glowingObjectState['gimStoryImg'] ? `${style.glowObjectChallengeEffect} ${style.objectPulse}` : style.objectPulse}
+            src={points >= 10 ? '/assets/thumbs3.jpg' : (failedTimeouts >= 3 ? '/assets/thumbs2.jpg' : '/assets/thumbs1.jpg')} alt="gim image" />
         </figure>
         {showGhostStory ? (
           <article onClick={handleStoryClick}>
