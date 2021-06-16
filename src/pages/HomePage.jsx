@@ -6,6 +6,7 @@ import useGlowingObjects from '../hooks/useGlowingObjects';
 import CompanyProfile from '../components/profile/CompanyProfile';
 import Mission from '../components/mission/Mission';
 import Gallery from '../components/gallery/Gallery';
+import Ghostie from '../components/Ghostie';
 
 const HomePage = () => {
   const { allTrue, glowingObjectState, handleGlowChange } = useGlowingObjects();
@@ -21,6 +22,7 @@ const HomePage = () => {
         glowChangeHandler={handleGlowChange}
       />
       <Mission />
+      <Ghostie />
     </main>
   );
 };
