@@ -5,6 +5,7 @@ import style from './HomePage.css';
 import CompanyProfile from '../components/profile/CompanyProfile';
 import Mission from '../components/mission/Mission';
 import Gallery from '../components/gallery/Gallery';
+import Ghostie from '../components/Ghostie';
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
       <CompanyProfile />
       <Gallery />
       <Mission />
+      <Ghostie />
     </main>
   );
 };
