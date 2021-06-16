@@ -46,6 +46,10 @@ const ChatBox = () => {
   };
 
   const handleIncomingMessage = message => {
+    const audio = document.querySelector('#chat-audio');
+    audio.volume = 0.1;
+    audio.play();
+
     setMessages(prev => [...prev, message]);
     if(collapsed) setUnreadMessages(unreadMessages => unreadMessages + 1);
   };

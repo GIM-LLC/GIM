@@ -73,6 +73,9 @@ const useGalleryImageButtons = () => {
     if(answerArray.every(answerItem => buttonArr.includes(answerItem))) {
       setAllTrue(true);
       incrementPoints(2);
+      const audio = document.querySelector('#buttons');
+      audio.volume = 0.3;
+      audio.play();
     }
   }, [buttonState]);
 
