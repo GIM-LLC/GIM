@@ -3,7 +3,7 @@
 // if they do not solve within the timer, increment the failed timeouts and start a new timer
 
 import React, { createContext, useState, useEffect } from 'react';
-const TIMEOUT_LENGTH = 90000;
+const TIMEOUT_LENGTH = 16000;
 let currentTimeout;
 
 export const GameStateProvider = ({ children }) => {

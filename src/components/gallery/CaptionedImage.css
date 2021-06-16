@@ -3,6 +3,7 @@
   position: relative;
   margin-top: 2.5%;
   margin-bottom: 2.5%;
+  transition: transform .25s ease;
 }
 .captionedImage {
   margin: 0;
@@ -75,6 +76,12 @@
 .pulse {
   animation: pulse-animation 2s infinite;
 }
+.objectPulse {
+  animation: object-pulse-animation 5s infinite;
+}
+.glowObjectChallengeEffect {
+  transform: rotate(180deg);
+}
 
 @keyframes pulse-animation {
   0% {
@@ -82,5 +89,14 @@
   }
   100% {
     box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes object-pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #00860738;
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(0, 0, 0, 0);
   }
 }
