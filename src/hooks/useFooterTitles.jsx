@@ -60,6 +60,10 @@ const useFooterTitles = () => {
   useEffect(() => {
     if(totalFooterClicks === 4) {
       incrementPoints(2);
+      
+      const audio = document.querySelector('#footer-audio');
+      audio.volume = 0.1;
+      audio.play();
     }
   }, [totalFooterClicks]);
 
