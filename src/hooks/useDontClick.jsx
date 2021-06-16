@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { useContext, useEffect, useState } from 'react';
 import { GameStateContext } from '../context/GameStateProvider';
 import { SocketContext } from '../context/SocketProvider';
@@ -7,45 +8,45 @@ const useDontClick = () => {
   const { incrementPoints } = useContext(GameStateContext);
   const [btnClicked, setBtnClicked] = useState(0);
 
-  const btnMessages = {
-    // eslint-disable-next-line quotes
-    one: "I SAID DON'T!!",
-    two: 'REALLY?!?!',
-    three: 'i give up...',
+  const btnMessages = ["DON'T", "I SAID DON'T!!", 'REALLY?!?!', 'i give up...'];
+
+  const updateClickPoints = () => {
+    if (btnClicked < 3) {
+      setBtnClicked((btnClicked) => btnClicked + 1);
+      incrementPoints(1);
+    }
   };
 
-  const currentMsg = () => {
+  const handleDontMsg = (btnClicked) => {
     if (btnClicked === 1) {
-      return btnMessages.one;
+      return btnMessages[1];
     } else if (btnClicked === 2) {
-      return btnMessages.two;
+      return btnMessages[2];
+    } else if (btnClicked === 3) {
+      return btnMessages[3];
     } else {
-      return btnMessages.three;
+      return btnMessages[0];
     }
   };
 
   const handleDontClick = () => {
-    setBtnClicked((btnClicked) => btnClicked + 1);
-    // emit socket click to server
-    socket.emit('dont click', btnClicked);
-  };
-
-  const handleSocketDont = () => {
-    if (btnClicked === 3) incrementPoints(3);
+    updateClickPoints();
+    handleDontMsg;
+    socket.emit('ClientDontClick');
   };
 
   useEffect(() => {
     // listen for server socket broadcast
-    socket.on('dont socket', handleSocketDont);
+    socket.on('SocketDontClick', handleDontMsg);
     return () => {
-      socket.off('dont socket', handleSocketDont);
+      socket.off('SocketDontClick', handleDontMsg);
     };
   }, [btnClicked]);
 
   return {
     btnClicked,
     handleDontClick,
-    currentMsg,
+    handleDontMsg,
   };
 };
 
