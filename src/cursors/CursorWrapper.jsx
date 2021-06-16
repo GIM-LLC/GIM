@@ -4,9 +4,15 @@ import { SocketContext } from '../context/SocketProvider';
 import { GameStateContext } from '../context/GameStateProvider';
 import style from './Cursor.css';
 import HomePage from '../pages/HomePage';
+import AboutPage from '../pages/AboutPage';
 import Header from '../components/header-footer/Header';
 import ChatBox from '../components/ChatBox';
 import Footer from '../components/header-footer/Footer';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 
 const CursorWrapper = () => {
   const socket = useContext(SocketContext);
@@ -34,7 +40,7 @@ const CursorWrapper = () => {
   const handleCursorMove = (data) => {
     //if this is a new user add a cursor for them
     // eslint-disable-next-line no-prototype-builtins
-    if (!users.hasOwnProperty(data.id)) {
+    if(!users.hasOwnProperty(data.id)) {
       const cursorWrapper = document.getElementById('cursorWrapper');
       const cursorDiv = document.createElement('img');
       cursors[data.id] = cursorWrapper.appendChild(cursorDiv);
@@ -68,7 +74,7 @@ const CursorWrapper = () => {
   }, [socket]);
 
   useEffect(() => {
-    if (points > 0) {
+    if(points > 0) {
       setGlobalFeedback(true);
       setTimeout(() => {
         setGlobalFeedback(false);
@@ -86,10 +92,24 @@ const CursorWrapper = () => {
       onMouseMove={(e) => handleClientCursor(e)}
       id="cursorWrapper"
     >
-      <Header />
-      <HomePage />
-      <ChatBox />
-      <Footer />
+      <Router>
+        <Header />
+        <Switch>
+          <Route 
+            path='/'
+            exact
+            component={HomePage}
+          />
+
+          <Route 
+            path='/about'
+            exact
+            component={AboutPage}
+          />
+        </Switch>
+        <ChatBox />
+        <Footer />
+      </Router>
     </div>
   );
 };
