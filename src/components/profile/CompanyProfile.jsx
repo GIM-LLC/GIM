@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './CompanyProfile.css';
 import useGhostStory from '../../hooks/useGhostStory';
 
@@ -7,18 +8,22 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
   return (
     <section className={style.companyProfile}>
       <article className={style.story}>
+
         <figure 
           onClick={!glowingObjectState['gimStoryImg'] ? () => glowChangeHandler('gimStoryImg') : () => null}
           className={glowingObjectState['gimStoryImg'] ? `${style.glowObjectChallengeEffect} ${style.objectPulse}` : style.objectPulse}
         >
           <img src="http://placekitten.com/200/200" alt="gim image" />
         </figure>
+
         {showGhostStory ? (
           <article onClick={handleStoryClick}>
-            <h2>The Ghost Story</h2>
+            <h2>A Different Story</h2>
             <p>
-              This is some text about a ghost. There will be some information
-              here. Later. But right now it is just here to fill the space.
+              I don&apos;t know what happened. An accident, maybe? <br />
+              Maybe I was sick, some quiet clot or leak or whatever else might make things go from something to... this. <br />
+              <br />
+              I was at work.
             </p>
           </article>
         ) : (
@@ -33,6 +38,7 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
             </p>
           </article>
         )}
+
       </article>
 
       <section className={style.news}>
@@ -65,6 +71,15 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
       </section>
     </section>
   );
+};
+
+CompanyProfile.propTypes = {
+  glowingObjectState: PropTypes.shape({
+    gimStoryImg: PropTypes.bool.isRequired,
+    galleryImg: PropTypes.bool.isRequired,
+    employeeMemorialSection: PropTypes.bool.isRequired
+  }).isRequired,
+  glowChangeHandler: PropTypes.func.isRequired
 };
 
 export default CompanyProfile;
