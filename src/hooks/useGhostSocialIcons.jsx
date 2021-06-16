@@ -24,7 +24,14 @@ const useGhostSocialIcons = () => {
   }, [socket]);
 
   useEffect(() => {
-    if(Object.values(iconGhostState).every((value) => value)) incrementPoints(1);
+    if(Object.values(iconGhostState).every((value) => value)) {
+
+      incrementPoints(1);
+      const audio = document.querySelector('#ghost-icon');
+      audio.volume = 0.3;
+      audio.play();
+    }
+    
   }, [iconGhostState]);
 
   const handleIconClick = (e) => {
@@ -33,6 +40,7 @@ const useGhostSocialIcons = () => {
         const prevObj = { ...prev };
         prevObj[e.target.alt.split('-')[0]] = true;
         socket.emit('icon change', prevObj);
+        
         return { ...prevObj };
       });
     }

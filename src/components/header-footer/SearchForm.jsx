@@ -35,6 +35,10 @@ const SearchForm = () => {
     setSearchInput('');
     if(prompt === 1) {
       incrementPoints(1);
+      const audio = document.querySelector('#social-icon');
+      audio.volume = 0.2;
+      audio.play();
+
       setPrompt(2);
       setPlaceHolderText('What is my name?');
       setButtonText('GUESS');
@@ -43,6 +47,9 @@ const SearchForm = () => {
       socket.emit('searchSubmit', { newPrompt: 2, points: 0, newPlaceholderTxt: 'What is my name?', newButtonTxt: 'GUESS' });
     } else if(prompt === 2 && searchInput.toUpperCase() === 'ROBIN SMITH') {
       incrementPoints(2);
+      const audio = document.querySelector('#social-icon');
+      audio.volume = 0.2;
+      audio.play();
       setPrompt(3);
       setPlaceHolderText('What is MY core value?');
       socket.emit('searchSubmit', { newPrompt: 3, points: 2, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
@@ -50,6 +57,10 @@ const SearchForm = () => {
       socket.emit('searchSubmit', { newPrompt: 3, points: 0, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
     } else if(prompt === 3 && searchInput.toUpperCase() === 'ESCAPE') {
       incrementPoints(2);
+      const audio = document.querySelector('#social-icon');
+      audio.volume = 0.2;
+      audio.play();
+      
       setPrompt(4);
       setPlaceHolderText('You\'re getting closer');
       setButtonText('HURRY UP!!');
