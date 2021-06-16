@@ -7,17 +7,22 @@ import Popup from '../components/popup/Popup';
 import { useState, useEffect } from 'react';
 
 export default function App() {
-  const [timedPopup, setTimedPopup] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {setTimedPopup(true);}, 9000);
- 
-  }, []);
-  return (
+  const [popupActive, setPopupActive] = useState(false);
   
+  useEffect(() => {
+    setTimeout(() => 
+    {
+      setPopupActive(true);
+    }, 9000);
+  }, []);
+
+  return (
     <SocketContext.Provider value={socket}>
       <GameStateProvider>
-        <Popup trigger={timedPopup} setTrigger={setTimedPopup} />
+        <Popup
+          popupActive={popupActive}
+          setPopupActive={setPopupActive}
+        />
         <CursorWrapper />
       </GameStateProvider>
     </SocketContext.Provider>

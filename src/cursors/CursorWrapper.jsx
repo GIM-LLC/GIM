@@ -30,7 +30,7 @@ const CursorWrapper = () => {
   const handleCursorMove = (data) => {
     //if this is a new user add a cursor for them
     // eslint-disable-next-line no-prototype-builtins
-    if(!users.hasOwnProperty(data.id)) {
+    if (!users.hasOwnProperty(data.id)) {
       const cursorWrapper = document.getElementById('cursorWrapper');
       const cursorDiv = document.createElement('img');
       cursors[data.id] = cursorWrapper.appendChild(cursorDiv);

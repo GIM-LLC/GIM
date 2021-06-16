@@ -10,6 +10,42 @@
   align-items: center;
 }
 
+.hiddenMessage{
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  position: absolute;
+  bottom: 0;
+  grid-area: footer;
+  width: 100vw;
+  height: 4.5em;
+  background-color: rgba(255, 255, 255, 20);
+  font-size: 2em;
+  color: #0bd212e4;
+  padding: 1em;
+  text-align: center;
+  display: none;
+  font-style: italic;
+  opacity: 0;
+}
+
+@keyframes showMsg {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.reveal{
+  display: block;
+  animation: showMsg 3s ease-in-out both;
+}
+
+.hide{
+  display: none;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
 .footer nav {
   width: 80%;
 }
@@ -33,6 +69,11 @@
 .headers {
   color: #f97c00;
   font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.headersTwo {
+  pointer-events: none; 
 }
 
 .contactUsDiv {

@@ -24,11 +24,11 @@ const useGhostSocialIcons = () => {
   }, [socket]);
 
   useEffect(() => {
-    if (Object.values(iconGhostState).every((value) => value)) incrementPoints(1);
+    if(Object.values(iconGhostState).every((value) => value)) incrementPoints(1);
   }, [iconGhostState]);
 
   const handleIconClick = (e) => {
-    if (!Object.values(iconGhostState).every((value) => value)) {
+    if(!Object.values(iconGhostState).every((value) => value)) {
       setIconGhostState((prev) => {
         const prevObj = { ...prev };
         prevObj[e.target.alt.split('-')[0]] = true;
