@@ -6,7 +6,7 @@ import { GameStateContext } from '../context/GameStateProvider';
 
 function Ghostie() {
     const socket = useContext(SocketContext);
-    const { incrementPoints } = useContext(GameStateContext);
+    const { incrementPoints, points } = useContext(GameStateContext);
     const [position, setPosition] = useState(1);
     const [ghostDisable, setGhostDisable] = useState(false);
 
@@ -37,9 +37,10 @@ function Ghostie() {
             onClick={ghostClick}
             disabled={ghostDisable}>
             <img
-                className={position === 2 ? [style.ghost, style.positionTwo].join(' ') :
-                    (position === 3 ? [style.ghost, style.positionThree].join(' ') :
-                        (position === 4 ? [style.ghost, style.positionFour].join(' ') : [style.ghost, style.positionOne].join(' ')))}
+                className={points >= 15 ? [style.ghost, style.positionFive].join(' ') :
+                    (position === 2 ? [style.ghost, style.positionTwo].join(' ') :
+                        (position === 3 ? [style.ghost, style.positionThree].join(' ') :
+                            (position === 4 ? [style.ghost, style.positionFour].join(' ') : [style.ghost, style.positionOne].join(' '))))}
                 src='/assets/yellow-ghostie.png'
                 alt='ghostie' />
         </p>

@@ -15,8 +15,11 @@
   margin-right: 2%;
 }
 
+.story img {
+  max-width: 200px;
+}
+
 .story figure {
-  width: 50%;
   margin-top: 0;
   margin-right: 0.5em;
   margin-bottom: 0;
