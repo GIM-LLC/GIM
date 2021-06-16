@@ -5,6 +5,7 @@ import { GameStateProvider } from '../context/GameStateProvider';
 import CursorWrapper from '../cursors/CursorWrapper';
 import Popup from '../components/popup/Popup';
 import { useState, useEffect } from 'react';
+import LosePopup from '../components/popup/LosePopup';
 
 export default function App() {
   const [popupActive, setPopupActive] = useState(false);
@@ -19,6 +20,7 @@ export default function App() {
     <SocketContext.Provider value={socket}>
       <GameStateProvider>
         <Popup popupActive={popupActive} setPopupActive={setPopupActive} />
+        <LosePopup />
         <CursorWrapper/>
       </GameStateProvider>
     </SocketContext.Provider>

@@ -15,6 +15,9 @@ export const GameStateProvider = ({ children }) => {
   //track amount of times player has failed a timeout
   const [failedTimeouts, setFailedTimeouts] = useState(0);
   const [points, setPoints] = useState(0);
+  const [win, setWin] = useState(false);
+  const [lose, setLose] = useState(false);
+
   const incrementPoints = (points) => setPoints((prev) => prev + points);
   // when the 90 second timer is failed, increment failed timouts and start new timer
   const handleTimeout = () => {
@@ -32,12 +35,39 @@ export const GameStateProvider = ({ children }) => {
       }
       currentTimeout = setTimeout(handleTimeout, TIMEOUT_LENGTH);
     }
+    if(points >= 15) {
+      setWin(true);
+    }
   }, [points]);
+
+  useEffect(() => {
+    if(failedTimeouts >= 5) {
+      setLose(true);
+    }
+  }, [failedTimeouts]);
+
+  // both end state popups should include a replay link and an about us link
+  useEffect(() => {
+    if(win || lose) {
+      // the game is over
+      if(win) {
+        // trigger a win popup
+      }
+      if(lose) {
+        // trigger a lose popup (500 error that takes up whole screen)
+        
+      }
+      // route to about page
+    }
+  }, [win, lose]);
 
   const gameState = {
     failedTimeouts,
     points,
     incrementPoints,
+    win,
+    lose,
+    setLose
   };
 
   return (
