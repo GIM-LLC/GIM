@@ -2,8 +2,10 @@
 //start the 90 second timer, if they complete another event within the time reset timer and do not increment failed timers
 // if they do not solve within the timer, increment the failed timeouts and start a new timer
 
+import PropTypes from 'prop-types';
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { SocketContext } from './SocketProvider';
+
 const TIMEOUT_LENGTH = 16000;
 let currentTimeout;
 
@@ -43,6 +45,10 @@ export const GameStateProvider = ({ children }) => {
       {children}
     </GameStateContext.Provider>
   );
+};
+
+GameStateProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 export const GameStateContext = createContext();
