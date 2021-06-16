@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import style from './Popup.css';
 import useGhostPopup from '../../hooks/useGhostPopup';
 import { GameStateContext } from '../../context/GameStateProvider';
@@ -11,8 +12,7 @@ function Popup({ popupActive, setPopupActive }) {
     slideIndex, 
     getNextSlide,
     canClose,
-    handlePointsUpdate,
-    justATest 
+    handlePointsUpdate 
   } = useGhostPopup(setPopupActive);
   
   const {
@@ -64,5 +64,10 @@ function Popup({ popupActive, setPopupActive }) {
     </div>
   ) : '';
 }
+
+Popup.propTypes = {
+  popupActive: PropTypes.bool.isRequired,
+  setPopupActive: PropTypes.func.isRequired
+};
 
 export default Popup;
