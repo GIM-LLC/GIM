@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { useContext, useEffect, useState } from 'react';
 import { GameStateContext } from '../context/GameStateProvider';
 import { SocketContext } from '../context/SocketProvider';
@@ -7,45 +8,45 @@ const useDontClick = () => {
   const { incrementPoints } = useContext(GameStateContext);
   const [btnClicked, setBtnClicked] = useState(0);
 
-  const btnMessages = {
-    // eslint-disable-next-line quotes
-    one: "I SAID DON'T!!",
-    two: 'REALLY?!?!',
-    three: 'i give up...',
-  };
+  const btnMessages = ["DON'T", "I SAID DON'T!!", 'REALLY?!?!', 'i give up...'];
 
-  const currentMsg = () => {
-    if (btnClicked === 1) {
-      return btnMessages.one;
-    } else if (btnClicked === 2) {
-      return btnMessages.two;
-    } else {
-      return btnMessages.three;
+  const updateClickPoints = () => {
+    if (btnClicked < 3) {
+      setBtnClicked((btnClicked) => btnClicked + 1);
+      incrementPoints(1);
     }
   };
 
-  const handleDontClick = () => {
-    setBtnClicked((btnClicked) => btnClicked + 1);
-    // emit socket click to server
-    socket.emit('dont click', btnClicked);
+  const handleDontMsg = (btnClicked) => {
+    if (btnClicked === 0) {
+      return btnMessages[0];
+    } else if (btnClicked === 1) {
+      return btnMessages[1];
+    } else if (btnClicked === 2) {
+      return btnMessages[2];
+    } else {
+      return btnMessages[3];
+    }
   };
 
-  const handleSocketDont = () => {
-    if (btnClicked === 3) incrementPoints(3);
+  const handleDontClick = (btnClicked) => {
+    updateClickPoints();
+    handleDontMsg(btnClicked);
+    socket.emit('ClientDontClick', btnClicked);
   };
 
   useEffect(() => {
     // listen for server socket broadcast
-    socket.on('dont socket', handleSocketDont);
+    socket.on('SocketDontClick', handleDontMsg);
     return () => {
-      socket.off('dont socket', handleSocketDont);
+      socket.off('SocketDontClick', handleDontMsg);
     };
   }, [btnClicked]);
 
   return {
     btnClicked,
     handleDontClick,
-    currentMsg,
+    handleDontMsg,
   };
 };
 

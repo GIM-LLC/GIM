@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SocketContext } from '../context/SocketProvider';
+import { GameStateContext } from '../context/GameStateProvider';
 import style from './Cursor.css';
 import HomePage from '../pages/HomePage';
 import Header from '../components/header-footer/Header';
@@ -9,6 +10,9 @@ import Footer from '../components/header-footer/Footer';
 
 const CursorWrapper = () => {
   const socket = useContext(SocketContext);
+  const [globalFeedback, setGlobalFeedback] = useState(false);
+  const { points } = useContext(GameStateContext);
+
   //CURSORS
   //current client cursor movement handling
 
@@ -63,9 +67,22 @@ const CursorWrapper = () => {
     };
   }, [socket]);
 
+  useEffect(() => {
+    if (points > 0) {
+      setGlobalFeedback(true);
+      setTimeout(() => {
+        setGlobalFeedback(false);
+      }, 1500);
+    }
+  }, [points]);
+
   return (
     <div
-      className={style.cursorWrapper}
+      className={
+        globalFeedback
+          ? `${style.cursorWrapper} ${style.shakeElement}`
+          : style.cursorWrapper
+      }
       onMouseMove={(e) => handleClientCursor(e)}
       id="cursorWrapper"
     >
