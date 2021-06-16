@@ -35,6 +35,10 @@ const useGlowingObjects = () => {
   useEffect(() => {
     if(Object.values(glowingObjectState).every((value) => value)) {
       incrementPoints(1);
+
+      const audio = document.querySelector('#three-flip');
+      audio.volume = 0.2;
+      audio.play();
     }
   }, [glowingObjectState]);
 
