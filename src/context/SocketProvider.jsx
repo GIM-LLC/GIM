@@ -1,7 +1,6 @@
 import { createContext } from 'react';
 import io from 'socket.io-client';
 
-
 // this URL is the sandbox
 // const sandbox = 'https://gim-llc.herokuapp.com';
 

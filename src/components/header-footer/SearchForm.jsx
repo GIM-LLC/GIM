@@ -30,7 +30,8 @@ const SearchForm = () => {
     setSearchInput(newInput);
   };
 
-  const handleSearchClick = () => {
+  const handleSearchClick = (e) => {
+    e.preventDefault();
     setSearchInput('');
     if(prompt === 1) {
       incrementPoints(1);
