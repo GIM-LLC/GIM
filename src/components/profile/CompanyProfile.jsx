@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React from 'react';
-import PropTypes from 'prop-types';
-=======
 import React, { useContext } from 'react';
->>>>>>> fc8e2c71d9e7f8c17e34edfe9e4631509ebaac9e
+import PropTypes from 'prop-types';
 import style from './CompanyProfile.css';
 import useGhostStory from '../../hooks/useGhostStory';
 import { GameStateContext } from '../../context/GameStateProvider';
@@ -25,9 +21,10 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
             <h2>A Different Story</h2>
             <p>
               I don&apos;t know what happened. An accident, maybe? <br />
-              Maybe I was sick, some quiet clot or leak or whatever else might make things go from nothing to... nothing, I guess. <br />
               <br />
-              I was at work.
+              But this isn&apos;t what I thought it would feel like. <br />
+              <br />
+              I was at work. Late. <br />
             </p>
           </article>
         ) : (
