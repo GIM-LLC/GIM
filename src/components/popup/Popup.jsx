@@ -61,8 +61,6 @@ function Popup({ popupActive, setPopupActive }) {
         </button>
         
       </div>
-      <button onClick={justATest}>TEST</button>
-      <button onClick={getNextSlide}>next</button>
     </div>
   ) : '';
 }
