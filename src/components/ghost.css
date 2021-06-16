@@ -5,6 +5,7 @@
 	opacity: 40%;
 	transform: rotate(20deg);
 	background-color: none;
+	transition:left 1s ease, bottom 1s ease;
 }
 
 .positionOne{
