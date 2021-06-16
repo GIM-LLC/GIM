@@ -12,7 +12,7 @@ const HomePage = () => {
   const { allTrue, glowingObjectState, handleGlowChange } = useGlowingObjects();
 
   return (
-    <main className={style.homePage}>
+    <main className={`${style.homePage} ${style.shakeElement}`}>
       <CompanyProfile
         glowingObjectState={glowingObjectState}
         glowChangeHandler={handleGlowChange}
