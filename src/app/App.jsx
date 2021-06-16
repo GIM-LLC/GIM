@@ -8,10 +8,9 @@ import { useState, useEffect } from 'react';
 
 export default function App() {
   const [popupActive, setPopupActive] = useState(false);
-  
+
   useEffect(() => {
-    setTimeout(() => 
-    {
+    setTimeout(() => {
       setPopupActive(true);
     }, 9000);
   }, []);
@@ -19,11 +18,8 @@ export default function App() {
   return (
     <SocketContext.Provider value={socket}>
       <GameStateProvider>
-        <Popup
-          popupActive={popupActive}
-          setPopupActive={setPopupActive}
-        />
-        <CursorWrapper />
+        <Popup popupActive={popupActive} setPopupActive={setPopupActive} />
+        <CursorWrapper/>
       </GameStateProvider>
     </SocketContext.Provider>
   );
