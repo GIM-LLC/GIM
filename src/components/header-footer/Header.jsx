@@ -15,6 +15,9 @@ const Header = () => {
     setHeaderClicks((prev) => prev + 1);
     if(headerClicks + 1 >= 4) {
       incrementPoints(1);
+      const audio = document.querySelector('#GIM-title-audio');
+      audio.volume = 0.1;
+      audio.play();
     }
   };
 
