@@ -3,22 +3,35 @@ import style from './CaptionedImage.css';
 const CaptionedImage = ({
   title,
   text,
+  imageSource,
   clickHandler,
   name,
   currentButtonText,
   mouseHoverOnHandler,
   mouseHoverOffHandler,
   hover,
-  allTrue
+  allTrue,
+  glowChangeHandler,
+  glowingObjectState
 }) => {
+  const defaultClassName =
+    name === 'life'
+      ? `${style.container} ${style.objectPulse}`
+      : style.container;
+
   return (
     <div
-      className={style.container}
+      className={
+        name === 'life' && glowingObjectState
+          ? `${defaultClassName} ${style.glowObjectChallengeEffect}`
+          : defaultClassName
+      }
       onMouseEnter={() => mouseHoverOnHandler(name)}
       onMouseLeave={() => mouseHoverOffHandler(name)}
+      onClick={!glowingObjectState ? () => glowChangeHandler('galleryImg') : () => null}
     >
       <figure className={style.captionedImage}>
-        <img src="https://www.placecage.com/g/200/200" alt="cage" />
+        <img src={imageSource} alt="cage" />
       </figure>
       <div
         className={

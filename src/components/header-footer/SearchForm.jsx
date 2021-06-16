@@ -30,7 +30,8 @@ const SearchForm = () => {
     setSearchInput(newInput);
   };
 
-  const handleSearchClick = () => {
+  const handleSearchClick = (e) => {
+    e.preventDefault();
     setSearchInput('');
     if(prompt === 1) {
       incrementPoints(1);
@@ -51,7 +52,7 @@ const SearchForm = () => {
       incrementPoints(2);
       setPrompt(4);
       setPlaceHolderText('You\'re getting closer');
-      setButtonText('GO FASTER');
+      setButtonText('HURRY UP!!');
       disableInputs(true);
       socket.emit('searchSubmit', { newPrompt: 4, points: 2, newPlaceholderTxt: 'You\'re getting closer', newButtonTxt: 'GO FASTER' });
     } else if(searchInput.toUpperCase() === 'DUCK') {
@@ -83,19 +84,21 @@ const SearchForm = () => {
 
   return (
     <section>
-      <input
-        type="text"
-        placeholder={placeHolderText}
-        onChange={handleInputChange}
-        disabled={searchInputDisable}
-        value={searchInput}
-        className={prompt === 2 || prompt === 3 ? [style.inputBlink, style.pulse].join(' ') : ''}
-      />
-      <button
-        onClick={handleSearchClick}
-        disabled={searchBtnDisable}>
-        {buttonText}
-      </button>
+      <form>
+        <input
+          type="text"
+          placeholder={placeHolderText}
+          onChange={handleInputChange}
+          disabled={searchInputDisable}
+          value={searchInput}
+          className={prompt === 2 || prompt === 3 ? [style.inputBlink, style.pulse].join(' ') : ''}
+        />
+        <button
+          onClick={handleSearchClick}
+          disabled={searchBtnDisable}>
+          {buttonText}
+        </button>
+      </form>
     </section>
   );
 };
