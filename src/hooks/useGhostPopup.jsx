@@ -28,11 +28,15 @@ const useGhostPopup = (setPopupActive) => {
   const handlePointsUpdate = (points) => {
     // when points change, check to see if value meets the required thresholds
 
-    if (!eventsTriggered.pointFive && points >= 5 && points < 10) {
+    if(!eventsTriggered.pointFive && points >= 5 && points < 10) {
       triggerPopup(pointFive, 'pointFive');
-    } else if (!eventsTriggered.pointTen && points >= 10 && points < 15) {
+    }
+
+    else if(!eventsTriggered.pointTen && points >= 10 && points < 15) {
       triggerPopup(pointTen, 'pointTen');
-    } else if (!eventsTriggered.pointFifteen && points >= 15) {
+    }
+
+    else if(!eventsTriggered.pointFifteen && points >= 15) {
       triggerPopup(pointFifteen, 'pointFifteen');
     }
 
