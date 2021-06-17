@@ -48,18 +48,19 @@ const useGhostPopup = (setPopupActive) => {
     setSlideIndex((prev) => prev + 1);
   };
 
+ const getNextSlide = () => {
+    setSlideIndex(prev => prev + 1);
+  };
+
   const endGameClick = () => {
+    // set win to true
     setWin(true);
-    <Link to="/about" />;
+    // redirect to about page
+    window.location.replace('/about');
   };
 
   useEffect(() => {
-    // if (slideIndex >= (popup.largeText.length - 1) && popup === pointFifteen) {
-    //   console.log('INSIDE THE ENDGAME BLOCK');
-    //   setNextButtonFunc(() => endGameClick());
-    // }
-
-    slideIndex >= popup.largeText.length - 1
+    slideIndex >= (popup.largeText.length - 1)
       ? setCanClose(true)
       : setCanClose(false);
   }, [popup, slideIndex]);
