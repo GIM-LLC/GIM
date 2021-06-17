@@ -88,6 +88,9 @@ const SearchForm = ({ showDuck }) => {
     setPlaceHolderText(newPlaceholderTxt);
     setButtonText(newButtonTxt);
     setSearchInput('');
+    const audio = document.querySelector('#social-icon');
+    audio.volume = 0.2;
+    audio.play();
 
     if (newPrompt >= 4) {
       const audio = document.querySelector('#social-icon');
