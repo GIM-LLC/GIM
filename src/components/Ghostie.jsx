@@ -33,6 +33,9 @@ function Ghostie() {
         });
         socket.on('socket ghost points', () => {
             incrementPoints(3);
+            const audio = document.querySelector('#ghostie');
+            audio.volume = 0.3;
+            audio.play();
         });
     }, [socket]);
 
