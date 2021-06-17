@@ -52,11 +52,9 @@ const useGhostPopup = (setPopupActive) => {
     setSlideIndex(prev => prev + 1);
   };
 
-  const endGameClick = () => {
-    // set win to true
+const endGameClick = () => {
     setWin(true);
-    // redirect to about page
-    window.location.replace('/about');
+    <Link to="/about" />;
   };
 
   useEffect(() => {
