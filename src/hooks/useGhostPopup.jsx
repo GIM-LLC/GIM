@@ -44,10 +44,6 @@ const useGhostPopup = (setPopupActive) => {
     else setPopup(original);
   };
 
-  const getNextSlide = () => {
-    setSlideIndex((prev) => prev + 1);
-  };
-
  const getNextSlide = () => {
     setSlideIndex(prev => prev + 1);
   };
