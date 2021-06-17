@@ -11,9 +11,9 @@ function Ghostie() {
     const [ghostDisable, setGhostDisable] = useState(false);
 
     const ghostClick = () => {
-        if(ghostDisable) {
+        if (ghostDisable) {
             setGhostDisable(true);
-        } else if(position === 4) {
+        } else if (position === 4) {
             incrementPoints(3);
             const audio = document.querySelector('#ghostie');
             audio.volume = 0.3;

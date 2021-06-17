@@ -6,9 +6,10 @@ import { SocketContext } from '../context/SocketProvider';
 const useDontClick = () => {
   const socket = useContext(SocketContext);
   const { incrementPoints } = useContext(GameStateContext);
+
   const [btnClicked, setBtnClicked] = useState(0);
 
-  const btnMessages = ["DON'T", "I SAID DON'T!!", 'REALLY?!?!', 'i give up...'];
+  const btnMessages = ["DON'T", "I SAID DON'T!!", 'REALLY?!?!', 'GET ME OUT OF HERE'];
 
   const updateClickPoints = () => {
     if (btnClicked < 3) {
@@ -29,19 +30,25 @@ const useDontClick = () => {
     }
   };
 
-  const handleDontClick = (btnClicked) => {
+  const handleDontClick = () => {
     updateClickPoints();
     handleDontMsg(btnClicked);
-    socket.emit('ClientDontClick', btnClicked);
+    socket.emit('ClientDontClick', btnClicked + 1);
+  };
+
+  const handleSocketDontMsg = (newBtnClicked) => {
+    if (newBtnClicked < 4) {
+      setBtnClicked(newBtnClicked);
+      incrementPoints(1);
+    }
   };
 
   useEffect(() => {
-    // listen for server socket broadcast
-    socket.on('SocketDontClick', handleDontMsg);
+    socket.on('SocketDontClick', handleSocketDontMsg);
     return () => {
-      socket.off('SocketDontClick', handleDontMsg);
+      socket.off('SocketDontClick', handleSocketDontMsg);
     };
-  }, [btnClicked]);
+  }, [socket]);
 
   return {
     btnClicked,

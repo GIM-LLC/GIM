@@ -7,15 +7,9 @@ import useDontClick from '../../hooks/useDontClick';
 
 const HeaderNav = () => {
   const socket = useContext(SocketContext);
-  const [hover, setHover] = useState({
-    about: false,
-    locations: false,
-    'join us': false,
-    press: false,
-    investors: false,
-  });
+  const [hover, setHover] = useState({});
 
-  const { handleDontClick, handleDontMsg, btnClicked } = useDontClick();
+  const { btnClicked, handleDontClick, handleDontMsg } = useDontClick();
   const currentMsg = handleDontMsg(btnClicked);
 
   const handleLinkHover = (e) => {
@@ -114,6 +108,7 @@ const HeaderNav = () => {
                   href="#"
                   onClick={handleDontClick}
                   disabled={btnClicked === 3}
+                  className={btnClicked === 3 ? style.noClicky : ''}
                 >
                   {currentMsg}
                 </a>

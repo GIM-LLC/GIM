@@ -69,8 +69,8 @@
   color: #f97c00;
 }
 
-.specialSubLink:hover {
-  color: #ffec5f;
+.noClicky, .noClicky:hover {
+  text-shadow: 0 0 .5em #0bd212e4;
 }
 
 .inputBlink {
