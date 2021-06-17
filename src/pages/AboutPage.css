@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vh;
+}
+
+body {
+  /* FONTS */
+  --headerFont: "'Cinzel', serif";
+  --bodyFont: "'Fira Sans Extra Condensed', sans-serif";
+
+  /* COLORS */
+  --bodyText: #3a3a3a;
+  --bgAreaBlock: #c6bcae;
+  --pageBg: #eae4dc;
+  --headerTxt: #3f8a72;
+  --highlight: #f97c00;
+  --ghosty: #ffec5f;
+}
+
+.makersPage {
+  height: 100%;
+  width: 100%;
+}
