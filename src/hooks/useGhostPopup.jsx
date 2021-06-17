@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import popupContent from '../components/popup/ghostDialogue';
+import { GameStateContext } from '../context/GameStateProvider';
 
 const useGhostPopup = (setPopupActive) => {
+  const { setWin } = useContext(GameStateContext);
+
   const { pointFive, pointTen, pointFifteen, original } = popupContent;
 
   const [popup, setPopup] = useState(original);
@@ -16,7 +19,7 @@ const useGhostPopup = (setPopupActive) => {
   const triggerPopup = (currentPopup, popupString) => {
     setSlideIndex(0);
     setPopup(currentPopup);
-    setPopupActive(false); // TODO reset back to true
+    setPopupActive(true);
 
     setEventsTriggered((prev) => ({ ...prev, [popupString]: true }));
   };
@@ -40,7 +43,22 @@ const useGhostPopup = (setPopupActive) => {
     setSlideIndex((prev) => prev + 1);
   };
 
+  const endGameClick = () => {
+    // set win to true
+    setWin(true);
+
+    console.log('WHY AM I HERE');
+
+    // redirect to about page
+    window.location.replace('/about');
+  };
+
   useEffect(() => {
+    // if (slideIndex >= (popup.largeText.length - 1) && popup === pointFifteen) {
+    //   console.log('INSIDE THE ENDGAME BLOCK');
+    //   setNextButtonFunc(() => endGameClick());
+    // }
+
     slideIndex >= popup.largeText.length - 1
       ? setCanClose(true)
       : setCanClose(false);
@@ -52,6 +70,7 @@ const useGhostPopup = (setPopupActive) => {
     canClose,
     getNextSlide,
     handlePointsUpdate,
+    endGameClick,
   };
 };
 

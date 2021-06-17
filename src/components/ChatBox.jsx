@@ -6,27 +6,11 @@ const ChatBox = () => {
   const socket = useContext(SocketContext);
 
   const [messages, setMessages] = useState([]);
-  const [onlineUsers, setOnlineUsers] = useState([]);
-
   // tracking whether there are messages from other users that the client player has not read
   const [unreadMessages, setUnreadMessages] = useState(0);
 
   const [inputMessage, setInputMessage] = useState('');
   const [collapsed, setCollapsed] = useState(true);
-
-  // const handleCurrentUsers = userArray => {
-  //   setOnlineUsers(userArray.map(user => ({ user })));
-  // };
-
-  const handleNewUser = userObj => {
-    setOnlineUsers(prev => [...prev, userObj]);
-  };
-
-  const removeUser = socketId => {
-    const usersCopy = onlineUsers;
-    delete usersCopy[socketId];
-    setOnlineUsers(usersCopy);
-  };
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -67,19 +51,12 @@ const ChatBox = () => {
   }, [messages]);
 
   useEffect(() => {
-    // socket.on('current users', handleCurrentUsers);
     socket.on('socket message', handleIncomingMessage);
-    socket.on('new user', handleNewUser);
-    socket.on('removeCursor', removeUser);
     return () => {
       // socket.off('current users', handleCurrentUsers);
       socket.off('socket message', handleIncomingMessage);
-      socket.off('new user', handleNewUser);
-      socket.off('removeCursor', removeUser);
     };
   }, [socket]);
-
-  // console.log(onlineUsers);
 
   return (
     <div>
@@ -104,10 +81,7 @@ const ChatBox = () => {
         >
           <div className={style.topBar}>
             <span className={style.online}>
-              {onlineUsers.length === 1
-                ? 'There is 1 other user online.'
-                : `There are ${onlineUsers.length} other users online.`
-              }
+             You are online with our virtual assistant
             </span>
             <span className={style.closeSpan} onClick={() => setCollapsed(true)}>X</span>
           </div>

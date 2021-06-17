@@ -10,9 +10,12 @@ const LosePopup = () => {
       <div className={style.losingPopupInner}>
         <h2>500 Internal Server Error</h2>
         <p>Contact your administrator.</p>
-        <p>(semi readable THANKS FOR TRYING!)</p>
+        <p className={style.ghostThanks}>THANKS FOR TRYING</p>
         <span className={style.links}>
-          <a href="/about" onClick={() => setLose(false)}>
+          <a
+            href="/about"
+            onClick={() => setLose(false)} // should change to use the normal popup logic, not lose state
+          >
             About
           </a>
           <a
