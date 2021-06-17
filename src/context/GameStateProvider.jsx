@@ -19,11 +19,13 @@ export const GameStateProvider = ({ children }) => {
   const [lose, setLose] = useState(false);
 
   const incrementPoints = (points) => setPoints((prev) => prev + points);
+  
   // when the 90 second timer is failed, increment failed timouts and start new timer
   const handleTimeout = () => {
     setFailedTimeouts((prev) => prev + 1);
     currentTimeout = setTimeout(handleTimeout, TIMEOUT_LENGTH);
   };
+
   //check for a change in points -> then start a new timer, clear old timer if it exists
   useEffect(() => {
     if(points > 0 && points < 4) {
@@ -50,14 +52,11 @@ export const GameStateProvider = ({ children }) => {
   useEffect(() => {
     if(win || lose) {
       // the game is over
-      if(win) {
-        // trigger a win popup
-      }
-      if(lose) {
-        // trigger a lose popup (500 error that takes up whole screen)
-        
-      }
-      // route to about page
+      
+      // disable click listeners?
+
+      // turn off the timer
+      clearTimeout(currentTimeout);
     }
   }, [win, lose]);
 
