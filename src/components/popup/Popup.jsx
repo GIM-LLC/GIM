@@ -27,7 +27,7 @@ function Popup({ popupActive, setPopupActive }) {
   }, [points]);
 
   return popupActive ? (
-    <div className={style.popup}>
+    <div className={ points <= 15 ? style.popup : style.winPopup}>
       <div className={style.popupInner}>
         <p>
           {largeText[slideIndex]}
