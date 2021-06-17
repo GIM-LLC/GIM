@@ -24,7 +24,6 @@ function Popup({ popupActive, setPopupActive }) {
   } = popup;
 
   const winAndRedirect = () => {
-    console.log('end game function broken?');
     setPopupActive(false);
     endGameClick();
   };
