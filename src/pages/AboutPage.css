@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* FONTS */
+  --headerFont: "'Cinzel', serif";
+  --bodyFont: "'Fira Sans Extra Condensed', sans-serif";
+
+  /* COLORS */
+  --bodyText: #3a3a3a;
+  --bgAreaBlock: #c6bcae;
+  --pageBg: #eae4dc;
+  --navTxt: #3f8a72;
+  --highlight: #f97c00;
+  --ghosty: #ffec5f;
+}
+
+.makerHdr {
+  grid-area: header;
+  background-color: var(--bgAreaBlock);
+}
+
+.headerTxt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--headerFont);
+  color: var(--bodyTxt);
+}
+
+.headerTxt > h3 {
+  color: var(--bodyText) !important;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  color: var(--navTxt);
+}
+
+.navBar > ul {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  list-style: none inside;
+  padding-left: unset;
+  margin: 0.25rem 1rem 0.25rem 1rem;
+}
+
+.main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.makers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.makerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 2rem;
+}
+
+.makerCard figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.makerCard img {
+  border-radius: 10px;
+}
