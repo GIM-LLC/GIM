@@ -12,8 +12,8 @@ const LosePopup = () => {
         <p>
 				Contact your administrator.
         </p>
-        <p>
-				(semi readable THANKS FOR TRYING!)
+        <p className={style.ghostThanks}>
+				THANKS FOR TRYING!
         </p>
         <span className={style.links}>
           <a href="/about"
