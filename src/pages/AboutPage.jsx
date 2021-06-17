@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../components/header-footer/Header';
 import Footer from '../components/header-footer/Footer';
 import MakerCard from '../components/makers/MakerCard';
-// import style from './AboutPage.css';
+import MakerHeader from '../components/makers/MakerHeader';
+import style from './AboutPage.css';
 
 const AboutPage = () => {
   const makers = [
@@ -12,15 +12,15 @@ const AboutPage = () => {
       imageX: 'devonx.jpg',
       title: 'Software Engineer',
       // pronouns: "what do you all think about including in the page?"
-      bio: 'bio placeholder',
+      bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla molestias corrupti quos id aut, inventore maiores adipisci in est beatae dignissimos deserunt enim dolorem vero commodi quam facilis sint at!',
     },
     {
       name: 'Julianne',
       image: 'juli.jpg',
       imageX: 'julix.jpg',
       title: 'Software Engineer',
-      // pronouns: "what do you all think about including in the page?"
-      bio: 'bio placeholder',
+      pronouns: 'she/her',
+      bio: 'Juli is a Full Stack Software Engineer with a passion for learning and making the world a better place. She is fasinated by science and astronomy and would love to merge her two passions one day!',
     },
     {
       name: 'Cameron',
@@ -28,7 +28,7 @@ const AboutPage = () => {
       imageX: 'cameronx.jpg',
       title: 'Software Engineer',
       // pronouns: "what do you all think about including in the page?"
-      bio: 'bio placeholder',
+      bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla molestias corrupti quos id aut, inventore maiores adipisci in est beatae dignissimos deserunt enim dolorem vero commodi quam facilis sint at!',
     },
     {
       name: 'Katrina',
@@ -36,7 +36,7 @@ const AboutPage = () => {
       imageX: 'katrinax.jpg',
       title: 'Software Engineer',
       // pronouns: "what do you all think about including in the page?"
-      bio: 'bio placeholder',
+      bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla molestias corrupti quos id aut, inventore maiores adipisci in est beatae dignissimos deserunt enim dolorem vero commodi quam facilis sint at!',
     },
     {
       name: 'Casey',
@@ -44,23 +44,19 @@ const AboutPage = () => {
       imageX: 'caseyx.jpg',
       title: 'Software Engineer',
       // pronouns: "what do you all think about including in the page?"
-      bio: 'bio placeholder',
+      bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla molestias corrupti quos id aut, inventore maiores adipisci in est beatae dignissimos deserunt enim dolorem vero commodi quam facilis sint at!',
     },
   ];
 
   return (
     <>
-      <Header />
-      <main className={'makersPage'}>
-        <h1>Meet the Makers of Robin Smith, the Ghost In The Machine</h1>
-        <h3>
-          Devon Wolfkiel | Julianne Vela | Cameron Zimmerman | Katrina Cloyd |
-          Casey Warren
-        </h3>
-        <section className={'makers'}>
-          {makers.map((maker) => {
-            <MakerCard key={maker.name} maker={maker} />;
-          })}
+      <MakerHeader />
+      <main className={style.main}>
+        <h2>Meet the Makers of Robin Smith, the Ghost In The Machine</h2>
+        <section className={style.makers}>
+          {makers.map((maker) => (
+            <MakerCard maker={maker} key={maker.name} />
+          ))}
         </section>
       </main>
       <Footer />

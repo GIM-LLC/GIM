@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import style from './Popup.css';
 import { GameStateContext } from '../../context/GameStateProvider';
@@ -12,21 +13,20 @@ const LosePopup = () => {
         <p>Contact your administrator.</p>
         <p className={style.ghostThanks}>THANKS FOR TRYING</p>
         <span className={style.links}>
-          <a
-            href="/about"
+          <Link
+            to="/about"
             onClick={() => setLose(false)} // should change to use the normal popup logic, not lose state
           >
             About
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/"
             onClick={() => {
-              window.location.replace('/');
               setLose(false);
             }}
           >
             Replay?
-          </a>
+          </Link>
         </span>
       </div>
     </div>

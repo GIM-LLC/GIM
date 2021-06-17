@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import popupContent from '../components/popup/ghostDialogue';
 import { GameStateContext } from '../context/GameStateProvider';
 
@@ -44,13 +45,8 @@ const useGhostPopup = (setPopupActive) => {
   };
 
   const endGameClick = () => {
-    // set win to true
     setWin(true);
-
-    console.log('WHY AM I HERE');
-
-    // redirect to about page
-    window.location.replace('/about');
+    <Link to="/about" />;
   };
 
   useEffect(() => {

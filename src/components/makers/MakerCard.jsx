@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import style from '../../pages/AboutPage.css';
 
-const MakerCard = (maker) => {
+const MakerCard = ({ maker }) => {
   return (
-    <article id={`${maker.name}-card`}>
+    <article className={style.makerCard} id={`${maker.name}-card`}>
       <figure>
-        <img src={`/public/assets/${maker.image}`} />
+        <img src={`/assets/${maker.image}`} />
         {/* on hover set src to maker.imageX */}
         <figcaption>
           {maker.name} | {maker.title}
@@ -13,6 +15,15 @@ const MakerCard = (maker) => {
       <p>{maker.bio}</p>
     </article>
   );
+};
+
+MakerCard.propTypes = {
+  maker: PropTypes.shape({
+    bio: PropTypes.any,
+    image: PropTypes.any,
+    name: PropTypes.any,
+    title: PropTypes.any,
+  }),
 };
 
 export default MakerCard;

@@ -19,7 +19,7 @@ export const GameStateProvider = ({ children }) => {
   const [lose, setLose] = useState(false);
 
   const incrementPoints = (points) => setPoints((prev) => prev + points);
-  
+
   // when the 90 second timer is failed, increment failed timouts and start new timer
   const handleTimeout = () => {
     setFailedTimeouts((prev) => prev + 1);
@@ -28,31 +28,31 @@ export const GameStateProvider = ({ children }) => {
 
   //check for a change in points -> then start a new timer, clear old timer if it exists
   useEffect(() => {
-    if(points > 0 && points < 4) {
+    if (points > 0 && points < 4) {
       socket.emit('game start');
     }
-    if(points >= 1) {
-      if(currentTimeout !== undefined) {
+    if (points >= 1) {
+      if (currentTimeout !== undefined) {
         clearTimeout(currentTimeout);
       }
       currentTimeout = setTimeout(handleTimeout, TIMEOUT_LENGTH);
     }
-    if(points >= 15) {
+    if (points >= 15) {
       setWin(true);
     }
   }, [points]);
 
   useEffect(() => {
-    if(failedTimeouts >= 5) {
+    if (failedTimeouts >= 10) {
       setLose(true);
     }
   }, [failedTimeouts]);
 
   // both end state popups should include a replay link and an about us link
   useEffect(() => {
-    if(win || lose) {
+    if (win || lose) {
       // the game is over
-      
+
       // disable click listeners?
 
       // turn off the timer
@@ -67,7 +67,7 @@ export const GameStateProvider = ({ children }) => {
     win,
     lose,
     setLose,
-    setWin
+    setWin,
   };
 
   return (
@@ -78,7 +78,7 @@ export const GameStateProvider = ({ children }) => {
 };
 
 GameStateProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const GameStateContext = createContext();
