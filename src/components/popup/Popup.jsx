@@ -7,20 +7,27 @@ import { GameStateContext } from '../../context/GameStateProvider';
 function Popup({ popupActive, setPopupActive }) {
   const { points } = useContext(GameStateContext);
 
-  const { 
-    popup, 
-    slideIndex, 
+  const {
+    popup,
+    slideIndex,
     getNextSlide,
+    endGameClick,
     canClose,
-    handlePointsUpdate 
+    handlePointsUpdate
   } = useGhostPopup(setPopupActive);
-  
+
   const {
     largeText,
     smallText,
     inputPlaceholder,
     buttonText
   } = popup;
+
+  const winAndRedirect = () => {
+    console.log('end game function broken?');
+    setPopupActive(false);
+    endGameClick();
+  };
 
   useEffect(() => {
     handlePointsUpdate(points);
@@ -37,7 +44,7 @@ function Popup({ popupActive, setPopupActive }) {
           {smallText[slideIndex]}
         </p>
 
-        <input 
+        <input
           type='email'
           name='email'
           placeholder={inputPlaceholder[slideIndex]}
@@ -45,22 +52,22 @@ function Popup({ popupActive, setPopupActive }) {
 
         <button
           className={style.popupCloseButton}
-          onClick={() => 
-            canClose ? setPopupActive(false) 
+          onClick={() =>
+            canClose ? setPopupActive(false)
               : {}}>
-            x
+          x
         </button>
-        
+
         <button
           name="nextButton"
-          className={style.popupSubmitButton} 
-          onClick={() => 
-            canClose 
-              ? setPopupActive(false) 
-              : getNextSlide()}>
+          className={style.popupSubmitButton}
+          onClick={() =>
+            canClose && points >= 15
+              ? winAndRedirect()
+              : canClose ? setPopupActive(false) : getNextSlide()}>
           {buttonText[slideIndex]}
         </button>
-        
+
       </div>
     </div>
   ) : '';
