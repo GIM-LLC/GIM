@@ -3,10 +3,12 @@ import HeaderNav from './HeaderNav';
 import style from './Header.css';
 import { SocketContext } from '../../context/SocketProvider';
 import { GameStateContext } from '../../context/GameStateProvider';
+import useDuck from '../../hooks/useDuck';
 
 const Header = () => {
   const socket = useContext(SocketContext);
   const { incrementPoints } = useContext(GameStateContext);
+  const { duck, showDuck } = useDuck();
 
   const [headerClicks, setHeaderClicks] = useState(0);
 
@@ -25,11 +27,13 @@ const Header = () => {
     socket.on('socketHeaderTextClick', (newCount) => {
       setHeaderClicks(newCount);
       if (newCount === 4) {
+        const audio = document.querySelector('#GIM-title-audio');
+        audio.volume = 0.1;
+        audio.play();
         incrementPoints(1);
       }
     });
   }, [socket]);
-
 
   let headerText = 'G.I.M.';
   let hdrDisable = false;
@@ -55,8 +59,12 @@ const Header = () => {
         >{headerText}</h1>
         <h3>-LLC.-</h3>
       </span>
-      <HeaderNav />
-    </header>
+      <img
+        className={duck ? style.daniDuck : style.hidden}
+        src="/assets/dani-duck.png"
+        alt="dani-duck" />
+      <HeaderNav showDuck={showDuck} />
+    </header >
   );
 };
 
