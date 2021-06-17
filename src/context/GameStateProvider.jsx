@@ -43,7 +43,7 @@ export const GameStateProvider = ({ children }) => {
   }, [points]);
 
   useEffect(() => {
-    if (failedTimeouts >= 5) {
+    if (failedTimeouts >= 10) {
       setLose(true);
     }
   }, [failedTimeouts]);
@@ -67,7 +67,7 @@ export const GameStateProvider = ({ children }) => {
     win,
     lose,
     setLose,
-    setWin
+    setWin,
   };
 
   return (
@@ -78,7 +78,7 @@ export const GameStateProvider = ({ children }) => {
 };
 
 GameStateProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const GameStateContext = createContext();
