@@ -9,31 +9,31 @@ const LosePopup = () => {
     <div className={style.losingPopup}>
       <div className={style.losingPopupInner}>
         <h2>500 Internal Server Error</h2>
-        <p>
-				Contact your administrator.
-        </p>
-        <p>
-				(semi readable THANKS FOR TRYING!)
-        </p>
+        <p>Contact your administrator.</p>
+        <p>(semi readable THANKS FOR TRYING!)</p>
         <span className={style.links}>
-          <a href="/about"
-            onClick={() => setLose(false)}
-          >About</a>
-          <a href='#'
+          <a href="/about" onClick={() => setLose(false)}>
+            About
+          </a>
+          <a
+            href="#"
             onClick={() => {
               window.location.replace('/');
               setLose(false);
             }}
-          >Replay?</a>
+          >
+            Replay?
+          </a>
         </span>
       </div>
-      
     </div>
-  ) : '';
+  ) : (
+    ''
+  );
 };
 
 LosePopup.propTypes = {
-  setPopupActive: PropTypes.func.isRequired
+  setPopupActive: PropTypes.func,
 };
 
 export default LosePopup;

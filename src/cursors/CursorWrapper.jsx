@@ -8,11 +8,7 @@ import AboutPage from '../pages/AboutPage';
 import Header from '../components/header-footer/Header';
 import ChatBox from '../components/ChatBox';
 import Footer from '../components/header-footer/Footer';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const CursorWrapper = () => {
   const socket = useContext(SocketContext);
@@ -93,22 +89,22 @@ const CursorWrapper = () => {
       id="cursorWrapper"
     >
       <Router>
-        <Header />
         <Switch>
           <Route
-            path='/'
+            path="/"
             exact
-            component={HomePage}
+            render={() => (
+              <>
+                <Header />
+                <HomePage />
+                <ChatBox />
+                <Footer />
+              </>
+            )}
           />
 
-          <Route
-            path='/about'
-            exact
-            component={AboutPage}
-          />
+          <Route path="/about" exact component={AboutPage} />
         </Switch>
-        <ChatBox />
-        <Footer />
       </Router>
     </div>
   );
