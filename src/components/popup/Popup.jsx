@@ -7,14 +7,15 @@ import { GameStateContext } from '../../context/GameStateProvider';
 function Popup({ popupActive, setPopupActive }) {
   const { points } = useContext(GameStateContext);
 
-  const { 
-    popup, 
-    slideIndex, 
+  const {
+    popup,
+    slideIndex,
     getNextSlide,
+    endGameClick,
     canClose,
-    handlePointsUpdate 
+    handlePointsUpdate
   } = useGhostPopup(setPopupActive);
-  
+
   const {
     largeText,
     smallText,
@@ -22,13 +23,18 @@ function Popup({ popupActive, setPopupActive }) {
     buttonText
   } = popup;
 
+  const winAndRedirect = () => {
+    setPopupActive(false);
+    endGameClick();
+  };
+
   useEffect(() => {
     handlePointsUpdate(points);
   }, [points]);
 
   return popupActive ? (
-    <div className={style.popup}>
-      <div className={style.popupInner}>
+    <div className={points < 15 ? style.popup : style.winPopup}>
+      <div className={points < 15 ? style.popupInner : style.winPopupInner}>
         <p>
           {largeText[slideIndex]}
         </p>
@@ -37,7 +43,7 @@ function Popup({ popupActive, setPopupActive }) {
           {smallText[slideIndex]}
         </p>
 
-        <input 
+        <input
           type='email'
           name='email'
           placeholder={inputPlaceholder[slideIndex]}
@@ -45,21 +51,22 @@ function Popup({ popupActive, setPopupActive }) {
 
         <button
           className={style.popupCloseButton}
-          onClick={() => 
-            canClose ? setPopupActive(false) 
+          onClick={() =>
+            canClose ? setPopupActive(false)
               : {}}>
-            x
+          x
         </button>
-        
-        <button 
-          className={style.popupSubmitButton} 
-          onClick={() => 
-            canClose 
-              ? setPopupActive(false) 
-              : getNextSlide()}>
+
+        <button
+          name="nextButton"
+          className={style.popupSubmitButton}
+          onClick={() =>
+            canClose && points >= 15
+              ? winAndRedirect()
+              : canClose ? setPopupActive(false) : getNextSlide()}>
           {buttonText[slideIndex]}
         </button>
-        
+
       </div>
     </div>
   ) : '';
