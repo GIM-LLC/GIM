@@ -92,7 +92,7 @@ const SearchForm = ({ showDuck }) => {
     audio.volume = 0.2;
     audio.play();
 
-    if (newPrompt >= 4) {
+    if(newPrompt >= 4) {
       const audio = document.querySelector('#social-icon');
       audio.volume = 0.2;
       audio.play();
