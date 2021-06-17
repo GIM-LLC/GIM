@@ -88,8 +88,13 @@ const SearchForm = ({ showDuck }) => {
     setPlaceHolderText(newPlaceholderTxt);
     setButtonText(newButtonTxt);
     setSearchInput('');
+
     if (newPrompt >= 4) {
-      disableInputs(true);
+
+    const audio = document.querySelector('#social-icon');
+    audio.volume = 0.2;
+    audio.play();
+     disableInputs(true);
     }
   };
 
