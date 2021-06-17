@@ -1,28 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import style from '../../pages/AboutPage.css';
 
 const MakerCard = ({ maker }) => {
+  const [hover, setHover] = useState(false);
+
+  const onMouseEnter = () => {
+    setHover(true);
+  };
+
+  const onMouseOut = () => {
+    setHover(false);
+  };
+
+  const gridName = `${maker.name}-card`;
+
   return (
-    <article className={style.makerCard} id={`${maker.name}-card`}>
+    <article
+      className={`${style.makerCard} ${style.gridName}`}
+      id={`${maker.name}-card`}
+    >
       <figure>
-        <img src={`/assets/${maker.image}`} />
-        {/* on hover set src to maker.imageX */}
-        <figcaption>
-          {maker.name} | {maker.title}
-        </figcaption>
+        <img
+          src={hover ? `assets/${maker.imageX}` : `/assets/${maker.image}`}
+          onMouseEnter={onMouseEnter}
+          onMouseOut={onMouseOut}
+        />
       </figure>
-      <p>{maker.bio}</p>
+      <p className={style.makerInfo}>
+        <span>{maker.name}</span>
+        <span>
+          {maker.title} | Pronouns: {maker.pronouns}
+        </span>
+        <span>{maker.bio}</span>
+      </p>
     </article>
   );
 };
 
 MakerCard.propTypes = {
   maker: PropTypes.shape({
-    bio: PropTypes.any,
-    image: PropTypes.any,
-    name: PropTypes.any,
-    title: PropTypes.any,
+    bio: PropTypes.string,
+    image: PropTypes.string,
+    imageX: PropTypes.string,
+    name: PropTypes.string,
+    pronouns: PropTypes.string,
+    title: PropTypes.string,
   }),
 };
 
