@@ -51,7 +51,8 @@ function Popup({ popupActive, setPopupActive }) {
             x
         </button>
         
-        <button 
+        <button
+          name="nextButton"
           className={style.popupSubmitButton} 
           onClick={() => 
             canClose 

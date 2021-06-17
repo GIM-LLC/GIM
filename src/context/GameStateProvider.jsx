@@ -66,7 +66,8 @@ export const GameStateProvider = ({ children }) => {
     incrementPoints,
     win,
     lose,
-    setLose
+    setLose,
+    setWin
   };
 
   return (
