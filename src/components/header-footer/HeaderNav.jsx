@@ -4,18 +4,13 @@ import style from './Header.css';
 import { SocketContext } from '../../context/SocketProvider';
 import SearchForm from './SearchForm';
 import useDontClick from '../../hooks/useDontClick';
+import PropTypes from 'prop-types';
 
-const HeaderNav = () => {
+const HeaderNav = ({ showDuck }) => {
   const socket = useContext(SocketContext);
-  const [hover, setHover] = useState({
-    about: false,
-    locations: false,
-    'join us': false,
-    press: false,
-    investors: false,
-  });
+  const [hover, setHover] = useState({});
 
-  const { handleDontClick, handleDontMsg, btnClicked } = useDontClick();
+  const { btnClicked, handleDontClick, handleDontMsg } = useDontClick();
   const currentMsg = handleDontMsg(btnClicked);
 
   const handleLinkHover = (e) => {
@@ -114,6 +109,7 @@ const HeaderNav = () => {
                   href="#"
                   onClick={handleDontClick}
                   disabled={btnClicked === 3}
+                  className={btnClicked === 3 ? style.noClicky : ''}
                 >
                   {currentMsg}
                 </a>
@@ -172,9 +168,13 @@ const HeaderNav = () => {
           )}
         </li>
       </ul>
-      <SearchForm />
+      <SearchForm showDuck={showDuck} />
     </nav>
   );
+};
+
+HeaderNav.propTypes = {
+  showDuck: PropTypes.func.isRequired
 };
 
 export default HeaderNav;

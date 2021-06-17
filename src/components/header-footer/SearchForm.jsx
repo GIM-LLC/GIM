@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SocketContext } from '../../context/SocketProvider';
 import { GameStateContext } from '../../context/GameStateProvider';
 import style from './Header.css';
+import PropTypes from 'prop-types';
 
-const SearchForm = () => {
+const SearchForm = ({ showDuck }) => {
   const socket = useContext(SocketContext);
   const { incrementPoints } = useContext(GameStateContext);
   const [placeHolderText, setPlaceHolderText] = useState('Search Term');
@@ -38,14 +39,19 @@ const SearchForm = () => {
       const audio = document.querySelector('#social-icon');
       audio.volume = 0.2;
       audio.play();
-
       setPrompt(2);
       setPlaceHolderText('What is my name?');
       setButtonText('GUESS');
       socket.emit('searchSubmit', { newPrompt: 2, points: 1, newPlaceholderTxt: 'What is my name?', newButtonTxt: 'GUESS' });
-    } else if(prompt === 2 && searchInput.toUpperCase() !== 'ROBIN SMITH') {
+    }
+    else if(prompt === 2 && searchInput.toUpperCase() === 'DUCK') {
+      showDuck();
       socket.emit('searchSubmit', { newPrompt: 2, points: 0, newPlaceholderTxt: 'What is my name?', newButtonTxt: 'GUESS' });
-    } else if(prompt === 2 && searchInput.toUpperCase() === 'ROBIN SMITH') {
+    }
+    else if(prompt === 2 && searchInput.toUpperCase() !== 'ROBIN SMITH') {
+      socket.emit('searchSubmit', { newPrompt: 2, points: 0, newPlaceholderTxt: 'What is my name?', newButtonTxt: 'GUESS' });
+    }
+    else if(prompt === 2 && searchInput.toUpperCase() === 'ROBIN SMITH') {
       incrementPoints(2);
       const audio = document.querySelector('#social-icon');
       audio.volume = 0.2;
@@ -53,21 +59,24 @@ const SearchForm = () => {
       setPrompt(3);
       setPlaceHolderText('What is MY core value?');
       socket.emit('searchSubmit', { newPrompt: 3, points: 2, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
-    } else if(prompt === 3 && searchInput.toUpperCase() !== 'ESCAPE') {
+    }
+    else if(prompt === 3 && searchInput.toUpperCase() === 'DUCK') {
+      showDuck();
       socket.emit('searchSubmit', { newPrompt: 3, points: 0, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
-    } else if(prompt === 3 && searchInput.toUpperCase() === 'ESCAPE') {
+    }
+    else if(prompt === 3 && searchInput.toUpperCase() !== 'ESCAPE') {
+      socket.emit('searchSubmit', { newPrompt: 3, points: 0, newPlaceholderTxt: 'What is MY core value?', newButtonTxt: 'GUESS' });
+    }
+    else if(prompt === 3 && searchInput.toUpperCase() === 'ESCAPE') {
       incrementPoints(2);
       const audio = document.querySelector('#social-icon');
       audio.volume = 0.2;
       audio.play();
-      
       setPrompt(4);
       setPlaceHolderText('You\'re getting closer');
       setButtonText('HURRY UP!!');
       disableInputs(true);
       socket.emit('searchSubmit', { newPrompt: 4, points: 2, newPlaceholderTxt: 'You\'re getting closer', newButtonTxt: 'GO FASTER' });
-    } else if(searchInput.toUpperCase() === 'DUCK') {
-      socket.emit('duck', true);
     }
   };
 
@@ -84,6 +93,9 @@ const SearchForm = () => {
     audio.play();
 
     if(newPrompt >= 4) {
+      const audio = document.querySelector('#social-icon');
+      audio.volume = 0.2;
+      audio.play();
       disableInputs(true);
     }
   };
@@ -116,6 +128,10 @@ const SearchForm = () => {
       </form>
     </section>
   );
+};
+
+SearchForm.propTypes = {
+  showDuck: PropTypes.func.isRequired
 };
 
 export default SearchForm;

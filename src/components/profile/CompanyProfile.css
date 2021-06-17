@@ -78,7 +78,7 @@
   transform: rotate(180deg);
 }
 
-.companyProfile figure, .news article {
+.companyProfile img, .news article {
   transition: transform .25s ease;
 }
 @keyframes object-pulse-animation {
