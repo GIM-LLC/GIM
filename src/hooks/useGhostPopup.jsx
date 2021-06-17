@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import popupContent from '../components/popup/ghostDialogue';
+import { GameStateContext } from '../context/GameStateProvider';
 
 const useGhostPopup = (setPopupActive) => {
+  const { setWin, win } = useContext(GameStateContext);
+
   const {
-    pointFive, 
-    pointTen, 
-    pointFifteen, 
-    original 
+    pointFive,
+    pointTen,
+    pointFifteen,
+    original
   } = popupContent;
 
   const [popup, setPopup] = useState(original);
@@ -22,22 +25,22 @@ const useGhostPopup = (setPopupActive) => {
     setSlideIndex(0);
     setPopup(currentPopup);
     setPopupActive(true);
-    
+
     setEventsTriggered(prev => ({ ...prev, [popupString]: true }));
   };
 
   const handlePointsUpdate = points => {
     // when points change, check to see if value meets the required thresholds
 
-    if(!eventsTriggered.pointFive && points >= 5 && points < 10) {
+    if (!eventsTriggered.pointFive && points >= 5 && points < 10) {
       triggerPopup(pointFive, 'pointFive');
     }
 
-    else if(!eventsTriggered.pointTen && points >= 10 && points < 15) {
+    else if (!eventsTriggered.pointTen && points >= 10 && points < 15) {
       triggerPopup(pointTen, 'pointTen');
     }
 
-    else if(!eventsTriggered.pointFifteen && points >= 15) {
+    else if (!eventsTriggered.pointFifteen && points >= 15) {
       triggerPopup(pointFifteen, 'pointFifteen');
     }
 
@@ -49,18 +52,34 @@ const useGhostPopup = (setPopupActive) => {
     setSlideIndex(prev => prev + 1);
   };
 
+  const endGameClick = () => {
+    // set win to true
+    setWin(true);
+
+    console.log('WHY AM I HERE');
+
+    // redirect to about page
+    window.location.replace('/about');
+  };
+
   useEffect(() => {
+    // if (slideIndex >= (popup.largeText.length - 1) && popup === pointFifteen) {
+    //   console.log('INSIDE THE ENDGAME BLOCK');
+    //   setNextButtonFunc(() => endGameClick());
+    // }
+
     slideIndex >= (popup.largeText.length - 1)
       ? setCanClose(true)
       : setCanClose(false);
   }, [popup, slideIndex]);
 
-  return { 
-    popup, 
-    slideIndex, 
+  return {
+    popup,
+    slideIndex,
     canClose,
     getNextSlide,
     handlePointsUpdate,
+    endGameClick
   };
 };
 
