@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "jest": {
+    "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "@testing-library/jest-dom/extend-expect",
       "<rootDir>/src/setupTests.js"

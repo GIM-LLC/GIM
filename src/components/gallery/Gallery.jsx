@@ -4,6 +4,7 @@ import CaptionedImage from './CaptionedImage';
 import style from './Gallery.css';
 import { useContext } from 'react';
 import { GameStateContext } from '../../context/GameStateProvider';
+import PropTypes from 'prop-types';
 
 const Gallery = ({ glowingObjectState, glowChangeHandler }) => {
   const {
@@ -14,7 +15,7 @@ const Gallery = ({ glowingObjectState, glowChangeHandler }) => {
     handleMouseOn,
     handleMouseOff,
   } = useGalleryImageButtons();
-  
+
   const { points, failedTimeouts } = useContext(GameStateContext);
 
   return (
@@ -31,7 +32,7 @@ const Gallery = ({ glowingObjectState, glowChangeHandler }) => {
         allTrue={allTrue}
         title="Stockholder Information"
         text="Stockholders Dividend are paid quarterly on the 5th business day of June, August, October, and November at end of day. Stockholders may have their funds deposited via check and direct deposit."
-        imageSource={ points >= 6 ? '/assets/networking3.jpg' : (points >= 4 ? '/assets/networking2.jpg' : '/assets/networking1.jpg') }
+        imageSource={points >= 6 ? '/assets/networking3.jpg' : (points >= 4 ? '/assets/networking2.jpg' : '/assets/networking1.jpg')}
       />
       <CaptionedImage
         glowingObjectState={null}
@@ -45,7 +46,7 @@ const Gallery = ({ glowingObjectState, glowChangeHandler }) => {
         allTrue={allTrue}
         title="Employment"
         text="Supporting you as you make the next step in your career towards state of the art manufacturing technology. Dozens of open roles at your fingertips to help shape the future of industrialized manufacturing. For contracting inquiries please contact via email."
-        imageSource={ points >= 5 ? '/assets/helpdesk3.jpg' : (failedTimeouts >= 1 ? '/assets/helpdesk2.jpg' : '/assets/helpdesk1.jpg') }
+        imageSource={points >= 5 ? '/assets/helpdesk3.jpg' : (failedTimeouts >= 1 ? '/assets/helpdesk2.jpg' : '/assets/helpdesk1.jpg')}
       />
       <CaptionedImage
         glowingObjectState={glowingObjectState['galleryImg']}
@@ -59,10 +60,15 @@ const Gallery = ({ glowingObjectState, glowChangeHandler }) => {
         allTrue={allTrue}
         title="Life with GIM"
         text="Here at GIM you will find minimal bureaucracy, and more support. GIM has a welcoming and warm culture, ready to serve the community with amazing industrial manufacturing products"
-        imageSource={ points >= 8 ? '/assets/collaborate3.jpg' : (failedTimeouts >= 2 ? '/assets/collaborate2.jpg' : '/assets/collaborate1.jpg') }
+        imageSource={points >= 8 ? '/assets/collaborate3.jpg' : (failedTimeouts >= 2 ? '/assets/collaborate2.jpg' : '/assets/collaborate1.jpg')}
       />
     </section>
   );
+};
+
+Gallery.propTypes = {
+  glowingObjectState: PropTypes.object.isRequired,
+  glowChangeHandler: PropTypes.func.isRequired
 };
 
 export default Gallery;

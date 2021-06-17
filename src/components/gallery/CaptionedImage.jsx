@@ -1,5 +1,7 @@
 import React from 'react';
 import style from './CaptionedImage.css';
+import PropTypes from 'prop-types';
+
 const CaptionedImage = ({
   title,
   text,
@@ -56,6 +58,21 @@ const CaptionedImage = ({
       </div>
     </div>
   );
+};
+
+CaptionedImage.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  imageSource: PropTypes.string.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  currentButtonText: PropTypes.string.isRequired,
+  mouseHoverOnHandler: PropTypes.func.isRequired,
+  mouseHoverOffHandler: PropTypes.func.isRequired,
+  hover: PropTypes.bool.isRequired,
+  allTrue: PropTypes.bool.isRequired,
+  glowChangeHandler: PropTypes.func.isRequired,
+  glowingObjectState: PropTypes.bool
 };
 
 export default CaptionedImage;
