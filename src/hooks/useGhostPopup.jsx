@@ -55,19 +55,11 @@ const useGhostPopup = (setPopupActive) => {
   const endGameClick = () => {
     // set win to true
     setWin(true);
-
-    console.log('WHY AM I HERE');
-
     // redirect to about page
     window.location.replace('/about');
   };
 
   useEffect(() => {
-    // if (slideIndex >= (popup.largeText.length - 1) && popup === pointFifteen) {
-    //   console.log('INSIDE THE ENDGAME BLOCK');
-    //   setNextButtonFunc(() => endGameClick());
-    // }
-
     slideIndex >= (popup.largeText.length - 1)
       ? setCanClose(true)
       : setCanClose(false);
