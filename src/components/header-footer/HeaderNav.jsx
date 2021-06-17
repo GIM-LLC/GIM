@@ -98,26 +98,26 @@ const HeaderNav = () => {
           >
             join us
           </a>
-          {/* {hover['join us'] && ( */}
-          <ul className={style.subNav}>
-            <li className={style.subLink}>
-              <a href="#">openings</a>
-            </li>
-            <li className={style.subLink}>
-              <a
-                href="#"
-                onClick={handleDontClick}
-                disabled={btnClicked === 3}
-                className={btnClicked === 3 ? style.noClicky : ''}
-              >
-                {currentMsg}
-              </a>
-            </li>
-            <li className={style.subLink}>
-              <a href="#">benefits</a>
-            </li>
-          </ul>
-          {/* )} */}
+          {hover['join us'] && (
+            <ul className={style.subNav}>
+              <li className={style.subLink}>
+                <a href="#">openings</a>
+              </li>
+              <li className={style.subLink}>
+                <a
+                  href="#"
+                  onClick={handleDontClick}
+                  disabled={btnClicked === 3}
+                  className={btnClicked === 3 ? style.noClicky : ''}
+                >
+                  {currentMsg}
+                </a>
+              </li>
+              <li className={style.subLink}>
+                <a href="#">benefits</a>
+              </li>
+            </ul>
+          )}
         </li>
 
         <li className={style.navLink}>
