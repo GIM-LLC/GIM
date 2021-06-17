@@ -17,7 +17,7 @@ const LosePopup = () => {
         </p>
         <span className={style.links}>
           <a href="/about"
-            onClick={() => setLose(false)}
+            onClick={() => setLose(false)} // should change to use the normal popup logic, not lose state
           >About</a>
           <a href='#'
             onClick={() => {
