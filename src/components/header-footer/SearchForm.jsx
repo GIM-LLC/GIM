@@ -88,18 +88,12 @@ const SearchForm = ({ showDuck }) => {
     setPlaceHolderText(newPlaceholderTxt);
     setButtonText(newButtonTxt);
     setSearchInput('');
-<<<<<<< HEAD
+
     if (newPrompt >= 4) {
+      const audio = document.querySelector('#social-icon');
+      audio.volume = 0.2;
+      audio.play();
       disableInputs(true);
-=======
-
-    if (newPrompt >= 4) {
-
-    const audio = document.querySelector('#social-icon');
-    audio.volume = 0.2;
-    audio.play();
-     disableInputs(true);
->>>>>>> cd55b47c5fcf5511a8616fe95ce847d029ebc210
     }
   };
 
