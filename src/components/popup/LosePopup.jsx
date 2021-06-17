@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import style from './Popup.css';
 import { GameStateContext } from '../../context/GameStateProvider';
 
@@ -10,10 +9,10 @@ const LosePopup = () => {
       <div className={style.losingPopupInner}>
         <h2>500 Internal Server Error</h2>
         <p>
-				Contact your administrator.
+          Contact your administrator.
         </p>
         <p className={style.ghostThanks}>
-				THANKS FOR TRYING
+          THANKS FOR TRYING
         </p>
         <span className={style.links}>
           <a href="/about"
@@ -27,13 +26,9 @@ const LosePopup = () => {
           >Replay?</a>
         </span>
       </div>
-      
+
     </div>
   ) : '';
-};
-
-LosePopup.propTypes = {
-  setPopupActive: PropTypes.func.isRequired
 };
 
 export default LosePopup;

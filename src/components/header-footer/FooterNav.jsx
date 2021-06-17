@@ -12,7 +12,7 @@ const FooterNav = () => {
   return (
     <>
       <nav>
-        <ul>
+        <ul aria-label={'footerList'}>
           <li className={style.footerListItem}>
             <p className={style.headers} onClick={footerTitleGhostState.titleOne === 'HELP' ? () => null : () => handleTitleClick('titleOne')}>{footerTitleGhostState.titleOne}</p>
             <p>Meet the Suppliers</p>
