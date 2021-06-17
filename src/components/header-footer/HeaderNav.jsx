@@ -37,7 +37,7 @@ const HeaderNav = ({ showDuck }) => {
 
   return (
     <nav className={style.navBar}>
-      <ul>
+      <ul aria-label={'navList'}>
         <li className={style.navLink}>
           <a
             href="#"

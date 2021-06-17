@@ -12,6 +12,53 @@
     align-items: center;
 }
 
+.winPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.344);
+    background-image: url('http://i.stack.imgur.com/kx8MT.gif');
+    background-size: cover;
+    z-index: 2;
+
+    animation: fadeIn 4s;
+    -webkit-animation: fadeIn 4s;
+    -moz-animation: fadeIn 4s;
+    -o-animation: fadeIn 4s;
+    -ms-animation: fadeIn 4s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
 .popupInner {
     position: relative;
     padding: 3%;
@@ -24,6 +71,18 @@
 
 }
 
+.winPopupInner {
+    position: relative;
+    padding: 3%;
+    width: 100%;
+    max-width: 640px;
+    background-color: white;
+    color: #3f8a72;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    font-size: 2rem;
+    box-shadow: 0 0 50px 70px rgb(244, 250, 241);
+}
+
 .popupInner .popupSubmitButton {
     position: absolute;
     top: 74%;
@@ -31,6 +90,11 @@
 }
 
 .popupInner .popupCloseButton {
+    position: absolute;
+    top: 8%;
+    right: 3%;
+}
+.winPopupInner .popupCloseButton {
     position: absolute;
     top: 8%;
     right: 3%;
