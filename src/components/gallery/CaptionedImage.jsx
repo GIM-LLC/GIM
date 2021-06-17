@@ -35,7 +35,7 @@ const CaptionedImage = ({
       </figure>
       <div
         className={
-          hover || allTrue
+          hover
             ? `${style.hovered} ${style.imageOverlay}`
             : style.imageOverlay
         }
