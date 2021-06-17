@@ -4,8 +4,9 @@ import style from './Header.css';
 import { SocketContext } from '../../context/SocketProvider';
 import SearchForm from './SearchForm';
 import useDontClick from '../../hooks/useDontClick';
+import PropTypes from 'prop-types';
 
-const HeaderNav = () => {
+const HeaderNav = ({ showDuck }) => {
   const socket = useContext(SocketContext);
   const [hover, setHover] = useState({});
 
@@ -167,9 +168,13 @@ const HeaderNav = () => {
           )}
         </li>
       </ul>
-      <SearchForm />
+      <SearchForm showDuck={showDuck} />
     </nav>
   );
+};
+
+HeaderNav.propTypes = {
+  showDuck: PropTypes.func.isRequired
 };
 
 export default HeaderNav;
