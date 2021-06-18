@@ -24,7 +24,7 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
             onClick={handleStoryClick}>
             <h2>The GIM Story</h2>
             <p>
-              General Industrial Manufacturing Company is a three-generation,
+              General Industrial Manufacturing is a three-generation,
               family-owned and operated, precision machining supplier. GIM has
               earned a reputation as a supplier of high quality, low cost
               precision parts with on-time deliveries. We are a top quality team
@@ -37,11 +37,9 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
             onClick={handleStoryClick}>
             <h2>A Different Story</h2>
             <p>
-              I don&apos;t know what happened. An accident, maybe? <br />
-              <br />
-              But this isn&apos;t what I thought it would feel like. <br />
-              <br />
-              I was at work. Late. <br />
+              Robin Smith was a longtime employee in the GIM IT department. While performing maintenance in the server room, something unusual happened. <br /> <br />
+              <code>I don&apos;t know what happened, an accident maybe? </code>
+              <code>... can you help?</code>
             </p>
           </article>
         </div>

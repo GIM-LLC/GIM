@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { SocketContext } from '../context/SocketProvider';
 
 const useChat = () => {
