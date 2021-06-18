@@ -19,14 +19,14 @@ const LosePopup = () => {
           >
             About
           </Link>
-          <Link
-            to="/"
+          <a
+            href="/"
             onClick={() => {
               setLose(false);
             }}
           >
             Replay?
-          </Link>
+          </a>
         </span>
       </div>
     </div>
