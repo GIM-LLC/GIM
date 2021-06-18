@@ -15,7 +15,7 @@ const makers = [
     imageX: 'juliX.jpg',
     title: 'Software Engineer',
     pronouns: 'she/her',
-    bio: 'Juli is a Full Stack Software Engineer with a passion for learning and making the world a better place. She is fasinated by science and astronomy and would love to merge her two passions one day!',
+    bio: "Juli is a Full Stack Software Engineer with a passion for learning and making the world a better place. She is fasinated by science and astronomy and would love to merge her two passions one day! Juli's favorite corporate supply is a nice crisp ream of bright white paper.",
     linkedIn: 'https://www.linkedin.com/in/juliannevela',
     github: 'https://github.com/juliannevela',
     portfolio: 'https://juliannevela.dev',
