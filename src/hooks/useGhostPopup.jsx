@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import popupContent from '../components/popup/ghostDialogue';
 import { GameStateContext } from '../context/GameStateProvider';
 
 const useGhostPopup = (setPopupActive) => {
   const { setWin } = useContext(GameStateContext);
+  const history = useHistory();
 
   const { pointFive, pointTen, pointFifteen, original } = popupContent;
 
@@ -44,13 +45,13 @@ const useGhostPopup = (setPopupActive) => {
     else setPopup(original);
   };
 
- const getNextSlide = () => {
+  const getNextSlide = () => {
     setSlideIndex(prev => prev + 1);
   };
 
-const endGameClick = () => {
+  const endGameClick = () => {
     setWin(true);
-    <Link to="/about" />;
+    history.push('/about');
   };
 
   useEffect(() => {

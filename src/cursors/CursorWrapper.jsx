@@ -9,6 +9,8 @@ import Header from '../components/header-footer/Header';
 import ChatBox from '../components/ChatBox';
 import Footer from '../components/header-footer/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Popup from '../components/popup/Popup';
+import LosePopup from '../components/popup/LosePopup';
 
 const CursorWrapper = () => {
   const socket = useContext(SocketContext);
@@ -78,6 +80,14 @@ const CursorWrapper = () => {
     }
   }, [points]);
 
+  const [popupActive, setPopupActive] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPopupActive(true);
+    }, 9000);
+  }, []);
+
   return (
     <div
       className={
@@ -95,6 +105,8 @@ const CursorWrapper = () => {
             exact
             render={() => (
               <>
+                <Popup popupActive={popupActive} setPopupActive={setPopupActive} />
+                <LosePopup />
                 <Header />
                 <HomePage />
                 <ChatBox />
