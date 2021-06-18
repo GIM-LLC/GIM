@@ -57,7 +57,7 @@ const Header = () => {
           disabled={hdrDisable}
           style={hdrDisable ? { transform: 'rotate(5deg) translate(30px, 10px)' } : { color: '#3a3a3a' }}
         >{headerText}</h1>
-        <h3>-LLC.-</h3>
+        <h3>-LLC-</h3>
       </span>
       <img
         className={duck ? style.daniDuck : style.hidden}
