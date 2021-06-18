@@ -1,0 +1,104 @@
+.container {
+  background-color: #c6bcae;
+  position: relative;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  transition: transform .25s ease;
+}
+.captionedImage {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.captionedImage img {
+  margin: 0;
+  padding: 0;
+  max-width: 250px;
+}
+
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  background-color: #c6bcae;
+  height: 0;
+  transition: height 0.5s ease;
+}
+
+.hovered{
+  height: 100%;
+}
+
+.text {
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+}
+
+.text::-webkit-scrollbar {
+  display: none;
+}
+
+.text p {
+  color: #3a3a3a;
+  font-size: 0.75em;
+  padding: 3%;
+  word-wrap: break-word;
+}
+
+.text h3 {
+  color: #3a3a3a;
+  background-color: #f97c00;
+  font-size: 1em;
+  padding: 1%;
+}
+
+.text button {
+  margin: 2%;
+  padding: 1%;
+}
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+.objectPulse {
+  animation: object-pulse-animation 5s infinite;
+}
+.glowObjectChallengeEffect {
+  transform: rotate(180deg);
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #0bd212e4;
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes object-pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #00860738;
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(0, 0, 0, 0);
+  }
+}

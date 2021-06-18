@@ -1,0 +1,27 @@
+.mission {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  line-height: 1.5em;
+}
+
+.missionHeader {
+  font-size: 1.99rem;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  color: #3f8a72;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.missionBody {
+  font-size: 1rem;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  margin: 0;
+}
+
+.highlight{
+  font-size: 1.20em;
+  text-shadow: 2px 2px #0bd212e4;
+  color: #3a3a3a;
+  line-height: 1em;
+}

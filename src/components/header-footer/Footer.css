@@ -1,0 +1,175 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  grid-area: footer;
+  width: 100%;
+  background-color: white;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hiddenMessage{
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  position: absolute;
+  bottom: 0;
+  grid-area: footer;
+  width: 100vw;
+  height: 4.5em;
+  background-color: rgba(255, 255, 255, 20);
+  font-size: 2em;
+  color: #0bd212e4;
+  padding: 1em;
+  text-align: center;
+  display: none;
+  font-style: italic;
+  opacity: 0;
+}
+
+@keyframes showMsg {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.reveal{
+  display: block;
+  animation: showMsg 3s ease-in-out both;
+}
+
+.hide{
+  display: none;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.footer nav {
+  width: 80%;
+}
+
+.footer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0;
+  list-style: none;
+  padding-left: unset;
+  width: 100%;
+}
+
+.footerListItem {
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-size: 0.65rem;
+  line-height: 0.6rem;
+}
+
+.headers {
+  color: #f97c00;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.headersTwo {
+  pointer-events: none; 
+}
+
+.contactUsDiv {
+  display: flex;
+  flex-direction: row;
+  width: 150%;
+}
+
+.iconImage {
+  width: 1.55rem;
+}
+
+.iconImageGhost {
+  width: 1.55rem;
+  box-shadow: 0px 0px 1px 1px #d20b0be4;
+}
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #0bd212e4;
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
+}
+
+.iconDiv {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1%;
+  row-gap: 2%;
+  width: 30%;
+  height: 60%;
+  padding: 1%;
+}
+
+.addressDiv {
+  width: 90%;
+  column-gap: 70%;
+}
+
+.addressesHeader {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 1rem;
+}
+
+.addresses {
+  margin: 1%;
+}
+
+.iconImageGhost {
+  width: 1.55rem;
+  box-shadow: 0px 0px 1px 1px #d20b0be4;
+}
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #0bd212e4;
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
+}
+
+.iconDiv {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1%;
+  row-gap: 2%;
+  width: 30%;
+  height: 60%;
+  padding: 1%;
+}
+
+.addressDiv {
+  width: 90%;
+  column-gap: 70%;
+}
+
+.addressesHeader {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 1rem;
+}
+
+.addresses {
+  margin: 1%;
+}

@@ -1,0 +1,42 @@
+.ghost{
+    z-index: 30;
+	position: absolute;
+	cursor: pointer;
+	opacity: 40%;
+	transform: rotate(20deg);
+	background-color: none;
+	transition-property: left, bottom, width;
+  	transition-duration: 2s;
+  	transition-timing-function: linear;
+}
+
+.positionOne{
+	left: -50px;
+	bottom: 150px;
+	width: 7%;
+}
+
+.positionTwo{
+	left: -30px;
+	bottom: 200px;
+	width: 7%;
+}
+
+.positionThree{
+	left: 10px;
+	bottom: 250px;
+	width: 11%;
+}
+
+.positionFour{
+	left: 20px;
+	bottom: 275px;
+	width: 13%;
+	cursor: auto;
+}
+
+.positionFive{
+	left: 850px;
+	bottom: 105%;
+	width: 30%;
+}

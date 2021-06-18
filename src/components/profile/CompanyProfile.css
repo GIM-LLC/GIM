@@ -1,0 +1,91 @@
+.companyProfile {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+
+.story {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 65%;
+  background-color: #c6bcae;
+  margin-right: 2%;
+}
+
+.story img {
+  max-width: 200px;
+}
+
+.story figure {
+  margin-top: 0;
+  margin-right: 0.5em;
+  margin-bottom: 0;
+  margin-left: 1em;
+}
+
+.story > article {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+.story h2 {
+  margin: 0;
+  padding: 1%;
+  color: #3f8a72;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: 35%;
+}
+
+.news h3 {
+  margin: 0;
+  padding: 2%;
+  color: #3f8a72;
+}
+
+.news h6 {
+  margin: 1%;
+  padding: 1%;
+  background-color: #f97c00;
+  color: #3a3a3a;
+  font-size: .9rem;
+
+}
+
+.news article p {
+  margin: 0;
+  padding: 2%;
+  font-size: .8rem;
+}
+
+.name{
+  font-weight: 400;
+  font-style: italic;
+}
+
+.objectPulse {
+  animation: object-pulse-animation 5s infinite;
+}
+.glowObjectChallengeEffect {
+  transform: rotate(180deg);
+}
+
+.companyProfile img, .news article {
+  transition: transform .25s ease;
+}
+@keyframes object-pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px #00860738;
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(0, 0, 0, 0);
+  }
+}
