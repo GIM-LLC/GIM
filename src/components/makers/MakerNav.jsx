@@ -17,7 +17,7 @@ const MakerNav = () => {
               </a>
               <a href={maker.linkedIn}>
                 <img
-                  src="public/assets/linkedin-icon-2.png"
+                  src="/assets/linkedin-icon-2.png"
                   alt="linkedin icon"
                 />
               </a>
