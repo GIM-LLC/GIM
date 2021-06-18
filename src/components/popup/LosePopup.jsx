@@ -10,12 +10,8 @@ const LosePopup = () => {
     <div className={style.losingPopup}>
       <div className={style.losingPopupInner}>
         <h2>500 Internal Server Error</h2>
-        <p>
-          Contact your administrator.
-        </p>
-        <p className={style.ghostThanks}>
-          THANKS FOR TRYING
-        </p>
+        <p>Contact your administrator.</p>
+        <p className={style.ghostThanks}>THANKS FOR TRYING</p>
         <span className={style.links}>
           <Link
             to="/about"

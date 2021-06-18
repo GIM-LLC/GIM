@@ -4,8 +4,8 @@
 
 body {
   /* FONTS */
-  --headerFont: "'Cinzel', serif";
-  --bodyFont: "'Fira Sans Extra Condensed', sans-serif";
+  --headerFont: 'Cinzel', serif;
+  --bodyFont: 'Fira Sans Extra Condensed', sans-serif;
 
   /* COLORS */
   --bodyText: #3a3a3a;
@@ -38,7 +38,24 @@ body {
   justify-content: space-around;
   align-items: center;
   background-color: white;
+  font-family: var(--bodyFont);
   color: var(--navTxt);
+  padding: 5px;
+}
+
+.navBar button {
+  width: fit-content;
+}
+
+.navBar img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .navBar > ul {
@@ -52,9 +69,13 @@ body {
 
 .main {
   grid-area: main;
+  font-family: var(--bodyFont);
+}
+
+.main h2 {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  font-family: var(--headerFont);
 }
 
 .makers {
@@ -81,4 +102,20 @@ body {
 
 .makerCard img {
   border-radius: 10px;
+}
+
+.makerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.makerInfo span {
+  margin: 4px;
+}
+
+.makerInfo span:nth-child(1) {
+  font-family: var(--headerFont);
+  color: var(--navTxt);
 }

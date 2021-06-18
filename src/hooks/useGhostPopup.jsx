@@ -31,13 +31,9 @@ const useGhostPopup = (setPopupActive) => {
 
     if (!eventsTriggered.pointFive && points >= 5 && points < 10) {
       triggerPopup(pointFive, 'pointFive');
-    }
-
-    else if (!eventsTriggered.pointTen && points >= 10 && points < 15) {
+    } else if (!eventsTriggered.pointTen && points >= 10 && points < 15) {
       triggerPopup(pointTen, 'pointTen');
-    }
-
-    else if (!eventsTriggered.pointFifteen && points >= 15) {
+    } else if (!eventsTriggered.pointFifteen && points >= 15) {
       triggerPopup(pointFifteen, 'pointFifteen');
     }
 
@@ -46,7 +42,7 @@ const useGhostPopup = (setPopupActive) => {
   };
 
   const getNextSlide = () => {
-    setSlideIndex(prev => prev + 1);
+    setSlideIndex((prev) => prev + 1);
   };
 
   const endGameClick = () => {
@@ -55,7 +51,12 @@ const useGhostPopup = (setPopupActive) => {
   };
 
   useEffect(() => {
-    slideIndex >= (popup.largeText.length - 1)
+    // if (slideIndex >= (popup.largeText.length - 1) && popup === pointFifteen) {
+    //   console.log('INSIDE THE ENDGAME BLOCK');
+    //   setNextButtonFunc(() => endGameClick());
+    // }
+
+    slideIndex >= popup.largeText.length - 1
       ? setCanClose(true)
       : setCanClose(false);
   }, [popup, slideIndex]);
