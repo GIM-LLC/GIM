@@ -17,35 +17,35 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
             src={points >= 10 ? '/assets/thumbs3.jpg' : (failedTimeouts >= 3 ? '/assets/thumbs2.jpg' : '/assets/thumbs1.jpg')} alt="gim image" />
         </figure>
 
-        <div className={style.card}>
-          <div className={showGhostStory ? `${style.cardInner} ${style.flip}` : style.cardInner}>
-            <article 
-              className={style.cardFront} 
-              onClick={handleStoryClick}>
-              <h2>The GIM Story</h2>
-              <p>
+        
+        <div className={showGhostStory ? `${style.cardInner} ${style.flip}` : style.cardInner}>
+          <article 
+            className={style.cardFront} 
+            onClick={handleStoryClick}>
+            <h2>The GIM Story</h2>
+            <p>
               General Industrial Manufacturing Company is a three-generation,
               family-owned and operated, precision machining supplier. GIM has
               earned a reputation as a supplier of high quality, low cost
               precision parts with on-time deliveries. We are a top quality team
               of employees who work well together.
-              </p>
-            </article>
+            </p>
+          </article>
 
-            <article 
-              className={style.cardBack}
-              onClick={handleStoryClick}>
-              <h2>A Different Story</h2>
-              <p>
+          <article 
+            className={style.cardBack}
+            onClick={handleStoryClick}>
+            <h2>A Different Story</h2>
+            <p>
               I don&apos;t know what happened. An accident, maybe? <br />
-                <br />
+              <br />
               But this isn&apos;t what I thought it would feel like. <br />
-                <br />
+              <br />
               I was at work. Late. <br />
-              </p>
-            </article>
-          </div>
+            </p>
+          </article>
         </div>
+
 
       </article>
 

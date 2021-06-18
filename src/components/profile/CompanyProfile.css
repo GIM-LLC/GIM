@@ -38,11 +38,6 @@
   color: #3f8a72;
 }
 
-.card {
-  perspective: 1000px;
-  background-color: purple;
-}
-
 .cardInner {
   transition: transform .7s;
   transform-style: preserve-3d;
