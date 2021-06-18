@@ -61,6 +61,7 @@
   width: max-content;
   background-color: #eae4dc;
   margin: 0.25rem 1rem 0.25rem 1rem;
+  z-index: 2000;
 }
 
 .subLink,
