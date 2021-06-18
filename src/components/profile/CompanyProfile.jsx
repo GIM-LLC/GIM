@@ -7,7 +7,6 @@ import { GameStateContext } from '../../context/GameStateProvider';
 const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
   const { showGhostStory, handleStoryClick } = useGhostStory();
   const { points, failedTimeouts } = useContext(GameStateContext);
-
   return (
     <section className={style.companyProfile}>
       <article className={style.story}>

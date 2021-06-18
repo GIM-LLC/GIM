@@ -6,11 +6,6 @@ const useFooterTitles = () => {
   const socket = useContext(SocketContext);
   const { incrementPoints } = useContext(GameStateContext);
 
-  //   const [titleOne, setTitleOne] = useState('our people');
-  //   const [titleTwo, setTitleTwo] = useState('why GIM');
-  //   const [titleThree, setTitleThree] = useState('our products');
-  //   const [titleFour, setTitleFour] = useState('contact us');
-
   const [footerTitleGhostState, setFooterTitleGhostState] = useState({
     titleOne: 'our people',
     titleTwo: 'why GIM',
