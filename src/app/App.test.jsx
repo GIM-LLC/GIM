@@ -6,7 +6,6 @@ import App from './App';
 describe('GIM app testing', () => {
     it('checks that main components did mount on initial load', async () => {
         const gim = render(<App />);
-        expect(gim).toMatchSnapshot();
 
         //check that nav bar in header is there 
         const navList = screen.getByRole('list', { name: 'navList' });
