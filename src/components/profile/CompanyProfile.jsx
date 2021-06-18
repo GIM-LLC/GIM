@@ -17,7 +17,7 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
         </figure>
 
         {showGhostStory ? (
-          <article onClick={handleStoryClick}>
+          <article className={style.cardBack}onClick={handleStoryClick}>
             <h2>A Different Story</h2>
             <p>
               I don&apos;t know what happened. An accident, maybe? <br />
@@ -28,7 +28,7 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
             </p>
           </article>
         ) : (
-          <article onClick={handleStoryClick}>
+          <article className={style.cardFront} onClick={handleStoryClick}>
             <h2>The GIM Story</h2>
             <p>
               General Industrial Manufacturing Company is a three-generation,

@@ -38,6 +38,10 @@
   color: #3f8a72;
 }
 
+.cardFront, .cardBack {
+  cursor: pointer;
+}
+
 .news {
   display: flex;
   flex-direction: column;
