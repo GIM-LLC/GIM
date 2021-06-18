@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 
 describe('GIM app testing', () => {
-    it('checks that main components did mount on initial load', async () => {
+    it('checks that main components did mount on initial load', () => {
         const gim = render(<App />);
 
         //check that nav bar in header is there 
