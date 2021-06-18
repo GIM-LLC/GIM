@@ -5,9 +5,10 @@ const makers = [
     imageX: 'devonX.jpg',
     title: 'Software Engineer',
     pronouns: 'they/she',
-    bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla molestias corrupti quos id aut, inventore maiores adipisci in est beatae dignissimos deserunt enim dolorem vero commodi quam facilis sint at!',
+    bio: "Devon Wolfkiel is a full stack software engineer compelled by curiosity and collaborative tech. They have a deep appreciation for the weird, the meta, and the ambiguous. They love word processors more than one might expect, and can't stop trying to build them.",
     linkedIn: 'https://www.linkedin.com/in/devon-wolfkiel/',
     github: 'https://github.com/devon-wolf',
+    portfolio: "https://devon-wolf.github.io/portfolio/bio/"
   },
   {
     name: 'Julianne Vela',
