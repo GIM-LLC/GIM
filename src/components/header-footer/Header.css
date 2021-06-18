@@ -15,6 +15,10 @@
   transition: 0.5s ease;
 }
 
+.gim:hover {
+  cursor: pointer;
+}
+
 .navBar {
   display: flex;
   justify-content: space-around;
