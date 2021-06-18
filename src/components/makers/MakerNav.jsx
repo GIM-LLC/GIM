@@ -1,10 +1,9 @@
 import React from 'react';
 import makers from '../makers/MakersData.js';
-import { useHistory } from 'react-router-dom';
 import style from '../../pages/AboutPage.css';
 
 const MakerNav = () => {
-  const history = useHistory();
+
   return (
     <nav className={style.navBar}>
       <ul>
@@ -28,7 +27,7 @@ const MakerNav = () => {
 
       <span>
         <input type="text" placeholder="Thanks for saving me!" />
-        <button onClick={() => history.push('/')}>PLAY AGAIN?</button>
+        <button onClick={() => window.location.reload("/")}>PLAY AGAIN?</button>
       </span>
     </nav>
   );
