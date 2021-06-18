@@ -26,7 +26,7 @@ const makers = [
     imageX: 'cameronX.jpg',
     title: 'Software Engineer',
     pronouns: 'he/him',
-    bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla molestias corrupti quos id aut, inventore maiores adipisci in est beatae dignissimos deserunt enim dolorem vero commodi quam facilis sint at!',
+    bio: "Cameron Zimmerman is energetic and positive force for your next team; It is his mission to embody and explore the human and technical sides of software. Cameron believes one's frame of mind has the ability to make or break their work environment, as well as their code. Cameron loves a nice, corporate tan color scheme.",
     linkedIn: 'https://www.linkedin.com/in/cameron-zimmerman/',
     github: 'https://github.com/CameronZimmerman',
   },
