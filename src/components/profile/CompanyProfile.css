@@ -40,6 +40,27 @@
 
 .cardFront, .cardBack {
   cursor: pointer;
+  
+}
+
+.cardFront {
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card {
+  transition: transform .7s;
+  transform-style: preserve-3d;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
 }
 
 .news {

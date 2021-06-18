@@ -7,6 +7,7 @@ import { GameStateContext } from '../../context/GameStateProvider';
 const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
   const { showGhostStory, handleStoryClick } = useGhostStory();
   const { points, failedTimeouts } = useContext(GameStateContext);
+  console.log(showGhostStory);
   return (
     <section className={style.companyProfile}>
       <article className={style.story}>
@@ -16,7 +17,35 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
             src={points >= 10 ? '/assets/thumbs3.jpg' : (failedTimeouts >= 3 ? '/assets/thumbs2.jpg' : '/assets/thumbs1.jpg')} alt="gim image" />
         </figure>
 
-        {showGhostStory ? (
+        <div className={showGhostStory ? `${style.card} ${style.flip}` : style.card}>
+          <article 
+            className={style.cardFront} 
+            onClick={handleStoryClick}>
+            <h2>The GIM Story</h2>
+            <p>
+              General Industrial Manufacturing Company is a three-generation,
+              family-owned and operated, precision machining supplier. GIM has
+              earned a reputation as a supplier of high quality, low cost
+              precision parts with on-time deliveries. We are a top quality team
+              of employees who work well together.
+            </p>
+          </article>
+
+          <article 
+            className={style.cardBack}
+            onClick={handleStoryClick}>
+            <h2>A Different Story</h2>
+            <p>
+              I don&apos;t know what happened. An accident, maybe? <br />
+              <br />
+              But this isn&apos;t what I thought it would feel like. <br />
+              <br />
+              I was at work. Late. <br />
+            </p>
+          </article>
+
+        </div>
+        {/* {showGhostStory ? (
           <article className={style.cardBack}onClick={handleStoryClick}>
             <h2>A Different Story</h2>
             <p>
@@ -38,7 +67,7 @@ const CompanyProfile = ({ glowingObjectState, glowChangeHandler }) => {
               of employees who work well together.
             </p>
           </article>
-        )}
+        )} */}
 
       </article>
 
