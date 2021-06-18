@@ -27,7 +27,7 @@ const MakerNav = () => {
 
       <span>
         <input type="text" placeholder="Thanks for saving me!" />
-        <button onClick={() => window.location.reload("/")}>PLAY AGAIN?</button>
+        <button onClick={() => window.location.replace("/")}>PLAY AGAIN?</button>
       </span>
     </nav>
   );
