@@ -74,6 +74,10 @@
 .objectPulse {
   animation: object-pulse-animation 5s infinite;
 }
+
+.objectPulse:hover {
+  cursor: pointer;
+}
 .glowObjectChallengeEffect {
   transform: rotate(180deg);
 }
