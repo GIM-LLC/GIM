@@ -13,13 +13,8 @@ const MakerCard = ({ maker }) => {
     setHover(false);
   };
 
-  const gridName = `${maker.name}-card`;
-
   return (
-    <article
-      className={`${style.makerCard} ${style.gridName}`}
-      id={`${maker.name}-card`}
-    >
+    <article className={`${style.makerCard}`} id={`${maker.name}-card`}>
       <figure>
         <img
           src={hover ? `assets/${maker.imageX}` : `/assets/${maker.image}`}
