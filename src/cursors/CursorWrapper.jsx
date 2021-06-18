@@ -46,6 +46,7 @@ const CursorWrapper = () => {
       cursors[data.id].src = '/assets/orange-cursor.png';
       cursors[data.id].alt = 'pointer';
       cursors[data.id].style.width = '10px';
+      cursors[data.id].style.zIndex = '2001';
       cursors[data.id].id = data.id;
     }
     //update users cursor position whether they are new or not
