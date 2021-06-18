@@ -9,7 +9,7 @@ import Gallery from '../components/gallery/Gallery';
 import Ghostie from '../components/Ghostie';
 
 const HomePage = () => {
-  const { allTrue, glowingObjectState, handleGlowChange } = useGlowingObjects();
+  const { glowingObjectState, handleGlowChange } = useGlowingObjects();
 
   return (
     <main className={`${style.homePage} ${style.shakeElement}`}>
