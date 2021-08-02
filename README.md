@@ -11,6 +11,7 @@ _One day, while cleaning the server trays, a kind young soul was thrust into a s
 GIM LLC is an escape room inspired website where players work together to find clues to free the ghost! 
 
 Built using React.js and socket.io for multiplayer interactivity. 
+<br>
 The repository for the server side can be found [here](https://github.com/GIM-LLC/GIM-server).
 
 ![alt text](public/assets/readmeImg.png)
