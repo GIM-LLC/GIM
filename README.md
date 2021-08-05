@@ -21,7 +21,7 @@ The repository for the server side can be found [here](https://github.com/GIM-LL
 
 - - - 
 
-Need a HINT soliving the game? [click here](./HINTS.md)
+Need a HINT? [click here](./HINTS.md)
 
 ### Group Members
 - Katrina Cloyd [GitHub](https://github.com/KatrinaCloyd) | [LinkedIn](https://www.linkedin.com/in/katrinacloyd/)
