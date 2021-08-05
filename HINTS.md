@@ -12,7 +12,7 @@ Try Clicking these links on the page!
   - click the buttons until they scroll to read "I Need Out'
 - Click each of the 4 footer headers til they read " HELP FREE MY SOUL"
 - Click all of the social media icons
-- Click the light yellow ghost on the bottom left of the site
+- Click the faint yellow ghost on the bottom left of the site
 - With another user, scrole over the "join us" tab on the nav bar. Have the other user click DON'T until the site shakes
 - Type somthing into the search bar
   - Answer the first question by looking in the Employee Memorial Fundraiser section
