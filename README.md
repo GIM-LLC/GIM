@@ -19,9 +19,8 @@ The repository for the server side can be found [here](https://github.com/GIM-LL
 
 ![alt text](public/assets/readmeImg.png)
 
-- - - 
-
 Need help freeing the ghost? [click here](./HINTS.md)
+- - - 
 
 ### Group Members
 - Katrina Cloyd [GitHub](https://github.com/KatrinaCloyd) | [LinkedIn](https://www.linkedin.com/in/katrinacloyd/)
