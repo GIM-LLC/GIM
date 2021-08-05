@@ -14,6 +14,8 @@ Built using React.js and socket.io for multiplayer interactivity.
 <br>
 The repository for the server side can be found [here](https://github.com/GIM-LLC/GIM-server).
 
+Need a HINT? [click here](./HINTS.md)
+
 ![alt text](public/assets/readmeImg.png)
 
 ### Group Members
@@ -31,6 +33,3 @@ The GIM, LLC server is hosted on [Heroku](https://gim-llc-main.herokuapp.com/)
 
 
 Project planning can be seen on our [Miro board](https://miro.com/app/board/o9J_lA3sn-w=/?utm_source=notification&utm_medium=email&utm_campaign=daily-updates&utm_content=go-to-board).
-
-
-Need a HINT? [click here](./HINTS.md)
