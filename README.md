@@ -31,3 +31,6 @@ The GIM, LLC server is hosted on [Heroku](https://gim-llc-main.herokuapp.com/)
 
 
 Project planning can be seen on our [Miro board](https://miro.com/app/board/o9J_lA3sn-w=/?utm_source=notification&utm_medium=email&utm_campaign=daily-updates&utm_content=go-to-board).
+
+
+Need a HINT? [click here](./HINTS.md)
