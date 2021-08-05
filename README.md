@@ -14,6 +14,8 @@ Built using React.js and socket.io for multiplayer interactivity.
 <br>
 The repository for the server side can be found [here](https://github.com/GIM-LLC/GIM-server).
 
+- - - 
+
 Need a HINT? [click here](./HINTS.md)
 
 ![alt text](public/assets/readmeImg.png)
