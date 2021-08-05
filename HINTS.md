@@ -13,7 +13,7 @@ Try Clicking these links on the page!
 - Click each of the 4 footer headers til they read " HELP FREE MY SOUL"
 - Click all of the social media icons
 - Click the faint yellow ghost on the bottom left of the site
-- With another user, scrole over the "join us" tab on the nav bar. Have the other user click DON'T until the site shakes
+- With another user, scrole over the "join us" tab on the nav bar. Have the other user click DON'T a few until the site shakes
 - Type somthing into the search bar
   - Answer the first question by looking in the Employee Memorial Fundraiser section
   - Answer the second question by looking scrolling over the Core Values section and checking out the green highlighted letters in the text
