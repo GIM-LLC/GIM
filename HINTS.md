@@ -3,7 +3,7 @@
 Try Clicking these links on the page!
 
 - G.I.M. LLC header at the top of the page (4 times)
-- The GIM Story 
+- The GIM Story text section
 - 3 green flashing sections:
   - Photo next to The GIM Story
   - Employee Memorial Fundraiser 
